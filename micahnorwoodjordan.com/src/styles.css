@@ -3,5 +3,10 @@ html {
     font-family: 'Dosis', 'Courier New', Courier, monospace;
 }
 
+/* body {
+    background: linear-gradient(white 0%, beige 100%);
+} */
+
 .pd-right-5 { padding-right: 5vw; }
 .pd-left-5 { padding-left: 5vw; }
+.footer { position: absolute; bottom: 5vh; }
