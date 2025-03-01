@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppRoutingContainerComponent } from './index.component';
+import { IndexComponent } from './index.component';
 
-describe('AppRoutingContainerComponent', () => {
-  let component: AppRoutingContainerComponent;
-  let fixture: ComponentFixture<AppRoutingContainerComponent>;
+describe('IndexComponent', () => {
+  let component: IndexComponent;
+  let fixture: ComponentFixture<IndexComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppRoutingContainerComponent]
+      imports: [IndexComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AppRoutingContainerComponent);
+    fixture = TestBed.createComponent(IndexComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
