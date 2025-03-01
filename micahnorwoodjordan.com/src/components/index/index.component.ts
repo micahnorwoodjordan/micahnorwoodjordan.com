@@ -3,15 +3,15 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 
 @Component({
-  selector: 'app-homepage',
+  selector: 'app-index',
   imports: [
     RouterOutlet,
     RouterLink,
     RouterLinkActive
   ],
-  templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.css'
+  templateUrl: './index.component.html',
+  styleUrl: './index.component.css'
 })
-export class HomepageComponent {
+export class AppRoutingContainerComponent {
 
 }
