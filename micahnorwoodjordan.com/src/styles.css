@@ -1,12 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 html {
-    font-family: 'Dosis', 'Courier New', Courier, monospace;
+    font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
 }
 
-/* body {
+body {
     background: linear-gradient(white 0%, beige 100%);
-} */
+}
 
 .pd-right-5 { padding-right: 5vw; }
 .pd-left-5 { padding-left: 5vw; }
-.footer { position: absolute; bottom: 5vh; }
