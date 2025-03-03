@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { IndexComponent } from '../components/index/index.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
@@ -9,7 +11,8 @@ import { FooterComponent } from '../components/footer/footer.component';
   imports: [
     IndexComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FlexLayoutModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
