@@ -1,7 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 html {
-    font-family: 'Dosis', 'Courier New', Courier, monospace;
+    font-family: 'NewsReader', 'Courier New', Courier, monospace;
+    font-weight: 200;
 }
+
+body { background: #c4c4bf 100%; }
 
 .pd-right-5 { padding-right: 5vw; }
 .pd-left-5 { padding-left: 5vw; }
