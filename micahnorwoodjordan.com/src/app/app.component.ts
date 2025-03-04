@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { IndexComponent } from '../components/index/index.component';
+import { BlankComponent } from '../components/blank/blank.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { FooterComponent } from '../components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   imports: [
-    IndexComponent,
+    BlankComponent,
     HeaderComponent,
     FooterComponent,
     FlexLayoutModule
