@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
 
 import { AboutPageComponent } from '../components/about-page/about-page.component';
-import { BlankComponent } from '../components/blank/blank.component';
+import { IndexComponent } from '../components/index/index.component';
 
 export const routes: Routes = [
     {
         path: '',
-        component: BlankComponent,
+        component: IndexComponent,
         title: 'Home'
     },
     {
