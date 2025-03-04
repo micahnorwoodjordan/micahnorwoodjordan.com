@@ -1,13 +1,19 @@
 <div fxLayout="row" fxLayoutAlign="space-between">
-    <div fxLayout="column">
-        <h1>Micah Norwood</h1>
+    <div fxLayout="column" fxFlex="89vw">
+        <h2>
+            <a class="title pd-left-5">Micah Norwood</a>
+        </h2>
     </div>
-    <div fxLayout="row">
-        <div class="pd-right-5" fxLayout="row">
-            <h1>Home</h1>
-        </div>
-        <div fxLayout="row">
-            <h1>About</h1>
-        </div>
+    <div fxLayout="column" fxFlex="5vw">
+        <h2>
+            <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+        </h2>
+    </div>
+    <div fxLayout="column" fxFlex="3vw">
+        <h2>
+            <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
+        </h2>
     </div>
 </div>
+
+<router-outlet></router-outlet>
