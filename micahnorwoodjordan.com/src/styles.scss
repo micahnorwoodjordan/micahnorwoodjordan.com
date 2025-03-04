@@ -1,0 +1,24 @@
+@use '@angular/material' as mat;
+
+/* Customize the entire app. Change :root to your selector if you want to scope the styles. */
+// $red-palette
+// $green-palette
+// $blue-palette
+// $yellow-palette
+// $cyan-palette
+// $magenta-palette
+// $orange-palette
+// $chartreuse-palette
+// $spring-green-palette
+// $azure-palette
+// $violet-palette
+// $rose-palette
+
+button {
+    color-scheme: light dark;
+    @include mat.theme((
+    color: mat.$green-palette,
+      typography: Roboto,
+      density: 0
+    ));
+  }

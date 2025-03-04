@@ -5,7 +5,18 @@
 .content { font-size: 20px; font-weight: 400; }
 .contact-me-content { color: white }
 
-.name-field { width: 10vw; font-weight: 400; #219d51; }
+.name-field { width: 10vw; font-weight: 400; background-color: #219d51; }
 .email-field { width: 22vw; font-weight: 400; background-color: #219d51; }
-.message-field { width: 22vw; font-weight: 400; background-color: #219d51; }
-.submit-button .mat-mdc-button-base  { background-color: white; color: #219d51; }
+.message-field {
+    width: 22vw;
+    font-weight: 400;
+    background-color: #219d51;
+}
+.email-textarea { resize: none; }
+.submit-button  {
+    background-color: white;
+    height: 7vh;
+    width: 8vw;
+    font-size: 15px;
+    font-weight: 450;
+}
