@@ -6,5 +6,18 @@ html {
 
 body { background: #c4c4bf 100%; }
 
+.pd-right-2 { padding-right: 2vw; }
 .pd-right-5 { padding-right: 5vw; }
+.pd-right-10 { padding-right: 10vw; }
+
+.pd-left-2 { padding-left: 2vw; }
 .pd-left-5 { padding-left: 5vw; }
+.pd-left-10 { padding-left: 10vw; }
+
+.pd-top-2 { padding-top: 2vh; }
+.pd-top-5 { padding-top: 5vh; }
+.pd-top-10 { padding-top: 10vh; }
+
+.pd-bottom-2 { padding-bottom: 2vh; }
+.pd-bottom-5 { padding-bottom: 5vh; }
+.pd-bottom-10 { padding-bottom: 10vh; }

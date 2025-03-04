@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
 
@@ -7,7 +10,8 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   imports: [
     RouterOutlet,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    FlexLayoutModule
   ],
   templateUrl: './about-page.component.html',
   styleUrl: './about-page.component.css'
