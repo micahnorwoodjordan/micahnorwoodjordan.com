@@ -16,23 +16,10 @@
 
 .submit-button  {
   color-scheme: light dark;
-  @include mat.theme((
-  color: mat.$green-palette,
-    typography: Roboto,
-    density: 0
-  ));
-}
-
-.submit-button {
   @include mat.button-overrides((
     filled-container-color: white,
     filled-label-text-color: #219d51,
   ));
-}
-
-
-.learn-more-button  {
-  color-scheme: light dark;
   @include mat.theme((
   color: mat.$green-palette,
     typography: Roboto,
@@ -40,9 +27,15 @@
   ));
 }
 
-.learn-more-button {
+.learn-more-button  {
+  color-scheme: light dark;
   @include mat.button-overrides((
     filled-container-color: #219d51,
     filled-label-text-color: white,
+  ));
+  @include mat.theme((
+  color: mat.$green-palette,
+    typography: Roboto,
+    density: 0
   ));
 }
