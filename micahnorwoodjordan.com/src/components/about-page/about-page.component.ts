@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
-
-
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
+
+import { EmailMessage } from '../../app/interfaces/EmailMessage';
 
 
 @Component({
@@ -23,6 +22,7 @@ import { NgIf } from '@angular/common';
   templateUrl: './about-page.component.html',
   styleUrl: './about-page.component.css'
 })
+
 export class AboutPageComponent {
   firstName = new FormControl('', [Validators.required, Validators.min(1), Validators.max(20)]);
   lastName = new FormControl('', [Validators.required, Validators.min(1), Validators.max(20)]);
@@ -38,22 +38,20 @@ export class AboutPageComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      let message: string = `${this.firstName.value} ${this.lastName.value} says to ${this.email.value} ${this.message.value}`;
-      console.log(message);
+      let message: EmailMessage = {
+        senderFirstName: this.firstName.value,
+        senderLastName: this.lastName.value,
+        senderEmailAddress: this.email.value,
+        messageBody: this.message.value,
+      };
+
       this.sendEmail();
       this.resetForm();
     } else{
-      alert(this.form.get('firstName')?.hasError('required'))
       alert('Please ensure all form fields are properly filled out.');
     }
   }
 
-  private resetForm() {
-    this.firstName.reset();
-    this.lastName.reset();
-    this.email.reset();
-    this.message.reset();
-  }
-
+  private resetForm() { this.form.reset(); }
   private sendEmail() { return; }
 }
