@@ -31,7 +31,7 @@
             <br>
         </div>
         <div class="image pd-right-2 pd-left-5" fxLayout="column">
-            <img src="http://localhost:4200/bowling-ball.png" alt="bowling ball">
+            <img src="{{bowlingBallPNGURL}}" alt="bowling ball">
             <br>
             <br>
             <br>
@@ -85,7 +85,7 @@
                 <mat-error *ngIf="form.get('message')?.hasError('min')">Message field cannot be empty</mat-error>
                 <mat-error *ngIf="form.get('message')?.hasError('max')">Message cannot exceed 120 characters</mat-error>
             </mat-form-field>
-            <button mat-stroked-button class="submit-button" type="submit" (click)="onSubmit()">SUBMIT</button>
+            <button mat-flat-button class="submit-button" type="submit" (click)="onSubmit()">SUBMIT</button>
         </div>
     </div>
 </div>
