@@ -59,26 +59,33 @@
         </p>
     </div>
     <div fxLayout="column" fxFlex>
-        <div class="inputs" fxLayout="row" fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutAlign="center center">
             <mat-form-field class="name-field pd-right-2">
                 <mat-label>First Name</mat-label>
-                <input matInput placeholder="Ex. John" value="">
+                <input matInput [formControl]="firstName" placeholder="Ex. John" value="">
+                <mat-error *ngIf="form.get('firstName')?.hasError('required')">First Name is required</mat-error>
             </mat-form-field>
             <mat-form-field class="name-field">
                 <mat-label>Last Name</mat-label>
-                <input matInput placeholder="Ex. Doe" value="">
+                <input matInput [formControl]="lastName" placeholder="Ex. Doe" value="">
+                <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required</mat-error>
             </mat-form-field>
         </div>
         <div fxLayout="column" fxLayoutAlign="center center">
-            <mat-form-field class="email-field">
+            <mat-form-field class="email-field pd-top-5">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="youremailaddress@gmail.com" value="">
+                <input matInput [formControl]="email" placeholder="youremailaddress@gmail.com" value="">
+                <mat-error *ngIf="form.get('email')?.invalid">Invalid email format</mat-error>
+                <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
             </mat-form-field>
-            <mat-form-field class="message-field">
+            <mat-form-field class="message-field pd-top-5 pd-bottom-2">
                 <mat-label>Message</mat-label>
-                <textarea class="email-textarea" matInput placeholder="type your message here"></textarea>
+                <textarea class="email-textarea" matInput [formControl]="message" placeholder="type your message here"></textarea>
+                <mat-error *ngIf="form.get('message')?.hasError('required')">Message is required</mat-error>
+                <mat-error *ngIf="form.get('message')?.hasError('min')">Message field cannot be empty</mat-error>
+                <mat-error *ngIf="form.get('message')?.hasError('max')">Message cannot exceed 120 characters</mat-error>
             </mat-form-field>
-            <button class="submit-button" mat-stroked-button>SUBMIT</button>
+            <button class="submit-button" type="submit" (click)="onSubmit()">SUBMIT</button>
         </div>
     </div>
 </div>
