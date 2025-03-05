@@ -1,27 +1,28 @@
 <div fxLayout="row">
     <div class="" fxLayout="row" fxLayoutAlign="center center" fxFill>
         <div class="" fxLayout="column" fxFill fxFlex>
-            <div class="pd-left-5 pd-top-5">
+            <div class="pd-left-5">
                 <h1>
-                    <a class="about-me-header">About Me</a>
+                    <p class="about-me-header">About Me</p>
                 </h1>
                 <br>
             </div>
             
-            <a class="content pd-left-5 pd-right-5">
+            <p class="content pd-left-5 pd-right-5">
                 I have 25 years of life experience, and during that time, I've come to understand two truths:
-            </a>
+            </p>
             <ul class="content pd-left-10 pd-right-5">
                 <li>Jesus Christ is my Lord and Savior</li>
                 <li>One of the ways through which I can glorify Him is my love of building software (primarily API backends) and my studies of all things technological</li>
             </ul>
-            <a class="content pd-left-5 pd-right-5">
+            <p class="content pd-left-5 pd-right-5">
                 I love to work out, produce music, bowl, and play Xbox with my friends when I have the time. Most days, I lean into my passion of software engineering by exploring the  crevices of our technological landscape which I have not yet explored.
-            </a>
+            </p>
             <br>
-            <a class="content pd-left-5 pd-right-5">
-                I'm working on multiple projects, but at this time, only my music website is publicly accessible; you can check it out here. Also feel free to look at my <a href="https://github.com/micahnorwoodjordan" target="_blank">Github</a>.
-            </a>
+            <p class="content pd-left-5 pd-right-5">
+                I'm working on multiple projects, but at this time, only my music website is publicly accessible; you can check it out <a href="https://getmybeats.com" target="_blank">here</a>.
+                Also feel free to look at my <a href="https://github.com/micahnorwoodjordan" target="_blank">Github</a>.
+            </p>
             <br>
             <br>
             <br>
@@ -38,47 +39,53 @@
     </div>
 </div>
 
-<div class="contact-me-section pd-top-10" fxLayout="row" fxLayoutAlign="center center">
+<div class="contact-me-section pd-top-2" fxLayout="row" fxLayoutAlign="center center">
     <div class="" fxLayout="column" fxFill fxFlex>
         <div class="pd-left-5">
             <h1>
-                <a class="contact-me-header">Contact Me</a>
+                <p class="contact-me-header">Contact Me</p>
             </h1>
             <br>
         </div>
-        <a class="content contact-me-content pd-left-5 pd-right-5">
+        <p class="content contact-me-content pd-left-5 pd-right-5">
             If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
-        </a>
+        </p>
         <br>
-        <a class="content contact-me-content pd-left-5 pd-right-5">
+        <p class="content contact-me-content pd-left-5 pd-right-5">
             <u>micahnorwoodjordan&#64;gmail.com</u>
-        </a>
-        <a class="content contact-me-content pd-left-5 pd-right-5">
+        </p>
+        <p class="content contact-me-content pd-left-5 pd-right-5">
             (602) 317-1807
-        </a>
+        </p>
     </div>
     <div fxLayout="column" fxFlex>
-        <div class="inputs" fxLayout="row" fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutAlign="center center">
             <mat-form-field class="name-field pd-right-2">
                 <mat-label>First Name</mat-label>
-                <input matInput placeholder="Ex. John" value="">
+                <input matInput [formControl]="firstName" placeholder="Ex. John" value="">
+                <mat-error *ngIf="form.get('firstName')?.hasError('required')">First Name is required</mat-error>
             </mat-form-field>
             <mat-form-field class="name-field">
                 <mat-label>Last Name</mat-label>
-                <input matInput placeholder="Ex. Doe" value="">
+                <input matInput [formControl]="lastName" placeholder="Ex. Doe" value="">
+                <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required</mat-error>
             </mat-form-field>
         </div>
         <div fxLayout="column" fxLayoutAlign="center center">
-            <mat-form-field class="email-field">
+            <mat-form-field class="email-field pd-top-5">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="youremailaddress@gmail.com" value="">
+                <input matInput [formControl]="email" placeholder="youremailaddress@gmail.com" value="">
+                <mat-error *ngIf="form.get('email')?.invalid">Invalid email format</mat-error>
+                <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
             </mat-form-field>
-            <mat-form-field class="message-field">
+            <mat-form-field class="message-field pd-top-5 pd-bottom-2">
                 <mat-label>Message</mat-label>
-                <textarea class="email-textarea" matInput placeholder="type your message here"></textarea>
+                <textarea class="email-textarea" matInput [formControl]="message" placeholder="type your message here"></textarea>
+                <mat-error *ngIf="form.get('message')?.hasError('required')">Message is required</mat-error>
+                <mat-error *ngIf="form.get('message')?.hasError('min')">Message field cannot be empty</mat-error>
+                <mat-error *ngIf="form.get('message')?.hasError('max')">Message cannot exceed 120 characters</mat-error>
             </mat-form-field>
-            <button class="submit-button" mat-stroked-button>SUBMIT</button>
+            <button mat-stroked-button class="submit-button" type="submit" (click)="onSubmit()">SUBMIT</button>
         </div>
-
     </div>
 </div>
