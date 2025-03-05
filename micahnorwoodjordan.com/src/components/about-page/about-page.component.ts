@@ -6,6 +6,8 @@ import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 
+import { environment } from '../../environments/production';
+
 import { EmailMessage } from '../../app/interfaces/EmailMessage';
 
 
@@ -24,6 +26,8 @@ import { EmailMessage } from '../../app/interfaces/EmailMessage';
 })
 
 export class AboutPageComponent {
+  bowlingBallPNGURL: string = `${environment.apiUrl}/bowling-ball.png`;
+  
   firstName = new FormControl('', [Validators.required, Validators.min(1), Validators.max(20)]);
   lastName = new FormControl('', [Validators.required, Validators.min(1), Validators.max(20)]);
   email = new FormControl('', [Validators.required, Validators.email]);
