@@ -1,0 +1,9 @@
+services:
+  db:
+    ports:
+      - 3307:3306
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Thatwasengl1sh!
+      MYSQL_DATABASE: micahnorwoodjordan.com
+      MYSQL_PASSWORD: Thatwasengl1sh!
