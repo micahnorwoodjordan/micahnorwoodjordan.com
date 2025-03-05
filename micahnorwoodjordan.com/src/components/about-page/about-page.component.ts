@@ -45,7 +45,7 @@ export class AboutPageComponent {
         messageBody: this.message.value,
       };
 
-      this.sendEmail();
+      this.sendEmailRequest(message);
       this.resetForm();
     } else{
       alert('Please ensure all form fields are properly filled out.');
@@ -53,5 +53,5 @@ export class AboutPageComponent {
   }
 
   private resetForm() { this.form.reset(); }
-  private sendEmail() { return; }
+  private sendEmailRequest(message: EmailMessage) { return; }
 }
