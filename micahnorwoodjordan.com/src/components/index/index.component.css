@@ -4,6 +4,8 @@
 
 .who-is-micah-header { font-size: 60px; font-weight: 400; }
 
+.who-is-micah-subheader { font-size: 50px; font-weight: 400; }
+
 .content { font-size: 35px; font-weight: 250; }
 
 .learn-more-button {
@@ -12,3 +14,12 @@
     font-size: 20px;
     font-weight: 200;
 }
+
+.extra-buttons {
+    height: 6vh;
+    width: 9vw;
+    font-size: 17px;
+    font-weight: 200;
+}
+
+.image { width: 25vw; }
