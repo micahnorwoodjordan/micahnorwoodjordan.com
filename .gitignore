@@ -1,2 +1,8 @@
 node_modules/
-/.angular/cache
+.angular/cache/
+.vscode/
+
+ide-notes.md
+spring-boot-notes.md
+
+.DS_Store
