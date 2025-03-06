@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class EmailMessageService {
 
-    private static final String MICAH_EMAIL_ADDRESS = "micahnorwoodjordan@gmail.com";
-    private static final String DEFAULT_EMAIL_SUBJECT = "api.micahnorwoodjordan.com says:";
+    private static final String DEFAULT_RECIPIENT_EMAIL_ADDRESS = "api.micahnorwoodjordan.com@gmail.com";
+    private static final String DEFAULT_EMAIL_SUBJECT = "Message from MICAHNORWOODJORDAN.COM frontend:";
 
     @Autowired
     private JavaMailSender mailSender;
@@ -38,14 +38,17 @@ public class EmailMessageService {
         String fullName = emailMessage.getSenderFirstName() + " " + emailMessage.getSenderLastName();
         String senderEmailAddress = String.format("(%s)", emailMessage.getSenderEmailAddress());
         String rawMessageBody = emailMessage.getMessageBody();
-        String messageBody = String.format("%s %s has reached out to you. Here's what they have to say:%n%s", fullName, senderEmailAddress,  rawMessageBody);
+        String messageBody = String.format("%s %s has reached out to you. Here's what they have to say:%n%n%s", fullName, senderEmailAddress,  rawMessageBody);
         System.out.println(messageBody);
 
         try {
-            send(MICAH_EMAIL_ADDRESS, DEFAULT_EMAIL_SUBJECT, messageBody);
+            send(DEFAULT_RECIPIENT_EMAIL_ADDRESS, DEFAULT_EMAIL_SUBJECT, messageBody);
             emailMessageRepository.save(emailMessage);
         } catch(Exception e) {
             e.printStackTrace();
+            // report exception
+            // log
+            // email (but if the above smtp call failed...)
         }
         return true;
     }
