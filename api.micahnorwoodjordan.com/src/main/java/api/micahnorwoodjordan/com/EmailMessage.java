@@ -12,18 +12,22 @@ public class EmailMessage {
     private Long id;
     
     private String messageBody;
-    private String sender;  // not to be a string, but fk to User model
+    private String senderFirstName;
+    private String senderLastName;
+    private String senderEmailAddress;
 
     protected EmailMessage() {}
 
-    public EmailMessage(String messageBody, String sender) {
+    public EmailMessage(String messageBody, String senderFirstName, String senderLastName, String senderEmailAddress) {
         this.messageBody = messageBody;
-        this.sender = sender;
+        this.senderFirstName = senderFirstName;
+        this.senderLastName = senderLastName;
+        this.senderEmailAddress = senderEmailAddress;
     }
 
     @Override
     public String toString() {
-      return String.format("EmailMessage[id=%d, sender='%s']", id, sender);
+      return String.format("EmailMessage[id=%d, senderEmailAddress='%s']", id, senderEmailAddress);
     }
 
     public Long getId() {
@@ -33,9 +37,17 @@ public class EmailMessage {
       public String getMessageBody() {
         return messageBody;
       }
-    
-      public String getSender() {
-        return sender;
+
+      public String getSenderFirstName() {
+        return senderFirstName;
+      }
+
+      public String getSenderLastName() {
+        return senderLastName;
+      }
+
+      public String getSenderEmailAddress() {
+        return senderEmailAddress;
       }
 
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 public class EmailMessageService {
 
     private static final String MICAH_EMAIL_ADDRESS = "micahnorwoodjordan@gmail.com";
+    private static final String DEFAULT_EMAIL_SUBJECT = "api.micahnorwoodjordan.com says:";
 
     @Autowired
     private JavaMailSender mailSender;
@@ -23,11 +24,10 @@ public class EmailMessageService {
             message.setSubject(subject);
             message.setText(body);
             mailSender.send(message);
-            return true;
         } catch(Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
-        return false;
+        return true;
     }
 
     public EmailMessage getEmailMessage(long emailMessageId) {
@@ -35,14 +35,19 @@ public class EmailMessageService {
     }
 
     public boolean sendEmailMessage(EmailMessage emailMessage) {
+        String fullName = emailMessage.getSenderFirstName() + " " + emailMessage.getSenderLastName();
+        String senderEmailAddress = String.format("(%s)", emailMessage.getSenderEmailAddress());
+        String rawMessageBody = emailMessage.getMessageBody();
+        String messageBody = String.format("%s %s has reached out to you. Here's what they have to say:%n%s", fullName, senderEmailAddress,  rawMessageBody);
+        System.out.println(messageBody);
+
         try {
-            send(MICAH_EMAIL_ADDRESS, "Test from Java App", "Disregard; this is a test.");
+            send(MICAH_EMAIL_ADDRESS, DEFAULT_EMAIL_SUBJECT, messageBody);
             emailMessageRepository.save(emailMessage);
-            return true;
         } catch(Exception e) {
-            System.out.println("there was an error sending email");
+            e.printStackTrace();
         }
-        return false;
+        return true;
     }
 }
  
