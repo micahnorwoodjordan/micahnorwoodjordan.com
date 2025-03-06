@@ -34,7 +34,7 @@ public class EmailMessage {
         return messageBody;
       }
     
-      public String sender() {
+      public String getSender() {
         return sender;
       }
 
