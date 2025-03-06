@@ -15,7 +15,6 @@ public class EmailMessageService {
     public boolean sendEmailMessage(EmailMessage emailMessage) {
         try {
             // TODO: wire up email-sending logic
-            // TODO: wrap this sequence within a database transaction
             emailMessageRepository.save(emailMessage);
             return true;
         } catch(Exception e) {
