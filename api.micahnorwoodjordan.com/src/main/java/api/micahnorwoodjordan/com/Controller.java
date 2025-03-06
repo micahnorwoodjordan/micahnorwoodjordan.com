@@ -21,7 +21,12 @@ public class Controller {
 
     @PostMapping(path="/notifications/email/send")
     public @ResponseBody String sendEmailMessage(@RequestBody EmailMessage emailMessage) {
-        EmailMessage email = new EmailMessage(emailMessage.getMessageBody(), emailMessage.getSender());
+        EmailMessage email = new EmailMessage(
+            emailMessage.getMessageBody(),
+            emailMessage.getSenderFirstName(),
+            emailMessage.getSenderLastName(),
+            emailMessage.getSenderEmailAddress()
+        );
         boolean success = emailMessageService.sendEmailMessage(email);
 
         if (success) {

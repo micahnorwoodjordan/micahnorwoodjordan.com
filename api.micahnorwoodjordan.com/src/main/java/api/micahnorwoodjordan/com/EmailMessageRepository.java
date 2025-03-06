@@ -12,7 +12,7 @@ public interface EmailMessageRepository extends CrudRepository<EmailMessage, Lon
     // "By default, methods inherited from CrudRepository inherit the transactional configuration from SimpleJpaRepository.
     // For read operations, the transaction configuration readOnly flag is set to true.""
 
-    List<EmailMessage> findBySender(String sender);
+    List<EmailMessage> findBySenderEmailAddress(String senderEmailAddress);
 
     EmailMessage findById(long id);
 }
