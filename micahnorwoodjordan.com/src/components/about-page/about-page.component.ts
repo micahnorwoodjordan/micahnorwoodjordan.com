@@ -49,6 +49,11 @@ export class AboutPageComponent {
 
   setIsWaitingForAPIResponse(newValue: boolean) { this.isWaitingForAPIResponse = newValue; }
 
+  private sendEmail(message: EmailMessage) {
+    let url = `${environment.apiUrl}/notifications/email/send`;
+    return this.apiService.sendEmailRequest(url, message);
+  }
+
   // TODO: add snackbar after backend responds
   // https://material.angular.io/components/snack-bar/examples
   onSubmit() {
@@ -60,23 +65,32 @@ export class AboutPageComponent {
         messageBody: this.message.value,
       };
 
-      this.sendEmail(message).subscribe(event => {
-        if (event.type === HttpEventType.Response) {
-          this.setIsWaitingForAPIResponse(false);
-          this.resetForm();
-        } else {
-          this.setIsWaitingForAPIResponse(true);
-        }
-      })
+      this.sendEmail(message).subscribe({
+        next: value => this.onNext(),
+        error: error => this.onError(error),
+        complete: () => this.onComplete()
+      });
 
     } else{
       alert('Please ensure all form fields are properly filled out.');
     }
   }
 
-  private resetForm() { this.form.reset(); }
-  private sendEmail(message: EmailMessage) {
-    let url = `${environment.apiUrl}/notifications/email/send`;
-    return this.apiService.sendEmailRequest(url, message);
+  private onNext() {
+    this.setIsWaitingForAPIResponse(true);
   }
+
+  private onComplete() {
+    this.setIsWaitingForAPIResponse(false);
+    this.resetForm();
+  }
+
+  private onError(error: any) {
+    this.setIsWaitingForAPIResponse(false);
+
+    // TODO make a modal
+    alert("hmm...an unknown error has occurred. try again, and if that doesnt work, email me directly.");
+  }
+
+  private resetForm() { this.form.reset(); }
 }
