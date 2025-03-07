@@ -6,7 +6,6 @@ import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HttpEventType } from '@angular/common/http';
 
 import { environment } from '../../environments/production';
 import { EmailMessage } from '../../app/interfaces/EmailMessage';
@@ -32,6 +31,7 @@ export class AboutPageComponent {
   constructor(private apiService: ApiService) {  }
 
   isWaitingForAPIResponse: boolean = false;
+  encounteredError: boolean = false;
 
   bowlingBallPNGURL: string = `${environment.clientUrl}/bowling-ball.png`;
   
@@ -48,6 +48,7 @@ export class AboutPageComponent {
   });
 
   setIsWaitingForAPIResponse(newValue: boolean) { this.isWaitingForAPIResponse = newValue; }
+  setEncounteredError(newValue: boolean) { this.encounteredError = newValue; }
 
   private sendEmail(message: EmailMessage) {
     let url = `${environment.apiUrl}/notifications/email/send`;
@@ -78,17 +79,27 @@ export class AboutPageComponent {
 
   private onNext() {
     this.setIsWaitingForAPIResponse(true);
+    this.setEncounteredError(false);
   }
 
   private onComplete() {
     this.setIsWaitingForAPIResponse(false);
-    this.resetForm();
+    if (!this.encounteredError) {
+      this.onSuccess();
+      this.resetForm();
+    }
+  }
+
+  private onSuccess() {
+    alert("Email sent!")
   }
 
   private onError(error: any) {
     this.setIsWaitingForAPIResponse(false);
+    this.setEncounteredError(true);
 
     // TODO make a modal
+    // TODO maybe dont reset form unless success case
     alert("hmm...an unknown error has occurred. try again, and if that doesnt work, email me directly.");
   }
 
