@@ -5,6 +5,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import org.springframework.mail.MailAuthenticationException;
+
 import api.micahnorwoodjordan.com.dataaccess.EmailMessageRepository;
 import api.micahnorwoodjordan.com.dataaccess.models.EmailMessage;
 
@@ -22,16 +24,22 @@ public class EmailMessageService {
     private EmailMessageRepository emailMessageRepository;
 
     private boolean send(String to, String subject, String body) {
+        boolean success = true;
         SimpleMailMessage message = new SimpleMailMessage();
+
         try {
             message.setTo(to);
             message.setSubject(subject);
             message.setText(body);
             mailSender.send(message);
-        } catch(Exception e) {
-            e.printStackTrace();
+        } catch(MailAuthenticationException authException) {
+            // TODO: log this
+            success = false;
+        } catch(Exception exception) {
+            // TODO: log this
+            success = false;
         }
-        return true;
+        return success;
     }
 
     public EmailMessage getEmailMessage(long emailMessageId) {
@@ -43,17 +51,15 @@ public class EmailMessageService {
         String senderEmailAddress = emailMessage.getSenderEmailAddress();
         String rawMessageBody = emailMessage.getMessageBody();
         String messageBody = String.format("%s has reached out to you. Here's what they have to say:%n%n%s%n%n reply to: %s", fullName,  rawMessageBody, senderEmailAddress);
+        boolean emailSent = send(DEFAULT_RECIPIENT_EMAIL_ADDRESS, DEFAULT_EMAIL_SUBJECT, messageBody);
+        boolean isSuccess = true;
 
-        try {
-            send(DEFAULT_RECIPIENT_EMAIL_ADDRESS, DEFAULT_EMAIL_SUBJECT, messageBody);
+        if (emailSent) {
             emailMessageRepository.save(emailMessage);
-        } catch(Exception e) {
-            e.printStackTrace();
-            // report exception
-            // log
-            // email (but if the above smtp call failed...)
+        } else {
+            isSuccess = false;
         }
-        return true;
+        return isSuccess;
     }
 }
  
