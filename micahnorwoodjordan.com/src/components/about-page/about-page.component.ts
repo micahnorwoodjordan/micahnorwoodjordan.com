@@ -5,6 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
+import { HttpEventType } from '@angular/common/http';
 
 import { environment } from '../../environments/production';
 
@@ -21,7 +24,8 @@ import { ApiService } from '../../app/services/api.service';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatButtonModule,
-    NgIf
+    NgIf,
+    MatProgressSpinnerModule
   ],
   templateUrl: './about-page.component.html',
   styleUrl: './about-page.component.css'
@@ -29,6 +33,8 @@ import { ApiService } from '../../app/services/api.service';
 
 export class AboutPageComponent {
   constructor(private apiService: ApiService) {  }
+
+  isWaitingForAPIResponse: boolean = false;
 
   bowlingBallPNGURL: string = `${environment.clientUrl}/bowling-ball.png`;
   
@@ -44,6 +50,8 @@ export class AboutPageComponent {
     message: this.message
   });
 
+  setIsWaitingForAPIResponse(newValue: boolean) { this.isWaitingForAPIResponse = newValue; }
+
   onSubmit() {
     if (this.form.valid) {
       let message: EmailMessage = {
@@ -53,8 +61,15 @@ export class AboutPageComponent {
         messageBody: this.message.value,
       };
 
-      this.sendEmail(message);
-      this.resetForm();
+      this.sendEmail(message).subscribe(event => {
+        if (event.type === HttpEventType.Response) {
+          this.setIsWaitingForAPIResponse(false);
+          this.resetForm();
+        } else {
+          this.setIsWaitingForAPIResponse(true);
+        }
+      })
+
     } else{
       alert('Please ensure all form fields are properly filled out.');
     }

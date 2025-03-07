@@ -58,6 +58,10 @@
             (602) 317-1807
         </p>
     </div>
+    <div fxFlex="2">
+        <mat-spinner *ngIf="isWaitingForAPIResponse" class="spinner"></mat-spinner>
+    </div>
+    
     <div fxLayout="column" fxFlex>
         <div fxLayout="row" fxLayoutAlign="center center">
             <mat-form-field class="name-field pd-right-2">

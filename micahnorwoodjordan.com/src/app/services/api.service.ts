@@ -17,9 +17,12 @@ export class ApiService {
   }
 
   sendEmailRequest(url: string, body: EmailMessage) {
-    return this.client.post<EmailMessage>(url, body).subscribe(config => {
-      console.log(body)
-      console.log(config);
-    })
+    return this.client.post<EmailMessage>(
+      url,
+      body, {
+        reportProgress: true,
+        observe: 'events'
+      }
+    );
   }
 }
