@@ -36,9 +36,9 @@ public class EmailMessageService {
 
     public boolean sendEmailMessage(EmailMessage emailMessage) {
         String fullName = emailMessage.getSenderFirstName() + " " + emailMessage.getSenderLastName();
-        String senderEmailAddress = String.format("(%s)", emailMessage.getSenderEmailAddress());
+        String senderEmailAddress = emailMessage.getSenderEmailAddress();
         String rawMessageBody = emailMessage.getMessageBody();
-        String messageBody = String.format("%s %s has reached out to you. Here's what they have to say:%n%n%s", fullName, senderEmailAddress,  rawMessageBody);
+        String messageBody = String.format("%s has reached out to you. Here's what they have to say:%n%n%s%n%n reply to: %s", fullName,  rawMessageBody, senderEmailAddress);
         System.out.println(messageBody);
 
         try {
