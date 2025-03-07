@@ -1,5 +1,7 @@
 package api.micahnorwoodjordan.com;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import api.micahnorwoodjordan.com.dataaccess.models.EmailMessage;
+import api.micahnorwoodjordan.com.services.EmailMessageService;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class Controller {
@@ -17,12 +22,12 @@ public class Controller {
     private EmailMessageService emailMessageService;
 
     @GetMapping("/ping")
-	public @ResponseBody String index() {
-		return "PONG";
+	public ResponseEntity index() {
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
     @PostMapping(path="/notifications/email/send")
-    public @ResponseBody String sendEmailMessage(@RequestBody EmailMessage emailMessage) {
+    public ResponseEntity sendEmailMessage(@RequestBody EmailMessage emailMessage) {
         EmailMessage email = new EmailMessage(
             emailMessage.getMessageBody(),
             emailMessage.getSenderFirstName(),
@@ -32,14 +37,13 @@ public class Controller {
         boolean success = emailMessageService.sendEmailMessage(email);
 
         if (success) {
-            return "Email sent";
+            return new ResponseEntity<>(HttpStatus.OK);
         }
-
-        return "Error sending email";
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/notifications/email")
-	public @ResponseBody EmailMessage getEmailMessage(@RequestParam(name = "id", required = true) long emailMessageId) {
-		return emailMessageService.getEmailMessage(emailMessageId);
+	public ResponseEntity<EmailMessage> getEmailMessage(@RequestParam(name = "id", required = true) long emailMessageId) {
+		return new ResponseEntity<>(emailMessageService.getEmailMessage(emailMessageId), HttpStatus.OK);
 	}
 }
