@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import api.micahnorwoodjordan.com.dataaccess.models.EmailMessage;
@@ -27,19 +26,26 @@ public class Controller {
 	}
 
     @PostMapping(path="/notifications/email/send")
-    public ResponseEntity sendEmailMessage(@RequestBody EmailMessage emailMessage) {
-        EmailMessage email = new EmailMessage(
-            emailMessage.getMessageBody(),
-            emailMessage.getSenderFirstName(),
-            emailMessage.getSenderLastName(),
-            emailMessage.getSenderEmailAddress()
-        );
-        boolean success = emailMessageService.sendEmailMessage(email);
+    public ResponseEntity<String> sendEmailMessage(@RequestBody EmailMessage emailMessage) {
+        boolean isSuccess = false;
 
-        if (success) {
+        try {
+            EmailMessage email = new EmailMessage(
+                emailMessage.getMessageBody(),
+                emailMessage.getSenderFirstName(),
+                emailMessage.getSenderLastName(),
+                emailMessage.getSenderEmailAddress()
+            );
+            isSuccess = emailMessageService.sendEmailMessage(email);
+        } catch(Exception e) {
+            System.out.println("exception occurred: " + e);  // Log this
+        }
+
+        if (isSuccess) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping("/notifications/email")
