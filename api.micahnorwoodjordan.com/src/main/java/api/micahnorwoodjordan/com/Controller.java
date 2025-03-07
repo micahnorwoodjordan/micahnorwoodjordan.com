@@ -2,6 +2,7 @@ package api.micahnorwoodjordan.com;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class Controller {
 
     @Autowired
@@ -21,7 +23,12 @@ public class Controller {
 
     @PostMapping(path="/notifications/email/send")
     public @ResponseBody String sendEmailMessage(@RequestBody EmailMessage emailMessage) {
-        EmailMessage email = new EmailMessage(emailMessage.getMessageBody(), emailMessage.getSender());
+        EmailMessage email = new EmailMessage(
+            emailMessage.getMessageBody(),
+            emailMessage.getSenderFirstName(),
+            emailMessage.getSenderLastName(),
+            emailMessage.getSenderEmailAddress()
+        );
         boolean success = emailMessageService.sendEmailMessage(email);
 
         if (success) {

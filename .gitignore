@@ -4,5 +4,6 @@ node_modules/
 
 ide-notes.md
 spring-boot-notes.md
+mailgun-credentials.md
 
 .DS_Store
