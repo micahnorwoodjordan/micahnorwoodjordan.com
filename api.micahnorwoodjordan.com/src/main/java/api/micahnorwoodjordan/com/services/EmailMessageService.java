@@ -1,9 +1,13 @@
-package api.micahnorwoodjordan.com;
+package api.micahnorwoodjordan.com.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+
+import api.micahnorwoodjordan.com.dataaccess.EmailMessageRepository;
+import api.micahnorwoodjordan.com.dataaccess.models.EmailMessage;
+
 
 @Service
 public class EmailMessageService {
@@ -39,7 +43,6 @@ public class EmailMessageService {
         String senderEmailAddress = emailMessage.getSenderEmailAddress();
         String rawMessageBody = emailMessage.getMessageBody();
         String messageBody = String.format("%s has reached out to you. Here's what they have to say:%n%n%s%n%n reply to: %s", fullName,  rawMessageBody, senderEmailAddress);
-        System.out.println(messageBody);
 
         try {
             send(DEFAULT_RECIPIENT_EMAIL_ADDRESS, DEFAULT_EMAIL_SUBJECT, messageBody);
