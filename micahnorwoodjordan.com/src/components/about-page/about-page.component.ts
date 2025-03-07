@@ -6,13 +6,10 @@ import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
 import { HttpEventType } from '@angular/common/http';
 
 import { environment } from '../../environments/production';
-
 import { EmailMessage } from '../../app/interfaces/EmailMessage';
-
 import { ApiService } from '../../app/services/api.service';
 
 
@@ -52,6 +49,8 @@ export class AboutPageComponent {
 
   setIsWaitingForAPIResponse(newValue: boolean) { this.isWaitingForAPIResponse = newValue; }
 
+  // TODO: add snackbar after backend responds
+  // https://material.angular.io/components/snack-bar/examples
   onSubmit() {
     if (this.form.valid) {
       let message: EmailMessage = {
