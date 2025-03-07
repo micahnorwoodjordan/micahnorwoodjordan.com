@@ -10,6 +10,8 @@ import { environment } from '../../environments/production';
 
 import { EmailMessage } from '../../app/interfaces/EmailMessage';
 
+import { ApiService } from '../../app/services/api.service';
+
 
 @Component({
   selector: 'app-about-page',
@@ -26,7 +28,9 @@ import { EmailMessage } from '../../app/interfaces/EmailMessage';
 })
 
 export class AboutPageComponent {
-  bowlingBallPNGURL: string = `${environment.apiUrl}/bowling-ball.png`;
+  constructor(private apiService: ApiService) {  }
+
+  bowlingBallPNGURL: string = `${environment.clientUrl}/bowling-ball.png`;
   
   firstName = new FormControl('', [Validators.required, Validators.min(1), Validators.max(20)]);
   lastName = new FormControl('', [Validators.required, Validators.min(1), Validators.max(20)]);
@@ -49,7 +53,7 @@ export class AboutPageComponent {
         messageBody: this.message.value,
       };
 
-      this.sendEmailRequest(message);
+      this.sendEmail(message);
       this.resetForm();
     } else{
       alert('Please ensure all form fields are properly filled out.');
@@ -57,5 +61,8 @@ export class AboutPageComponent {
   }
 
   private resetForm() { this.form.reset(); }
-  private sendEmailRequest(message: EmailMessage) { return; }
+  private sendEmail(message: EmailMessage) {
+    let url = `${environment.apiUrl}/notifications/email/send`;
+    return this.apiService.sendEmailRequest(url, message);
+  }
 }

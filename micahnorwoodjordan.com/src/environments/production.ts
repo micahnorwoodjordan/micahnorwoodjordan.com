@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://micahnorwoodjordan.com'
+    clientUrl: 'https://micahnorwoodjordan.com',
+    apiUrl: 'https://api.micahnorwoodjordan.com'
   };
-  
