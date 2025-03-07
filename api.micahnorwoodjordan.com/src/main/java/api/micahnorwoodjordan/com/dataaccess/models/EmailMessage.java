@@ -1,4 +1,4 @@
-package api.micahnorwoodjordan.com;
+package api.micahnorwoodjordan.com.dataaccess.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
