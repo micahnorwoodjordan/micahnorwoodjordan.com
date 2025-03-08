@@ -11,11 +11,9 @@ apt install -y unzip nginx
 . ~/.profile
 nvm install 23.9.0 && nvm alias default 23.9.0
 
-# clone repo and install artifacts
-# git clone https://github.com/micahnorwoodjordan/micahnorwoodjordan.com.git
-
-cd micahnorwoodjordan.com/micahnorwoodjordan.com/public
-
+# clone repo
+git clone https://github.com/micahnorwoodjordan/micahnorwoodjordan.com.git
+cd micahnorwoodjordan.com && git checkout 'origin/$CODE_BRANCH'
 
 # build app
 cd
