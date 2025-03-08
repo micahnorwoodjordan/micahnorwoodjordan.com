@@ -11,15 +11,11 @@ apt install -y unzip nginx
 . ~/.profile
 nvm install 23.9.0 && nvm alias default 23.9.0
 
-# clone repo
-git clone https://github.com/micahnorwoodjordan/micahnorwoodjordan.com.git
-cd micahnorwoodjordan.com && git checkout 'origin/$CODE_BRANCH'
-
 # build app
 cd
 npm install -g @angular/cli@19.2.1
 cd micahnorwoodjordan.com/micahnorwoodjordan.com/ && npm install
-yes n | ng build --configuration production
+echo "no\nno" | ng build --configuration production
 cp /root/micahnorwoodjordan.com/micahnorwoodjordan.com/dist/micahnorwoodjordan.com/browser/* /usr/share/nginx/html
 
 # restart nginx
