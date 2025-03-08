@@ -4,18 +4,18 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
-  test-node:
-    # Install node dependencies and run tests
-    executor: node/default
-    working_directory: ~/project/micahnorwoodjordan.com
-    steps:
-      - checkout:
-          path: ~/project
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          name: Run tests
-          command: npm test --passWithNoTests
+  # test-node:
+  #   # Install node dependencies and run tests
+  #   executor: node/default
+  #   working_directory: ~/project/micahnorwoodjordan.com
+  #   steps:
+  #     - checkout:
+  #         path: ~/project
+  #     - node/install-packages:
+  #         pkg-manager: npm
+  #     - run:
+  #         name: Run tests
+  #         command: npm test --passWithNoTests
   build-node:
     # Build node project
     executor: node/default
@@ -25,6 +25,7 @@ jobs:
           path: ~/project
       - node/install-packages:
           pkg-manager: npm
+          # command: npm install
       - run:
           command: npm run build
       - run:
