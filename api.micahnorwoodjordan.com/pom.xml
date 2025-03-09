@@ -76,6 +76,7 @@
 	</dependencies>
 
 	<build>
+	<finalName>api.micahnorwoodjordan.com-build</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
