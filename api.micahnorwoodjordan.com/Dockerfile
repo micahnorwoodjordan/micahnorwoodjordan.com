@@ -13,8 +13,7 @@ COPY . /srv/api
 RUN echo ${DATABASE_USER}
 
 WORKDIR /srv/api
-# RUN fail
 
-# RUN chmod +x ./mvnw && ./mvnw clean package
+RUN chmod +x ./mvnw && ./mvnw clean package
 
-# ENTRYPOINT [ "java --jar /srv/api/api.micahnorwoodjordan.com-build.jar" ]
+ENTRYPOINT [ "java -jar /srv/api/api.micahnorwoodjordan.com-build.jar" ]
