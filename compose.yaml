@@ -7,7 +7,7 @@ services:
       
     volumes:
       - ./api.micahnorwoodjordan.com:/srv/api.micahnorwoodjordan.com
-    command: bash -c "./mvnw clean package && java -jar ./target/api.micahnorwoodjordan.com-build.jar"
+    # command: bash -c "java -jar ./target/api.micahnorwoodjordan.com-build.jar"
     environment:
       DATABASE_CONNECTION_STRING: ${DATABASE_CONNECTION_STRING}
       DATABASE_USER: ${DATABASE_USER}
