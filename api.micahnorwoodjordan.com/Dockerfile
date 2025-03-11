@@ -16,4 +16,4 @@ WORKDIR /srv/api
 
 RUN chmod +x ./mvnw && ./mvnw clean package
 
-ENTRYPOINT [ "java -jar /srv/api/api.micahnorwoodjordan.com-build.jar" ]
+ENTRYPOINT [ "java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar" ]
