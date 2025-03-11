@@ -23,7 +23,7 @@ WORKDIR /srv/api
 
 RUN apt update && apt install -y unzip sudo
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && sudo ./aws/install
-RUN aws s3 sync s3://micahnorwoodjordan.com/api/client ./
+RUN aws s3 sync s3://micahnorwoodjordan.com/api/client ./src/main/resources/static
 RUN chmod +x ./mvnw && ./mvnw clean package
 
 ENTRYPOINT [ "java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar" ]
