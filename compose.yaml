@@ -1,9 +1,14 @@
 services:
-  db:
+  api:
     ports:
-      - 3307:3306
-    image: mysql
+      - 8080:8080
+    build:
+      dockerfile: api.micahnorwoodjordan.com/Dockerfile
+      
+    volumes:
+      - ./api.micahnorwoodjordan.com:/srv/api.micahnorwoodjordan.com
+    # command: bash -c "java -jar ./target/api.micahnorwoodjordan.com-build.jar"
     environment:
-      MYSQL_ROOT_PASSWORD: Thatwasengl1sh!
-      MYSQL_DATABASE: micahnorwoodjordan.com
-      MYSQL_PASSWORD: Thatwasengl1sh!
+      DATABASE_CONNECTION_STRING: ${DATABASE_CONNECTION_STRING}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}

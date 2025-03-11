@@ -1,0 +1,19 @@
+FROM maven:3.9-eclipse-temurin-17
+
+ARG DATABASE_CONNECTION_STRING
+ARG DATABASE_USER
+ARG DATABASE_PASSWORD
+
+ENV DATABASE_CONNECTION_STRING=${DATABASE_CONNECTION_STRING}
+ENV DATABASE_USER=${DATABASE_USER}
+ENV DATABASE_PASSWORD=${DATABASE_PASSWORD}
+
+COPY . /srv/api
+
+RUN echo ${DATABASE_USER}
+
+WORKDIR /srv/api
+
+RUN chmod +x ./mvnw && ./mvnw clean package
+
+ENTRYPOINT [ "java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar" ]
