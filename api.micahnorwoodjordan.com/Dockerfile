@@ -1,7 +1,7 @@
-FROM --platform=amd64 maven:3.9-eclipse-temurin-17
+# FROM --platform=amd64 maven:3.9-eclipse-temurin-17
 # this platfrom spec is only relevant for my m1 mac and rosetta compatibility regarding the AWS CLI
 
-# FROM maven:3.9-eclipse-temurin-17
+FROM maven:3.9-eclipse-temurin-17
 
 ARG DATABASE_CONNECTION_STRING
 ARG DATABASE_USER
