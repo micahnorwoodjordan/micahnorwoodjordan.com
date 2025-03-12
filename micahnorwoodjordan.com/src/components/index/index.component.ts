@@ -20,12 +20,12 @@ export class IndexComponent {
   myLinkedinURL: string = 'https://www.linkedin.com/in/micah-norwood777';
   myAboutPageURL: string = `${environment.clientUrl}/about`;
 
-  meStandingPNGURL: string = `${environment.clientUrl}/me-standing.png`;
-  meSittingPNGURL: string = `${environment.clientUrl}/me-sitting.png`;
+  meStandingPNGURL: string = `${environment.staticSiteUrl}/me-standing.png`;
+  meSittingPNGURL: string = `${environment.staticSiteUrl}/me-sitting.png`;
 
-  myGithubPNGURL: string = `${environment.clientUrl}/github.png`;
-  myLinkedinPNGURL: string = `${environment.clientUrl}/linkedin.png`;
-  myMusicPNGURL: string = `${environment.clientUrl}/getmybeats.png`;
+  myGithubPNGURL: string = `${environment.staticSiteUrl}/github.png`;
+  myLinkedinPNGURL: string = `${environment.staticSiteUrl}/linkedin.png`;
+  myMusicPNGURL: string = `${environment.staticSiteUrl}/getmybeats.png`;
   
   navigateToURL(url: string) { window.location.href = url; }
 }
