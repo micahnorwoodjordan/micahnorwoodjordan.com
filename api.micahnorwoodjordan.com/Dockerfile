@@ -17,7 +17,8 @@ ENV AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
 ENV AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 ENV AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
 
-VOLUME ["/srv/api/src/main/resources/static"]
+VOLUME ./src/main/resources/static:/srv/api/src/main/resources/static
+VOLUME ./target/:/srv/api/target/
 
 COPY . /srv/api
 
