@@ -1,10 +1,11 @@
 <mat-nav-list class="bottomsheet">
-  <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
-    <span matListItemTitle>HOME</span>
-    <span matLine class="bottomsheet-subtext">Who is Micah?</span>
+  <a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
+    <span matListItemTitle class="bottomsheet-item-title">HOME</span>
+    <!-- <span matLine class="bottomsheet-subtext">Who is Micah?</span> -->
   </a>
-  <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
-    <span matListItemTitle>ABOUT</span>
-    <span matLine class="bottomsheet-subtext">Learn more about Micah</span>
+  <div class="bottomsheet-item-border"></div>
+  <a routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
+    <span matListItemTitle class="bottomsheet-item-title">ABOUT</span>
+    <!-- <span matLine class="bottomsheet-subtext">Learn more about Micah</span> -->
   </a>
 </mat-nav-list>
