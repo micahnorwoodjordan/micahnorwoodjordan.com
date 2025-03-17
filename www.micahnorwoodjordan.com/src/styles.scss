@@ -14,7 +14,7 @@
 // $violet-palette
 // $rose-palette
 
-.submit-button  {
+.submit-button, .submit-button-mobile  {
   color-scheme: light dark;
   @include mat.button-overrides((
     filled-container-color: white,
@@ -27,7 +27,7 @@
   ));
 }
 
-.learn-more-button, .extra-buttons  {
+.learn-more-button, .learn-more-button-mobile, .extra-buttons, .extra-buttons-mobile  {
   color-scheme: light dark;
   @include mat.button-overrides((
     filled-container-color: #219d51,
@@ -40,7 +40,12 @@
   ));
 }
 
-.spinner {
-  stroke: white;
-  transform: scale(2);
+.spinner { stroke: white; transform: scale(2); z-index: 1; position: absolute; left: 0vw; }
+.spinner-mobile { stroke: white; transform: scale(2); z-index: 1; position: absolute; right: 37vw; }
+
+:root {
+  @include mat.bottom-sheet-overrides((
+    container-text-color: grey,
+    container-background-color: white,
+  ));
 }

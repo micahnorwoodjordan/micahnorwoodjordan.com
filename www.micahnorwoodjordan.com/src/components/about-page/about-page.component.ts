@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { environment } from '../../environments/production';
 import { EmailMessage } from '../../app/interfaces/EmailMessage';
 import { ApiService } from '../../app/services/api.service';
+import { ContextService } from '../../app/services/context.service';
 
 
 @Component({
@@ -28,7 +29,7 @@ import { ApiService } from '../../app/services/api.service';
 })
 
 export class AboutPageComponent {
-  constructor(private apiService: ApiService) {  }
+  constructor(private apiService: ApiService, private contextService: ContextService) {  }
 
   isWaitingForAPIResponse: boolean = false;
   encounteredError: boolean = false;
@@ -49,6 +50,8 @@ export class AboutPageComponent {
 
   setIsWaitingForAPIResponse(newValue: boolean) { this.isWaitingForAPIResponse = newValue; }
   setEncounteredError(newValue: boolean) { this.encounteredError = newValue; }
+
+  getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
 
   private sendEmail(message: EmailMessage) {
     let url = `${environment.apiUrl}/notifications/email/send`;

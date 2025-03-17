@@ -13,16 +13,23 @@ a:active { color: #219d51; background-color: transparent; text-decoration: under
 
 .pd-right-2 { padding-right: 2vw; }
 .pd-right-5 { padding-right: 5vw; }
+.pd-right-8 { padding-right: 8vh; }
 .pd-right-10 { padding-right: 10vw; }
 
 .pd-left-2 { padding-left: 2vw; }
 .pd-left-5 { padding-left: 5vw; }
+.pd-left-8 { padding-left: 8vh; }
 .pd-left-10 { padding-left: 10vw; }
 
 .pd-top-2 { padding-top: 2vh; }
 .pd-top-5 { padding-top: 5vh; }
+.pd-top-8 { padding-top: 8vh; }
 .pd-top-10 { padding-top: 10vh; }
 
 .pd-bottom-2 { padding-bottom: 2vh; }
 .pd-bottom-5 { padding-bottom: 5vh; }
+.pd-bottom-8 { padding-bottom: 8vh; }
 .pd-bottom-10 { padding-bottom: 10vh; }
+
+.bottomsheet { text-align: center; }
+.bottomsheet-subtext { font-size: small; }
