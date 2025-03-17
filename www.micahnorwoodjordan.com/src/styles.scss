@@ -40,10 +40,8 @@
   ));
 }
 
-.spinner {
-  stroke: white;
-  transform: scale(2);
-}
+.spinner { stroke: white; transform: scale(2); z-index: 1; position: absolute; left: 0vw; }
+.spinner-mobile { stroke: white; transform: scale(2); z-index: 1; position: absolute; right: 37vw; }
 
 :root {
   @include mat.bottom-sheet-overrides((

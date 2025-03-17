@@ -142,9 +142,6 @@
             <p class="content contact-me-content pd-left-5 pd-right-5">
                 (602) 317-1807
             </p>
-            <div fxFlex="2">
-                <mat-spinner *ngIf="isWaitingForAPIResponse" class="spinner"></mat-spinner>
-            </div>  
         </div>
         <div class="contact-me-form" fxLayout="column">
             <div>
@@ -159,7 +156,11 @@
                     <input matInput [formControl]="lastName" placeholder="Ex. Doe" value="">
                     <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required</mat-error>
                 </mat-form-field>
-            
+
+                <div class="spinner-mobile">
+                    <mat-spinner *ngIf="isWaitingForAPIResponse"></mat-spinner>
+                </div>
+
                 <mat-form-field class="email-field-mobile">
                     <mat-label>Email</mat-label>
                     <input matInput [formControl]="email" placeholder="youremailaddress@gmail.com" value="">
