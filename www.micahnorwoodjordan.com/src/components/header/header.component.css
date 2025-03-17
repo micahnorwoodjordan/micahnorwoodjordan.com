@@ -1,5 +1,5 @@
 .title { font-size: xx-large; font-weight: 400; }
 .heading { font-size: large; font-weight: 400; }
 .content { font-size: larger; font-weight: 300; }
-.menu-icon { transform: scale(2); }
+.menu-icon { transform: scale(1.5); }
 .menu-icon:hover { cursor: pointer}
