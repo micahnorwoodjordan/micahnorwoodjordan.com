@@ -4,15 +4,22 @@
             <p class="title pd-left-5">Micah Norwood</p>
         </h2>
     </div>
-    <div fxLayout="column" fxFlex="4vw">
-        <h2>
-            <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
-        </h2>
+    <div *ngIf="!userIsOnMobile" fxFlex="4vw">
+        <div fxLayout="column">
+            <h2>
+                <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+            </h2>
+        </div>
+        <div fxLayout="column" fxFlex="5vw">
+            <h2>
+                <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
+            </h2>
+        </div>
     </div>
-    <div fxLayout="column" fxFlex="5vw">
-        <h2>
-            <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
-        </h2>
+    <div *ngIf="userIsOnMobile" class="pd-top-8 pd-right-5">
+        <div>
+            <mat-icon class="menu-icon">menu</mat-icon>
+        </div>
     </div>
 </div>
 
