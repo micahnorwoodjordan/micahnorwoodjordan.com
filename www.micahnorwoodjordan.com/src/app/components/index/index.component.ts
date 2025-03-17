@@ -3,7 +3,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 
-import { ContextService } from '../../app/services/context.service';
+import { ContextService } from '../../services/context.service';
 
 
 @Component({

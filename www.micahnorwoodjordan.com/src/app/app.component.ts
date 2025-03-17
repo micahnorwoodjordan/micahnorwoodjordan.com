@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { BlankComponent } from '../components/blank/blank.component';
-import { HeaderComponent } from '../components/header/header.component';
-import { FooterComponent } from '../components/footer/footer.component';
+import { BlankComponent } from './components/blank/blank.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
