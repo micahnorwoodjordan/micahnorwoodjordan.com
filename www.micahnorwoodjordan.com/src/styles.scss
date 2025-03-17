@@ -44,3 +44,10 @@
   stroke: white;
   transform: scale(2);
 }
+
+:root {
+  @include mat.bottom-sheet-overrides((
+    container-text-color: grey,
+    container-background-color: white,
+  ));
+}
