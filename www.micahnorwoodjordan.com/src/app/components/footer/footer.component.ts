@@ -15,7 +15,7 @@ import { ContextService } from '../../services/context.service';
 export class FooterComponent {
   constructor(private contextService: ContextService) {  }
 
-  joshuaVerse: string = `"Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the Lord your God is with you wherever you go. - NKJV"`
+  joshuaVerse: string = `"Have I not commanded you? Be strong and of good courage; do not be afraid, nor be dismayed, for the Lord your God is with you wherever you go." - NKJV`
 
   getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
 }
