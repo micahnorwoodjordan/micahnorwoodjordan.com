@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 import { ContextService } from '../../app/services/context.service';
 
@@ -9,13 +10,16 @@ import { ContextService } from '../../app/services/context.service';
   selector: 'app-index',
   imports: [
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    NgIf
   ],
   templateUrl: './index.component.html',
   styleUrl: './index.component.css'
 })
 export class IndexComponent {
   constructor(private contextService: ContextService) {  }
+
+  whoIsMicahText: string = "Micah is a devout Christian with a childlike love for building software. His goal is to honor Jesus in all aspects of life, even in the lines of code that he writes.";
   
   navigateToURL(url: string) { window.location.href = url; }
 

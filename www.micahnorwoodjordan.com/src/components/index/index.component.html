@@ -1,9 +1,13 @@
-<div fxLayout="row" fxLayoutAlign="center center">
+<div *ngIf="!getUserIsOnMobile()" fxLayout="row" fxLayoutAlign="center center">
     <img class="image-me-standing" src="{{getMeStandingPNGURL()}}" alt="micah standing">
 </div>
 
+<div *ngIf="getUserIsOnMobile()" fxLayout="row" fxLayoutAlign="center center">
+    <img class="image-me-sitting-mobile" src="{{getMeSittingPNGURL()}}" alt="micah sitting">
+</div>
 
-<div class="pd-top-10" fxLayout="row" fxLayoutAlign="space-around center">
+
+<div *ngIf="!getUserIsOnMobile()" class="pd-top-10" fxLayout="row" fxLayoutAlign="space-around center">
     <div class="pd-left-5" fxLayout="row">
         <img class="image-me-sitting" src="{{getMeSittingPNGURL()}}" alt="micah sitting">
     </div>
@@ -11,9 +15,7 @@
         <p class="who-is-micah-header pd-top-5">
             Who is Micah?
         </p>
-        <p class="content">
-            Micah is a devout Christian with a childlike love for building software. His goal is to honor Jesus in all aspects of life, even in the lines of code that he writes.
-        </p>
+        <p class="content">"{{whoIsMicahText}}"</p>
         <br>
         <br>
         <br>
@@ -21,11 +23,22 @@
     </div>
 </div>
 
+<div *ngIf="getUserIsOnMobile()" class="pd-top-5" fxLayout="row" fxLayoutAlign="space-around center">
+    <div class="pd-left-2" fxLayout="column" fxFlex="70" fxLayoutAlign="space-evenly center">
+        <p class="who-is-micah-header pd-top-5">Who is Micah?</p>
+        <p class="content">{{whoIsMicahText}}</p>
+        <br>
+        <br>
+        <br>
+        <button class="learn-more-button-mobile" mat-flat-button (click)="navigateToURL(getMyAboutPageURL())">LEARN MORE</button>
+    </div>
+</div>
+
 <div class="pd-top-10" fxLayout="row" fxLayoutAlign="space-around center">
     <p class="who-is-micah-subheader">Check out some of Micah's work</p>
 </div>
 
-<div class="pd-top-5 pd-bottom-10" fxLayout="row" fxLayoutAlign="space-around">
+<div *ngIf="!getUserIsOnMobile()" class="pd-top-5 pd-bottom-10" fxLayout="row" fxLayoutAlign="space-around">
     <div fxLayout="row" fxLayoutAlign="center end">
         <div fxLayout="column" fxLayoutAlign="center center">
             <img class="image pd-bottom-5" src="{{getMyGithubPNGURL()}}" alt="github">
@@ -45,5 +58,20 @@
             <img class="image pd-bottom-5" src="{{getMyLinkedinPNGURL()}}" alt="linkedin">
             <button class="extra-buttons" mat-flat-button (click)="navigateToURL(getMyLinkedinURL())">LINKEDIN</button>
         </div>
+    </div>
+</div>
+
+<div *ngIf="getUserIsOnMobile()" class="pd-top-5 pd-bottom-10" fxLayout="row" fxLayoutAlign="space-around">
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <img class="image-mobile pd-bottom-2" src="{{getMyGithubPNGURL()}}" alt="github">
+        <button class="extra-buttons-mobile" mat-flat-button (click)="navigateToURL(getMyGithubURL())">GITHUB</button>
+        <br><br><br><br><br>
+
+        <img class="image-mobile pd-bottom-2" src="{{getMyMusicPNGURL()}}" alt="getmybeats.com">
+        <button class="extra-buttons-mobile" mat-flat-button (click)="navigateToURL(getMyMusicURL())">MUSIC</button>
+        <br><br><br><br><br>
+
+        <img class="image-mobile pd-bottom-2" src="{{getMyLinkedinPNGURL()}}" alt="linkedin">
+        <button class="extra-buttons-mobile" mat-flat-button (click)="navigateToURL(getMyLinkedinURL())">LINKEDIN</button>
     </div>
 </div>

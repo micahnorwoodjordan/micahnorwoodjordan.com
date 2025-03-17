@@ -1,6 +1,8 @@
 .image-me-standing { width:80vw; }
+.image-me-standing-mobile { width:80vw; }
 
 .image-me-sitting { width:30vw; }
+.image-me-sitting-mobile { width:70vw; height: 50vh; }
 
 .who-is-micah-header { font-size: 60px; font-weight: 400; }
 
@@ -8,18 +10,11 @@
 
 .content { font-size: 35px; font-weight: 250; }
 
-.learn-more-button {
-    height: 10vh;
-    width: 15vw;
-    font-size: 20px;
-    font-weight: 200;
-}
+.learn-more-button { height: 10vh; width: 15vw; font-size: 20px; font-weight: 200; }
+.learn-more-button-mobile { height: 11vh; width: 45vw; font-size: 20px; font-weight: 200; }
 
-.extra-buttons {
-    height: 6vh;
-    width: 9vw;
-    font-size: 17px;
-    font-weight: 200;
-}
+.extra-buttons { height: 6vh; width: 9vw; font-size: 17px; font-weight: 200; }
+.extra-buttons-mobile { height: 11vh; width: 45vw; font-size: 17px; font-weight: 200; }
 
 .image { width: 25vw; }
+.image-mobile { width: 90vw; }
