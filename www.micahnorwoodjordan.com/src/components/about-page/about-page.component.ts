@@ -34,7 +34,7 @@ export class AboutPageComponent {
   isWaitingForAPIResponse: boolean = false;
   encounteredError: boolean = false;
 
-  bowlingBallPNGURL: string = `${environment.staticSiteUrl}/bowling-ball.png`;
+  ezrasPartyPNGURL: string = `${environment.staticSiteUrl}/me-ezra-party.png`;
   
   firstName = new FormControl('', [Validators.required, Validators.min(1), Validators.max(20)]);
   lastName = new FormControl('', [Validators.required, Validators.min(1), Validators.max(20)]);
