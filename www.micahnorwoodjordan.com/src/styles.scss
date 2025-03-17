@@ -14,7 +14,7 @@
 // $violet-palette
 // $rose-palette
 
-.submit-button  {
+.submit-button, .submit-button-mobile  {
   color-scheme: light dark;
   @include mat.button-overrides((
     filled-container-color: white,
