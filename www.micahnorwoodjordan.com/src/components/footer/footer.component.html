@@ -1,4 +1,4 @@
-<div *ngIf="!getUserIsOnMobile" class="pd-top-2" fxLayout="row" fxLayoutAlign="space-between start">
+<div *ngIf="!getUserIsOnMobile()" class="pd-top-2" fxLayout="row" fxLayoutAlign="space-between start">
 
     <div class="pd-right-5 pd-left-2" fxLayout="column" fxFlex="40vw">
         <p class="joshua-reference pd-left-2">Joshua 1:9</p>
@@ -24,7 +24,7 @@
     </div>
 </div>
 
-<div *ngIf="getUserIsOnMobile" class="pd-top-2" fxLayout="column" fxLayoutAlign="space-between start">
+<div *ngIf="getUserIsOnMobile()" class="pd-top-2" fxLayout="column" fxLayoutAlign="space-between start">
     <p class="joshua-reference pd-left-10">Joshua 1:9</p>
     <a href="https://www.bible.com/bible/114/JOS.1.NKJV" target="_blank" class="joshua-verse content">{{joshuaVerse}}</a>
 
