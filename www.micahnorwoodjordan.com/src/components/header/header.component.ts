@@ -32,7 +32,7 @@ export class HeaderComponent {
 
   private _bottomSheet = inject(MatBottomSheet);
 
-  ngOnInit() { this.setUserIsOnMobile(this.contextService.userIsOnMobile); this.setUserIsOnMobile(true) }
+  ngOnInit() { this.setUserIsOnMobile(this.contextService.userIsOnMobile); }
 
   setUserIsOnMobile(newValue: boolean) { this.userIsOnMobile = newValue; }
 
