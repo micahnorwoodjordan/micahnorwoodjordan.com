@@ -30,3 +30,6 @@ a:active { color: #219d51; background-color: transparent; text-decoration: under
 .pd-bottom-5 { padding-bottom: 5vh; }
 .pd-bottom-8 { padding-bottom: 8vh; }
 .pd-bottom-10 { padding-bottom: 10vh; }
+
+.bottomsheet { text-align: center; }
+.bottomsheet-subtext { font-size: small; }

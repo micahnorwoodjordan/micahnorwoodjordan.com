@@ -1,11 +1,11 @@
 <div fxLayout="row" fxLayoutAlign="center center">
-    <img class="image-me-standing" src="{{meStandingPNGURL}}" alt="micah standing">
+    <img class="image-me-standing" src="{{getMeStandingPNGURL()}}" alt="micah standing">
 </div>
 
 
 <div class="pd-top-10" fxLayout="row" fxLayoutAlign="space-around center">
     <div class="pd-left-5" fxLayout="row">
-        <img class="image-me-sitting" src="{{meSittingPNGURL}}" alt="micah sitting">
+        <img class="image-me-sitting" src="{{getMeSittingPNGURL()}}" alt="micah sitting">
     </div>
     <div class="pd-right-5" fxLayout="column" fxFlex="35" fxLayoutAlign="space-evenly center">
         <p class="who-is-micah-header pd-top-5">
@@ -17,7 +17,7 @@
         <br>
         <br>
         <br>
-        <button class="learn-more-button" mat-flat-button (click)="navigateToURL(myAboutPageURL)">LEARN MORE</button>
+        <button class="learn-more-button" mat-flat-button (click)="navigateToURL(getMyAboutPageURL())">LEARN MORE</button>
     </div>
 </div>
 
@@ -28,22 +28,22 @@
 <div class="pd-top-5 pd-bottom-10" fxLayout="row" fxLayoutAlign="space-around">
     <div fxLayout="row" fxLayoutAlign="center end">
         <div fxLayout="column" fxLayoutAlign="center center">
-            <img class="image pd-bottom-5" src="{{myGithubPNGURL}}" alt="github">
-            <button class="extra-buttons" mat-flat-button (click)="navigateToURL(myGithubURL)">GITHUB</button>
+            <img class="image pd-bottom-5" src="{{getMyGithubPNGURL()}}" alt="github">
+            <button class="extra-buttons" mat-flat-button (click)="navigateToURL(getMyGithubURL())">GITHUB</button>
         </div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="center center">
         <div fxLayout="column" fxLayoutAlign="center center">
-            <img class="image pd-bottom-5" src="{{myMusicPNGURL}}" alt="getmybeats.com">
-            <button class="extra-buttons" mat-flat-button (click)="navigateToURL(myMusicURL)">MUSIC</button>
+            <img class="image pd-bottom-5" src="{{getMyMusicPNGURL()}}" alt="getmybeats.com">
+            <button class="extra-buttons" mat-flat-button (click)="navigateToURL(getMyMusicURL())">MUSIC</button>
         </div>
     </div>
 
     <div class="pd-top-10" fxLayout="row" fxLayoutAlign="center end">
         <div fxLayout="column" fxLayoutAlign="center center">
-            <img class="image pd-bottom-5" src="{{myLinkedinPNGURL}}" alt="linkedin">
-            <button class="extra-buttons" mat-flat-button (click)="navigateToURL(myLinkedinURL)">LINKEDIN</button>
+            <img class="image pd-bottom-5" src="{{getMyLinkedinPNGURL()}}" alt="linkedin">
+            <button class="extra-buttons" mat-flat-button (click)="navigateToURL(getMyLinkedinURL())">LINKEDIN</button>
         </div>
     </div>
 </div>

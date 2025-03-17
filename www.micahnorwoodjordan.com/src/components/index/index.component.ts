@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 
-import { environment } from '../../environments/production';
+import { ContextService } from '../../app/services/context.service';
 
 
 @Component({
@@ -15,17 +15,25 @@ import { environment } from '../../environments/production';
   styleUrl: './index.component.css'
 })
 export class IndexComponent {
-  myGithubURL: string = 'https://github.com/micahnorwoodjordan';
-  myMusicURL: string = 'https://getmybeats.com';
-  myLinkedinURL: string = 'https://www.linkedin.com/in/micah-norwood777';
-  myAboutPageURL: string = `${environment.clientUrl}/about`;
-
-  meStandingPNGURL: string = `${environment.staticSiteUrl}/me-standing.png`;
-  meSittingPNGURL: string = `${environment.staticSiteUrl}/me-sitting.png`;
-
-  myGithubPNGURL: string = `${environment.staticSiteUrl}/github.png`;
-  myLinkedinPNGURL: string = `${environment.staticSiteUrl}/linkedin.png`;
-  myMusicPNGURL: string = `${environment.staticSiteUrl}/getmybeats.png`;
+  constructor(private contextService: ContextService) {  }
   
   navigateToURL(url: string) { window.location.href = url; }
+
+  getUserIsOnMobile(): boolean { return this.contextService.userIsOnMobile; }
+  getViewportWidth(): number { return this.contextService.viewportWidth; }
+
+  // other urls
+  getMyGithubURL() { return this.contextService.myGithubURL; }
+  getMyMusicURL() { return this.contextService.myMusicURL; }
+  getMyLinkedinURL() { return this.contextService.myLinkedinURL; }
+  getMyAboutPageURL() { return this.contextService.myAboutPageURL; }
+
+  // regular content urls
+  getMeStandingPNGURL() { return this.contextService.meStandingPNGURL; }
+  getMeSittingPNGURL() { return this.contextService.meSittingPNGURL; }
+
+  // png urls
+  getMyGithubPNGURL() { return this.contextService.myGithubPNGURL; }
+  getMyLinkedinPNGURL() { return this.contextService.myLinkedinPNGURL; }
+  getMyMusicPNGURL() { return this.contextService.myMusicPNGURL; }
 }
