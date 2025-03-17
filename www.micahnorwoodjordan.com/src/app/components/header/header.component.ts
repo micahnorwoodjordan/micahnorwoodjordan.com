@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBottomSheet, MatBottomSheetModule, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import {MatListModule} from '@angular/material/list';
 
-import { ContextService } from '../../app/services/context.service';
+import { ContextService } from '../../services/context.service';
 
 
 @Component({

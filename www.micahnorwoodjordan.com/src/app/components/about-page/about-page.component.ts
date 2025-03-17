@@ -7,10 +7,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { environment } from '../../environments/production';
-import { EmailMessage } from '../../app/interfaces/EmailMessage';
-import { ApiService } from '../../app/services/api.service';
-import { ContextService } from '../../app/services/context.service';
+import { environment } from '../../../environments/production';
+import { EmailMessage } from '../../interfaces/EmailMessage';
+import { ApiService } from '../../services/api.service';
+import { ContextService } from '../../services/context.service';
 
 
 @Component({

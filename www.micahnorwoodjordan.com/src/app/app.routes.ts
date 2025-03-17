@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
-import { AboutPageComponent } from '../components/about-page/about-page.component';
-import { IndexComponent } from '../components/index/index.component';
+import { AboutPageComponent } from './components/about-page/about-page.component';
+import { IndexComponent } from './components/index/index.component';
 
 export const routes: Routes = [
     {

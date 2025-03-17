@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgIf } from '@angular/common';
-import { ContextService } from '../../app/services/context.service';
+import { ContextService } from '../../services/context.service';
 
 @Component({
   selector: 'app-footer',
