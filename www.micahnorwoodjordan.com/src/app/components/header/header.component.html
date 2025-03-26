@@ -1,23 +1,15 @@
 <div *ngIf="!userIsOnMobile" fxLayout="row" fxLayoutAlign="space-between">
-    <div fxLayout="column" fxFlex="88vw">
+    <div fxLayout="column" fxFlex="85vw">
         <h2>
             <p class="title pd-left-5">Micah Norwood</p>
         </h2>
     </div>
-    <div fxLayout="column" fxFlex="4vw">
-        <h2>
-            <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
-        </h2>
-    </div>
-    <div fxLayout="column" fxFlex="5vw">
-        <h2>
-            <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
-        </h2>
-    </div>
-    <div fxLayout="column" fxFlex="5vw">
-        <h2>
-            <a class="heading" routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page">Project</a>
-        </h2>
+    <div class="pd-top-2" fxLayout="row" fxLayoutAlign="space-evenly center" fxFlex="12vw">
+        <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+        <span class="pipe-symbol">|</span>
+        <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
+        <span class="pipe-symbol">|</span>
+        <a class="heading" routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page">Projects</a>
     </div>
 </div>
 

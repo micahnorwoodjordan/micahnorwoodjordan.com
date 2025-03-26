@@ -3,3 +3,4 @@
 .content { font-size: larger; font-weight: 300; }
 .menu-icon { transform: scale(1.5); color: white; }
 .menu-icon:hover { cursor: pointer}
+.pipe-symbol { color: white; transform: scale(2); }
