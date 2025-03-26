@@ -4,13 +4,6 @@ html {
     font-weight: 200;
 }
 
-body {
-    /* background: linear-gradient( rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.95) ), url("../public/image.png"); */
-    background: linear-gradient( rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.95) );
-    background-repeat: repeat-y;
-    background-size: contain;
-}
-
 a:link { color: #219d51; background-color: transparent; text-decoration: none; font-weight: 800; }
 a:visited { color: #219d51; background-color: transparent; text-decoration: underline; }
 a:hover { color: #219d51; background-color: transparent; text-decoration: underline; }
