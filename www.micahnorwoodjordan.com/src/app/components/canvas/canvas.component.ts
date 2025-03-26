@@ -35,7 +35,7 @@ export class CanvasComponent {
       this.context.fillStyle = 'rgba(0, 0, 0, 0.05)';
       this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
       this.context.fillStyle = '#219d51';
-      this.context.font = this.fontSize + 'px monospace';
+      this.context.font = this.fontSize + 'DinaRemaster';
   
       for (let i = 0; i < this.columns; i++) {
         const text = this.characters.charAt(Math.floor(Math.random() * this.characters.length));
