@@ -5,7 +5,8 @@ html {
 }
 
 body {
-    background: linear-gradient( rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.95) ), url("../public/image.png");
+    /* background: linear-gradient( rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.95) ), url("../public/image.png"); */
+    background: linear-gradient( rgba(0, 0, 0, 0.90), rgba(0, 0, 0, 0.95) );
     background-repeat: repeat-y;
     background-size: contain;
 }
