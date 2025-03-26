@@ -6,6 +6,7 @@ import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angula
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { environment } from '../../../environments/production';
 import { EmailMessage } from '../../interfaces/EmailMessage';
@@ -22,7 +23,8 @@ import { ContextService } from '../../services/context.service';
     ReactiveFormsModule,
     MatButtonModule,
     NgIf,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule
   ],
   templateUrl: './about-page.component.html',
   styleUrl: './about-page.component.css'
