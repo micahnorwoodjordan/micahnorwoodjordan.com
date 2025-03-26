@@ -10,7 +10,7 @@
 .white { color: white; }
 .rounded { border-radius: 15px; }
 .card-image {  height: 30vh; }
-.example-header-image {
-    background-image: url('http://192.168.0.136:4200/jesus-peter.jpg');
+.card-avatar-image {
+    background-image: url('https://static.micahnorwoodjordan.com/me-cowboy.png');
     background-size: cover;
 }
