@@ -4,10 +4,10 @@
 
 
 <div *ngIf="!getUserIsOnMobile()" class="pd-bottom-10" fxLayout="row" fxLayoutAlign="space-around center">
-    <div class="pd-left-5" fxLayout="row">
+    <div class="pd-left-5" fxLayout="column" fxFlex="30vw">
         <img class="image-me-sitting" src="{{getMeSittingPNGURL()}}" alt="micah sitting">
     </div>
-    <div class="pd-right-5" fxLayout="column" fxFlex="35" fxLayoutAlign="space-evenly center">
+    <div fxLayout="column" fxFlex="30vw" fxLayoutAlign="space-evenly center">
         <p class="who-is-micah-header pd-top-5">
             Who is Micah?
         </p>
