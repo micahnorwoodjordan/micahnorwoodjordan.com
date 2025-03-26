@@ -37,7 +37,7 @@
   - <i>**WHY?**:</i> I'm very accustomed to building on, deploying, and configuring DigitalOcean architecture, but only as standalone parts of a system that I have to tether together by managing IP addresses, firewalls, and DNS, while also building custom SSL certificate renewal scripts.
   - It was a bumpy ride navigating the undocumented "gotchas" of App Plaform, but I found that it has a fairly simple pre-deployment build test and a lovely DNS management system ☝️🤓
 
-### dns
+### dns 🌎
 
 - I would've normally purchased my domain from Google, but sadly domains managed by Google have all been migrated to Squarespace, so I already reluctantly have some skin in the game with Squarespace.
 - I pointed the `micahnorwoodjordan.com` domain and subdomains at the IP addresses of the App Platform apps, and re-routed each app's default domain at the `micahnorwoodjordan.com` domain.
@@ -48,7 +48,7 @@
   - App Platform Apps are each deployed to their own Droplets whose IP addresses are NOT static (not sure how , but I guess in the grand scheme of things, we're all just sharing the same network space, so I won't think too hard about it). Even coughing up more cash to configure static IP addresses for your apps won't allow you to route traffic based on IP (we have to accept "just because" as an answer because DigitalOcean's docs don't explain why), so whenever the IP addresses for my Apps rotate, I have to manually find the new IP addresses using a DNS lookup and update all DNS configs from the front of my system to the back.
   - Since I don't know what causes IP addresses to flip, nor how often, I'm basically waiting for my site to go down until I update all DNS configurations.
 
-## design philosophy
+## design philosophy 🧐
 
 - Building this website was a tough battle in terms of pulling back on my desire to build because of my desire to learn, so nowhere in this system do I attempt to do anything fancy or revolutioinary. As such:
   - the backend follows the classic MVC architectural pattern as a virtue of Spring
