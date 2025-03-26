@@ -1,4 +1,4 @@
-.joshua-reference { font-size: xxx-large; font-weight: 400;}
-.joshua-verse { padding-left: 2vw; }
-.heading { font-size: xx-large; font-weight: 400; }
-.content { font-size: larger; font-weight: 300; }
+.joshua-reference { font-size: xxx-large; font-weight: 400; color: white; }
+.heading { font-size: xx-large; font-weight: 400; color: white; }
+.content { font-size: larger; font-weight: 300; color: white; }
+.joshu-verse { font-size: larger; font-weight: 300; }

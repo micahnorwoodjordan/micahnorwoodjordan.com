@@ -1,28 +1,25 @@
 <div *ngIf="!userIsOnMobile" fxLayout="row" fxLayoutAlign="space-between">
-    <div fxLayout="column" fxFlex="88vw">
+    <div fxLayout="column" fxFlex="85vw">
         <h2>
             <p class="title pd-left-5">Micah Norwood</p>
         </h2>
     </div>
-    <div fxLayout="column" fxFlex="4vw">
-        <h2>
-            <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
-        </h2>
-    </div>
-    <div fxLayout="column" fxFlex="5vw">
-        <h2>
-            <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
-        </h2>
+    <div class="pd-top-2" fxLayout="row" fxLayoutAlign="space-evenly center" fxFlex="12vw">
+        <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+        <span class="pipe-symbol">|</span>
+        <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
+        <span class="pipe-symbol">|</span>
+        <a class="heading" routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page">Projects</a>
     </div>
 </div>
 
 <div *ngIf="userIsOnMobile" fxLayout="row" fxLayoutAlign="space-between">
-    <div fxFlex="70vw">
+    <div fxFlex="80vw">
         <h2>
             <p class="title pd-left-5">Micah Norwood</p>
         </h2>
     </div>
-    <div class="pd-top-5 pd-left-10" fxFlex="20vw">
+    <div class="pd-top-5 pd-left-10" fxFlex="12vw">
         <div (click)="openBottomSheet()">
             <mat-icon class="menu-icon">menu</mat-icon>
         </div>

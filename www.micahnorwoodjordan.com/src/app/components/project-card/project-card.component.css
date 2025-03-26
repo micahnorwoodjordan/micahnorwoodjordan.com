@@ -1,0 +1,24 @@
+.card {
+    width: 40vw;
+    max-height: 50vh;
+    align-items: center;
+    overflow: hidden;
+    transform: scale(1);
+    transition: 0.5s;
+}
+
+.card-mobile {
+    width: 90vw;
+    max-height: 50vh;
+    align-items: center;
+    overflow: hidden;
+}
+.card:hover { transform: scale(1.1); transition: 0.5s; cursor: pointer; }
+.white { color: white; }
+.rounded { border-radius: 15px; }
+.card-image {  height: 30vh; }
+.card-image-mobile {  height: 20vh; }
+.card-avatar-image {
+    background-image: url('https://static.micahnorwoodjordan.com/me-cowboy.png');
+    background-size: cover;
+}

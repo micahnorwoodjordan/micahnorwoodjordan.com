@@ -1,66 +1,124 @@
 <div *ngIf="!getUserIsOnMobile()" fxLayout="row">
-    <div class="" fxLayout="row" fxLayoutAlign="center center" fxFill>
-        <div class="" fxLayout="column" fxFill fxFlex="30vw">
-            <h1>
-                <p class="about-me-header pd-left-5">About Me</p>
-            </h1>
-            
-            <p class="content pd-left-5 pd-right-5">
-                I have 25 years of life experience, and during that time, I've come to understand two truths:
+    <div class="pd-top-5 pd-bottom-10" fxLayout="row" fxLayoutAlign="center center" fxFill>
+        <div fxLayout="column" fxFlex="40vw" fxLayoutAlign="center center">
+            <span class="about-me-header pd-bottom-5">Skills & Technologies</span>
+            <span class="about-me-subheader pd-bottom-2">Languages</span>
+            <mat-chip-set class="chipset pd-bottom-5" aria-label="Fish selection">
+                <mat-chip>Python/Django</mat-chip>
+                <mat-chip>Javascript/HTML/CSS</mat-chip>
+                <mat-chip>Angular/TypeScript</mat-chip>
+                <mat-chip>C#</mat-chip>
+                <mat-chip>Java</mat-chip>
+            </mat-chip-set>
+            <span class="about-me-subheader pd-bottom-2">OS's/Platforms</span>
+            <mat-chip-set class="chipset pd-bottom-5" aria-label="Fish selection">
+                <mat-chip>macOS 12.0+</mat-chip>
+                <mat-chip>Linux (Debian)</mat-chip>
+                <mat-chip>Windows Server (2018+)</mat-chip>
+            </mat-chip-set>
+            <span class="about-me-subheader pd-bottom-2">Cloud</span>
+            <mat-chip-set class="chipset" aria-label="Fish selection">
+                <mat-chip>AWS</mat-chip>
+                <mat-chip>DigitalOcean</mat-chip>
+            </mat-chip-set>
+            <span class="about-me-header pd-bottom-5 pd-top-5">Areas of Expertise</span>
+            <mat-chip-set class="chipset pd-bottom-5 pd-left-2" aria-label="Fish selection">
+                <mat-chip>OOP</mat-chip>
+                <mat-chip>CI/CD & DevOps</mat-chip>
+                <mat-chip>PaaS Platforms</mat-chip>
+                <mat-chip>IaC</mat-chip>
+                <mat-chip>SaaS</mat-chip>
+                <mat-chip>OOP</mat-chip>
+                <mat-chip>POA&M</mat-chip>
+                <mat-chip>REST API'S</mat-chip>
+                <mat-chip>Network Optimization</mat-chip>
+                <mat-chip>Security Control Validation</mat-chip>
+                <mat-chip>Test Automation</mat-chip>
+                <mat-chip>Containerization/Virtual Machines</mat-chip>
+                <mat-chip>Systems Administration</mat-chip>
+                <mat-chip>AWS Technologies</mat-chip>
+                <mat-chip>Cloud Architecture</mat-chip>
+                <mat-chip>Vulnerability Management</mat-chip>
+                <mat-chip>Database Design</mat-chip>
+            </mat-chip-set>
+
+            <p class="content pd-top-5">
+                Maybe you need an API built -- done. Do you need it deployed to a cloud compute instance? Consider it handled.
+                Perhaps you need to configure a firewall for your business -- check.
+                What if a rogue process is consuming RAM and CPU in your system? I'll find it.
+                Application services need to be containerized? Easy peasy.
+                In need of synchronous and asynchronous data processing queues? No worries.
             </p>
-            <ul class="content pd-left-10 pd-right-5">
-                <li>Jesus Christ is my Lord and Savior</li>
-                <li>One of the ways through which I can glorify Him is my love of building software (primarily API backends) and my studies of all things technological</li>
-            </ul>
-            <p class="content pd-left-5 pd-right-5">
-                I love to work out, produce music, bowl, and play Xbox with my friends when I have the time. Most days, I lean into my passion of software engineering by exploring the  crevices of our technological landscape which I have not yet explored.
+            <p class="content pd-top-2">
+                And this is just the tip of the iceberg.
             </p>
-            <br>
-            <p class="content pd-left-5 pd-right-5">
-                I'm working on multiple projects, but at this time, only this website and my music website are publicly accessible; you can check out my music <a href="https://getmybeats.com" target="_blank">here</a>.
-                Also feel free to look at my <a href="https://github.com/micahnorwoodjordan" target="_blank">Github</a>.
+            <p class="content pd-top-2">
+                I have 5 years' experience in building and testing secure and performant distributed SaaS applications, while maintaining legacy systems to serve millions of daily users worldwide.
+                Throughout my career, I've tackled a laundry list of technical challenges, and have honed my skills in developing robust backend systems that enhance user experiences. My calculated approach to translating customer needs into software results in satisfied customers.
+                Independently motivated, but customer-focused, I thrive on building complex, fault-tolerant systems.
             </p>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
-        <div class="image pd-right-2 pd-left-5" fxLayout="column" fxFlex="60vw">
-            <img src="{{ezrasPartyPNGURL}}" alt="bowling ball">
-            <br>
-            <br>
-            <br>
         </div>
     </div>
 </div>
 
-<div *ngIf="getUserIsOnMobile()" fxLayout="row">
-    <div class="" fxLayout="column" fxLayoutAlign="center center" fxFill>
-        <img class="ezra-party-image-mobile" src="{{ezrasPartyPNGURL}}" alt="bowling ball">
-        <div class="" fxLayout="column">
-            <h1>
-                <p class="about-me-header pd-left-5">About Me</p>
-            </h1>
-            <p class="content pd-left-5 pd-right-5">
-                I have 25 years of life experience, and during that time, I've come to understand two truths:
-            </p>
-            <ul class="content pd-left-10 pd-right-5">
-                <li>Jesus Christ is my Lord and Savior</li>
-                <li>One of the ways through which I can glorify Him is my love of building software (primarily API backends) and my studies of all things technological</li>
-            </ul>
-            <p class="content pd-left-5 pd-right-5">
-                I love to work out, produce music, bowl, and play Xbox with my friends when I have the time. Most days, I lean into my passion of software engineering by exploring the  crevices of our technological landscape which I have not yet explored.
-            </p>
-            <br>
-            <p class="content pd-left-5 pd-right-5">
-                I'm working on multiple projects, but at this time, only this website and my music website are publicly accessible; you can check out my music <a href="https://getmybeats.com" target="_blank">here</a>.
-                Also feel free to look at my <a href="https://github.com/micahnorwoodjordan" target="_blank">Github</a>.
-            </p>
-            <br>
-            <br>
-        </div>
+<div *ngIf="getUserIsOnMobile()">
+    <div class="pd-left-5" fxLayout="column" fxFlex="90vw" fxLayoutAlign="center center">
+        <span class="about-me-header-mobile pd-top-5 pd-bottom-5">Skills & Technologies</span>
+        <span class="about-me-subheader-mobile pd-bottom-2">Languages</span>
+        <mat-chip-set class="chipset pd-bottom-10 pd-left-5" aria-label="Fish selection">
+            <mat-chip>Python/Django</mat-chip>
+            <mat-chip>Javascript/HTML/CSS</mat-chip>
+            <mat-chip>Angular/TypeScript</mat-chip>
+            <mat-chip>C#</mat-chip>
+            <mat-chip>Java</mat-chip>
+        </mat-chip-set>
+        <span class="about-me-subheader-mobile pd-bottom-2">OS's/Platforms</span>
+        <mat-chip-set class="chipset pd-bottom-10 pd-left-5" aria-label="Fish selection">
+            <mat-chip>macOS 12.0+</mat-chip>
+            <mat-chip>Linux (Debian)</mat-chip>
+            <mat-chip>Windows Server (2018+)</mat-chip>
+        </mat-chip-set>
+        <span class="about-me-subheader-mobile pd-bottom-2">Cloud</span>
+        <mat-chip-set class="chipset pd-left-5 pd-bottom-2" aria-label="Fish selection">
+            <mat-chip>AWS</mat-chip>
+            <mat-chip>DigitalOcean</mat-chip>
+        </mat-chip-set>
+        <span class="about-me-header-mobile pd-top-10  pd-bottom-5">Areas of Expertise</span>
+        <mat-chip-set class="chipset pd-left-5" aria-label="Fish selection">
+            <mat-chip>OOP</mat-chip>
+            <mat-chip>CI/CD & DevOps</mat-chip>
+            <mat-chip>PaaS Platforms</mat-chip>
+            <mat-chip>IaC</mat-chip>
+            <mat-chip>SaaS</mat-chip>
+            <mat-chip>OOP</mat-chip>
+            <mat-chip>POA&M</mat-chip>
+            <mat-chip>REST API'S</mat-chip>
+            <mat-chip>Network Optimization</mat-chip>
+            <mat-chip>Security Control Validation</mat-chip>
+            <mat-chip>Test Automation</mat-chip>
+            <mat-chip>Containerization/Virtual Machines</mat-chip>
+            <mat-chip>Systems Administration</mat-chip>
+            <mat-chip>AWS Technologies</mat-chip>
+            <mat-chip>Cloud Architecture</mat-chip>
+            <mat-chip>Vulnerability Management</mat-chip>
+            <mat-chip>Database Design</mat-chip>
+        </mat-chip-set>
+
+        <p class="content pd-top-5">
+            Maybe you need an API built -- done. Do you need it deployed to a cloud compute instance? Consider it handled.
+            Perhaps you need to configure a firewall for your business -- check.
+            What if a rogue process is consuming RAM and CPU in your system? I'll find it.
+            Application services need to be containerized? Easy peasy.
+            In need of synchronous and asynchronous data processing queues? No worries.
+        </p>
+        <p class="content pd-top-2">
+            And this is just the tip of the iceberg.
+        </p>
+        <p class="content pd-top-2 pd-bottom-10">
+            I have 5 years' experience in building and testing secure and performant distributed SaaS applications, while maintaining legacy systems to serve millions of daily users worldwide.
+            Throughout my career, I've tackled a laundry list of technical challenges, and have honed my skills in developing robust backend systems that enhance user experiences. My calculated approach to translating customer needs into software results in satisfied customers.
+            Independently motivated, but customer-focused, I thrive on building complex, fault-tolerant systems.
+        </p>
     </div>
 </div>
 

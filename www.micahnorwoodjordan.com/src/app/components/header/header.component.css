@@ -1,5 +1,6 @@
-.title { font-size: xx-large; font-weight: 400; }
+.title { font-size: xx-large; font-weight: 400; color: white; }
 .heading { font-size: large; font-weight: 400; }
 .content { font-size: larger; font-weight: 300; }
-.menu-icon { transform: scale(1.5); }
+.menu-icon { transform: scale(1.5); color: white; }
 .menu-icon:hover { cursor: pointer}
+.pipe-symbol { color: white; transform: scale(2); }

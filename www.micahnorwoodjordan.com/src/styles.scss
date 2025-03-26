@@ -48,4 +48,11 @@
     container-text-color: black,
     container-background-color: #219d51,
   ));
+  @include mat.card-overrides((
+    outlined-outline-color: #219d51,
+    outlined-container-color: rgb(21, 21, 21),
+  ));
+  @include mat.chips-overrides((
+    outline-color: orange,
+  ));
 }
