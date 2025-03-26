@@ -1,4 +1,4 @@
-<div class="pd-bottom-10" fxLayout="column" fxLayoutAlign="center center">
+<div *ngIf="!userIsOnMobile" class="pd-bottom-10" fxLayout="column" fxLayoutAlign="center center">
     <mat-card class="card white rounded" appearance="outlined" (click)="onClick()">
         <mat-card-header>
           <div mat-card-avatar class="card-avatar-image"></div>
@@ -10,4 +10,18 @@
           <p>{{bodyText}}</p>
         </mat-card-content>
     </mat-card>
+</div>
+
+<div *ngIf="userIsOnMobile" class="pd-bottom-5 pd-left-2" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="card-mobile white rounded pd-left-2" appearance="outlined" (click)="onClick()">
+    <mat-card-header>
+      <div mat-card-avatar class="card-avatar-image"></div>
+      <mat-card-title>{{projectName}}</mat-card-title>
+      <mat-card-subtitle>{{projectSubtitle}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image class="card-image-mobile" src="{{imageURL}}">
+    <mat-card-content>
+      <p>{{bodyText}}</p>
+    </mat-card-content>
+  </mat-card>
 </div>

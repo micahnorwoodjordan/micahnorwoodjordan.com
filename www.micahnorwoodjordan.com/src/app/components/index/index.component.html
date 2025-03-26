@@ -20,11 +20,8 @@
 </div>
 
 <div *ngIf="getUserIsOnMobile()" fxLayoutAlign="space-around center" >
-    <p class="who-is-micah-subheader pd-top-10">Who is Micah?</p>
-</div>
-
-<div *ngIf="getUserIsOnMobile()" fxLayoutAlign="space-around center">
-    <div class="pd-left-2" fxLayout="column" fxFlex="70" fxLayoutAlign="space-evenly center">
+    <div class="pd-left-2" fxLayout="column" fxFlex="70vw" fxLayoutAlign="space-evenly center">
+        <span class="who-is-micah-subheader-mobile pd-top-10">Who is Micah?</span>
         <p class="content-mobile">{{whoIsMicahText}}</p>
         <br>
         <br>

@@ -7,9 +7,10 @@
 .who-is-micah-header { font-size: 60px; font-weight: 400; color: white; }
 
 .who-is-micah-subheader { font-size: 50px; font-weight: 400; color: white; }
+.who-is-micah-subheader-mobile { font-size: xxx-large; font-weight: 200; color: white; }
 
 .content { font-size: xx-large; font-weight: 250; color: white; }
-.content-mobile { font-size: 30px; font-weight: 250; color: white; }
+.content-mobile { font-size: x-large; font-weight: 100; color: white; }
 
 .learn-more-button { height: 10vh; width: 15vw; font-size: 20px; font-weight: 200; }
 .learn-more-button-mobile { height: 11vh; width: 45vw; font-size: 20px; font-weight: 200; }

@@ -1,1 +1,2 @@
-.heading { color: white; transform: scale(2); }
+.heading { font-size: xxx-large; color: white; transform: scale(2); }
+.heading-mobile { font-size: xx-large; color: white; transform: scale(1.7); }
