@@ -12,7 +12,7 @@ export class CanvasComponent {
   private canvas: HTMLCanvasElement | null = null;
   private context: CanvasRenderingContext2D | null = null;
   private animationFrameId: number = 0;
-  private readonly characters = 'アァカサタナハマヤャPQRSTUVWXYZ0123456789';
+  private readonly characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   private readonly fontSize = 15;
   private columns: number = 10
   private columnPositions: number[] = [];
