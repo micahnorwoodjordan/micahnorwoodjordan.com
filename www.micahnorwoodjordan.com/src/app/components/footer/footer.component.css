@@ -1,4 +1,28 @@
 .joshua-reference { font-size: xxx-large; font-weight: 400; color: white; }
 .heading { font-size: xx-large; font-weight: 400; color: white; }
 .content { font-size: larger; font-weight: 300; color: white; }
-.joshu-verse { font-size: larger; font-weight: 300; }
+.joshu-verse { font-size: x-large; font-weight: 400; }
+
+.location-card {
+    height: 15vh;
+    width: 20vw;
+    color: white;
+    border-radius: 30px;
+    font-family: 'DinaRemaster', 'Roboto', sans-serif;
+}
+.contact-card {
+    height: 25vh;
+    width: 20vw;
+    color: white;
+    border-radius: 30px;
+    font-family: 'DinaRemaster', 'Roboto', sans-serif;
+}
+.joshua-card {
+    height: 25vh;
+    width: 30vw;
+    color: white;
+    border-radius: 30px;
+    font-family: 'DinaRemaster', 'Roboto', sans-serif;
+}
+.title { font-size: xx-large; }
+.subtitle { font-size: large; }

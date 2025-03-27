@@ -1,26 +1,34 @@
-<div *ngIf="!getUserIsOnMobile()" class="pd-top-2" fxLayout="row" fxLayoutAlign="space-between start">
+<div *ngIf="!getUserIsOnMobile()" class="pd-top-10" fxLayout="row" fxLayoutAlign="center start" fxFill>
 
-    <div class="pd-right-5 pd-left-2" fxLayout="column" fxFlex="40vw">
-        <p class="joshua-reference pd-left-2">Joshua 1:9</p>
-        <a href="https://www.bible.com/bible/114/JOS.1.NKJV" target="_blank" class="joshu-verse pd-left-2">{{joshuaVerse}}</a>
+    <div class="pd-left-2" fxLayout="column" fxFlex="40vw">
+        <mat-card class="joshua-card" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly center">
+            <mat-card-header>
+              <mat-card-title class="joshua-reference pd-bottom-2">Joshua 1:9</mat-card-title>
+            </mat-card-header>
+            <mat-card-subtitle class="joshu-verse">
+                <a href="https://www.bible.com/bible/114/JOS.1.NKJV" target="_blank">{{joshuaVerse}}</a>
+            </mat-card-subtitle>
+        </mat-card>
     </div>
 
-
-    <div fxLayout="column" fxFlex="30vw">
-        <p class="heading pd-top-2">Location</p>
-        <p class="content">Phoenix, AZ, 85027</p>
+    <div class="pd-left-2" fxLayout="column" fxFlex="30vw">
+        <mat-card class="location-card" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly center">
+            <mat-card-header>
+              <mat-card-title class="title pd-bottom-2">Location</mat-card-title>
+            </mat-card-header>
+            <mat-card-subtitle class="subtitle">Phoenix, AZ, 85027</mat-card-subtitle>
+        </mat-card>
     </div>
 
-
-    <div fxLayout="column" fxFlex="27vw">
-        <p class="heading pd-top-2">Contact</p>
-        <br>
-        <a class="content" href="https://www.linkedin.com/in/micah-norwood777" target="_blank">LinkedIn</a>
-        <br>
-        <p class="content">email: micahnorwoodjordan&#64;gmail.com</p>
-        <p class="content">phone number: (602) 317-1807</p>
-        <br>
-        <br>
+    <div class="pd-left-5" fxLayout="column" fxFlex="27vw">
+        <mat-card class="pd-left-2 contact-card" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly start">
+            <mat-card-header>
+              <mat-card-title class="title pd-bottom-2">Contact</mat-card-title>
+            </mat-card-header>
+            <mat-card-subtitle class="subtitle"><a class="content" href="https://www.linkedin.com/in/micah-norwood777" target="_blank">LinkedIn</a></mat-card-subtitle>
+            <mat-card-subtitle class="subtitle">email: micahnorwoodjordan&#64;gmail.com</mat-card-subtitle>
+            <mat-card-subtitle class="subtitle">phone number: (602) 317-1807</mat-card-subtitle>
+        </mat-card>
     </div>
 </div>
 
