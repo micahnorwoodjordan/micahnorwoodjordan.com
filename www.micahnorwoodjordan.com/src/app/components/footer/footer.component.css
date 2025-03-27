@@ -4,7 +4,7 @@
 .heading { font-size: xx-large; font-weight: 400; color: white; }
 .content { font-size: larger; font-weight: 300; color: white; }
 
-.joshu-verse { font-size: x-large; font-weight: 400; }
+.joshu-verse { font-size: large; font-weight: 400; }
 .joshu-verse-mobile { font-size: medium; font-weight: 400; }
 
 .location-card {
@@ -13,6 +13,7 @@
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
+    overflow: hidden;
 }
 .location-card-mobile {
     height: 25vh;
@@ -20,6 +21,7 @@
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
+    overflow: hidden;
 }
 .contact-card {
     height: 25vh;
@@ -27,6 +29,7 @@
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
+    overflow: hidden;
 }
 .contact-card-mobile {
     height: 30vh;
@@ -34,6 +37,7 @@
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
+    overflow: hidden;
 }
 
 .joshua-card {
@@ -42,6 +46,7 @@
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
+    overflow: hidden;
 }
 .joshua-card-mobile {
     height: 30vh;
@@ -49,6 +54,7 @@
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
+    overflow: hidden;
 }
 .title { font-size: xx-large; }
 .subtitle { font-size: large; }

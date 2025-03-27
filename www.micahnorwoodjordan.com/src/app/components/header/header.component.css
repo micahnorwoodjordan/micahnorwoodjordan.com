@@ -11,6 +11,7 @@
     color: white;
     border-radius: 20px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
+    overflow: hidden;
 }
 
 .card-mobile {
@@ -19,6 +20,7 @@
     color: white;
     border-radius: 20px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
+    overflow: hidden;
 }
 
 .heading { font-size: large; font-weight: 400; }
