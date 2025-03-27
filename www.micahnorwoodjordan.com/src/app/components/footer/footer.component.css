@@ -1,11 +1,22 @@
 .joshua-reference { font-size: xxx-large; font-weight: 400; color: white; }
+.joshua-reference-mobile { font-size: xx-large; font-weight: 400; color: white; }
+
 .heading { font-size: xx-large; font-weight: 400; color: white; }
 .content { font-size: larger; font-weight: 300; color: white; }
+
 .joshu-verse { font-size: x-large; font-weight: 400; }
+.joshu-verse-mobile { font-size: medium; font-weight: 400; }
 
 .location-card {
     height: 15vh;
     width: 20vw;
+    color: white;
+    border-radius: 30px;
+    font-family: 'DinaRemaster', 'Roboto', sans-serif;
+}
+.location-card-mobile {
+    height: 25vh;
+    width: 90vw;
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
@@ -17,9 +28,24 @@
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
 }
+.contact-card-mobile {
+    height: 30vh;
+    width: 90vw;
+    color: white;
+    border-radius: 30px;
+    font-family: 'DinaRemaster', 'Roboto', sans-serif;
+}
+
 .joshua-card {
     height: 25vh;
     width: 30vw;
+    color: white;
+    border-radius: 30px;
+    font-family: 'DinaRemaster', 'Roboto', sans-serif;
+}
+.joshua-card-mobile {
+    height: 30vh;
+    width: 90vw;
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
