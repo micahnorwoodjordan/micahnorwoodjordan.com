@@ -4,7 +4,8 @@ import { NgIf } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBottomSheet, MatBottomSheetModule, MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 
 import { ContextService } from '../../services/context.service';
 
@@ -18,7 +19,8 @@ import { ContextService } from '../../services/context.service';
     RouterLinkActive,
     NgIf,
     MatIconModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatCardModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'

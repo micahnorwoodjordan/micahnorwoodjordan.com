@@ -1,8 +1,12 @@
-<div *ngIf="!userIsOnMobile" fxLayout="row" fxLayoutAlign="space-between">
+<div *ngIf="!userIsOnMobile" fxLayout="row" fxLayoutAlign="space-between" class="pd-bottom-5">
     <div fxLayout="column" fxFlex="85vw">
-        <h2>
-            <p class="title pd-left-5">Micah Norwood</p>
-        </h2>
+        <mat-card class="card" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly center">
+            <mat-card-header>
+              <mat-card-title class="title pd-bottom-2">Micah Norwood</mat-card-title>
+            </mat-card-header>
+            <mat-card-subtitle class="subtitle">Software Engineer</mat-card-subtitle>
+            <mat-card-content>SaaS | Cloud / PaaS | REST API'S</mat-card-content>
+        </mat-card>
     </div>
     <div class="pd-top-2" fxLayout="row" fxLayoutAlign="space-evenly center" fxFlex="12vw">
         <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
@@ -14,12 +18,16 @@
 </div>
 
 <div *ngIf="userIsOnMobile" fxLayout="row" fxLayoutAlign="space-between">
-    <div fxFlex="80vw">
-        <h2>
-            <p class="title pd-left-5">Micah Norwood</p>
-        </h2>
+    <div class="pd-top-2 pd-left-10" fxFlex="80vw">
+        <mat-card class="card-mobile" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly center">
+            <mat-card-header>
+              <mat-card-title class="title-mobile">Micah Norwood</mat-card-title>
+            </mat-card-header>
+            <mat-card-subtitle class="subtitle-mobile">Software Engineer</mat-card-subtitle>
+            <mat-card-content class="content-mobile">SaaS | Cloud / PaaS | REST API'S</mat-card-content>
+        </mat-card>
     </div>
-    <div class="pd-top-5 pd-left-10" fxFlex="12vw">
+    <div class="pd-top-2 pd-left-10" fxFlex="12vw">
         <div (click)="openBottomSheet()">
             <mat-icon class="menu-icon">menu</mat-icon>
         </div>

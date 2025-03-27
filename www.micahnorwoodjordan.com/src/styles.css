@@ -23,11 +23,13 @@ a:active { color: #219d51; background-color: transparent; text-decoration: under
 .pd-top-5 { padding-top: 5vh; }
 .pd-top-8 { padding-top: 8vh; }
 .pd-top-10 { padding-top: 10vh; }
+.pd-top-20 { padding-top: 20vh; }
 
 .pd-bottom-2 { padding-bottom: 2vh; }
 .pd-bottom-5 { padding-bottom: 5vh; }
 .pd-bottom-8 { padding-bottom: 8vh; }
 .pd-bottom-10 { padding-bottom: 10vh; }
+.pd-bottom-20 { padding-bottom: 20vh; }
 
 .bottomsheet { text-align: center; }
 .bottomsheet-item-title { font-size: xx-large; }
