@@ -1,13 +1,15 @@
 import { Component } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgIf } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 import { ContextService } from '../../services/context.service';
 
 @Component({
   selector: 'app-footer',
   imports: [
     FlexLayoutModule,
-    NgIf
+    NgIf,
+    MatCardModule
   ],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css'

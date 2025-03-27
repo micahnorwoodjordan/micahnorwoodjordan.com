@@ -20,3 +20,6 @@
 
 .image { width: 25vw; }
 .image-mobile { width: 90vw; }
+
+.subtitle { font-size: x-large; color: white; }
+.subtitle-mobile { font-size: large; color: white; }

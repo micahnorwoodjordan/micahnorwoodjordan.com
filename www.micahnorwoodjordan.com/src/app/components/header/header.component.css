@@ -1,6 +1,30 @@
-.title { font-size: xx-large; font-weight: 400; color: white; }
+.title { font-size: xx-large; font-weight: 300; color: white; }
+.title-mobile { font-size: x-large; font-weight: 300; color: white; }
+
+.subtitle { font-size: x-large; font-weight: 100; color: white; }
+.subtitle-mobile { font-size: larger; font-weight: 100; color: white; }
+.content-mobile { font-size: small; font-weight: 100; color: white; }
+
+.card {
+    width: 20vw;
+    height: 20vh;
+    color: white;
+    border-radius: 20px;
+    font-family: 'DinaRemaster', 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+.card-mobile {
+    width: 70vw;
+    height: 20vh;
+    color: white;
+    border-radius: 20px;
+    font-family: 'DinaRemaster', 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
 .heading { font-size: large; font-weight: 400; }
-.content { font-size: larger; font-weight: 300; }
+.content { font-size: larger; font-weight: 300; color: white; }
 .menu-icon { transform: scale(1.5); color: white; }
 .menu-icon:hover { cursor: pointer}
 .pipe-symbol { color: white; transform: scale(2); }
