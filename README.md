@@ -9,6 +9,10 @@
   - build the backend (the `Contact Me` functionality) using a relevant web framework that I haven't used before ✅
   - slow down my development to truly understand the fundamentals, nitty gritty details, and "gotchas" of all the tools used from beginning to end ✅
 
+## infrastructure
+
+- site diagram: ![alt text](image.png)
+
 ## tech stack 🥞
 
 ### frontend 👨‍💻
@@ -18,7 +22,7 @@
   - <i>**WHY**:</i> Since I'm already pretty familiar with Angular, I decided to use it to help my development speed, since building the backend and configuring the deployment strategy were inevitably going to be a speed bottleneck
 - Obviously, this runs client side, and serves as a window into who I am as a person and software engineer 😃
 
-### backend 📨
+### backend 📟
 
 - `api.micahnorwoodjordan.com`
 - Java using Spring Boot 🍃
