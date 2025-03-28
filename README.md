@@ -15,33 +15,33 @@
 
 - `www.micahnorwoodjordan.com`
 - TypeScript using the Angular framework 🏎️💨
-  - <i>**WHY?**:</i> Since I'm already pretty familiar with Angular, I decided to use it to help my development speed, since building the backend and configuring the deployment strategy were inevitably going to be a temporary speed bottleneck
-- Obviously, this runs client side and allows users to get a glimpse of who I am and my professional competencies 😃
+  - <i>**WHY**:</i> Since I'm already pretty familiar with Angular, I decided to use it to help my development speed, since building the backend and configuring the deployment strategy were inevitably going to be a speed bottleneck
+- Obviously, this runs client side, and serves as a window into who I am as a person and software engineer 😃
 
 ### backend 📨
 
 - `api.micahnorwoodjordan.com`
 - Java using Spring Boot 🍃
-  - <i>**WHY?**:</i> It's been about 5 years since I've written code in Java that saw any sunlight. On top of that, I only ever wrote vanilla Java; I never actually used frameworks, so getting some exposure and familiarity was a must.
+  - <i>**WHY**:</i> It's been about 5 years since I've written code in Java that saw any sunlight. On top of that, I only ever wrote vanilla Java; I never actually used frameworks, so getting some exposure and familiarity was a must.
 - this runs server side and is only responsible for taking email message payloads from the frontend and writing them to a subsequent SMTP service call to allow curious site visitors to contact me via email
 
 ### cdn 📦
 
 - `static.micahnorwoodjordan.com`
-- Admittedly, CDN is sort of a misnomer here, as the "network" portion of the acronym is comprised of only a single node, `static.micahnorwoodjordan.com`, which is an Ubuntu droplet that I manually deployed and configured to serve static images and fonts via Nginx 🤫 It's more of a Content Delivery Instance
-- I thought about committing some of the deployment scripts and configuration files to the codebase since I'm a fan of IaC, but I just haven't
+- Admittedly, CDN is sort of a misnomer here, as the "network" portion of the acronym is comprised of only a single node, `static.micahnorwoodjordan.com`, which is an Ubuntu droplet that I manually deployed and configured to serve static images and fonts via Nginx. It's more of a Content Delivery Instance 🤫
+- I thought about committing some of the deployment scripts and configuration files to the codebase since I'm a fan of IaC, but I just haven't yet for some reason.
 - I had a lot of fun figuring out how to get this Content Delivery Instance to serve one of my favorite fonts, `DinaRemaster`
 
 ### deployment strategy 🚀
 
 - DigitalOcean's App Platform 🌊
-  - <i>**WHY?**:</i> I'm very accustomed to building on, deploying, and configuring DigitalOcean architecture, but only as standalone parts of a system that I have to tether together by managing IP addresses, firewalls, and DNS, while also building custom SSL certificate renewal scripts.
+  - <i>**WHY**:</i> I'm very accustomed to building on, deploying, and configuring DigitalOcean architecture, but only as standalone parts of a system that I have to tether together by managing IP addresses, firewalls, load balancing, and DNS, while also building custom SSL certificate renewal scripts. App Platform handles most of this overhaul.
   - It was a bumpy ride navigating the undocumented "gotchas" of App Plaform, but I found that it has a fairly simple pre-deployment build test and a lovely DNS management system ☝️🤓
 
 ### dns 🌎
 
 - I would've normally purchased my domain from Google, but sadly domains managed by Google have all been migrated to Squarespace, so I already reluctantly have some skin in the game with Squarespace.
-- I pointed the `micahnorwoodjordan.com` domain and subdomains at the IP addresses of the App Platform apps, and re-routed each app's default domain at the `micahnorwoodjordan.com` domain.
+- I pointed the `micahnorwoodjordan.com` domain and subdomains at the IP addresses of the App Platform apps, and configured each app to point to the `micahnorwoodjordan.com` domain.
 
 ### potentially tragic pitfalls of my DNS management strategy 🚨
 
@@ -62,6 +62,7 @@
 
 #### non static IP addresses ❌
 
-- harking back to the non-static nature of IP addresses native to Droplets deployed via App Platform, I wanted to deploy a firewall around the API and CDN, but:
-  - it would be another manual labor task to update IP-based ingress and egress rules within the App Spec yaml 🤦🏽‍♂️
-  - due to the above, I'm considering delegating all preliminary security measures to the API itself, which is very non-standard 🤦🏽‍♂️
+- 🤦🏽‍♂️ harking back to the non-static nature of IP addresses native to Droplets deployed via App Platform, I wanted to deploy a firewall around the API and CDN, but:
+  - it would be another manual labor task to update the IP-based ingress and egress rules within the App Spec yaml whenever my apps' IP addresses rotate
+  - due to the above, I'm considering delegating all preliminary security measures for `api.micahnorwoodjordan.com` to Spring Boot itself, which is very non-standard
+  - configuring the Ubuntu firewall (UFW) on `static.micahnorwoodjordan.com` would also be another manual labor task, since `ufw` does not support domain-based rule configurations top the best of my knowledge
