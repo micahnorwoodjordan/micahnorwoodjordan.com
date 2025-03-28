@@ -15,21 +15,19 @@
 
 ## tech stack 🥞
 
-### frontend 👨‍💻
+### frontend 👨‍💻 TypeScript/Angular 🏎️💨
 
 - `www.micahnorwoodjordan.com`
-- TypeScript using the Angular framework 🏎️💨
   - <i>**WHY**:</i> Since I'm already pretty familiar with Angular, I decided to use it to help my development speed, since building the backend and configuring the deployment strategy were inevitably going to be a speed bottleneck
 - Obviously, this runs client side, and serves as a window into who I am as a person and software engineer 😃
 
-### backend 📟
+### backend 📟 Java/Spring Boot 🍃
 
 - `api.micahnorwoodjordan.com`
-- Java using Spring Boot 🍃
   - <i>**WHY**:</i> It's been about 5 years since I've written code in Java that saw any sunlight. On top of that, I only ever wrote vanilla Java; I never actually used frameworks, so getting some exposure and familiarity was a must.
 - this runs server side and is only responsible for taking email message payloads from the frontend and writing them to a subsequent SMTP service call to allow curious site visitors to contact me via email
 
-### cdn 📦
+### cdn 📦 Ubuntu Linux 🐧
 
 - `static.micahnorwoodjordan.com`
 - Admittedly, CDN is sort of a misnomer here, as the "network" portion of the acronym is comprised of only a single node, `static.micahnorwoodjordan.com`, which is an Ubuntu droplet that I manually deployed and configured to serve static images and fonts via Nginx. It's more of a Content Delivery Instance 🤫
