@@ -9,22 +9,36 @@
         </mat-card>
     </div>
     <div class="pd-top-2" fxLayout="row" fxLayoutAlign="space-evenly center" fxFlex="12vw">
-        <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
-        <span class="pipe-symbol">|</span>
-        <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
-        <span class="pipe-symbol">|</span>
-        <a class="heading" routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page">Projects</a>
+        <mat-card class="card" appearance="outlined" fxLayout="column" fxLayoutAlign="center center">
+            <mat-card-header>
+                <mat-card-title class="title pd-bottom-2">
+                    <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+                </mat-card-title>
+                <mat-card-title class="title pd-bottom-2">
+                    <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
+                </mat-card-title>
+                <mat-card-title class="title pd-bottom-2">
+                    <a class="heading" routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page">Projects</a>
+                </mat-card-title>
+            </mat-card-header>
+        </mat-card>
     </div>
 </div>
 
 <div *ngIf="userIsOnMobile" fxLayout="row" fxLayoutAlign="space-between">
     <div class="pd-top-2 pd-left-10" fxFlex="80vw">
-        <mat-card class="card-mobile" appearance="outlined" fxLayout="column" fxLayoutAlign="space-between center">
+        <mat-card class="card-mobile" appearance="outlined" fxLayout="column" fxLayoutAlign="center center">
             <mat-card-header>
-              <mat-card-title class="title-mobile">Micah Norwood</mat-card-title>
+                <mat-card-title class="title pd-bottom-2">
+                    <a class="heading" routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a>
+                </mat-card-title>
+                <mat-card-title class="title pd-bottom-2">
+                    <a class="heading" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">About</a>
+                </mat-card-title>
+                <mat-card-title class="title pd-bottom-2">
+                    <a class="heading" routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page">Projects</a>
+                </mat-card-title>
             </mat-card-header>
-            <mat-card-content class="subtitle-mobile">Software Engineer</mat-card-content>
-            <mat-card-content class="content-mobile">SaaS | AWS | REST API'S</mat-card-content>
         </mat-card>
     </div>
     <div class="pd-top-2 pd-left-10" fxFlex="12vw">
