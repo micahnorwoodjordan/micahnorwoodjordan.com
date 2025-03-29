@@ -4,11 +4,11 @@ html {
     font-weight: 200;
 }
 
-::-webkit-scrollbar { -webkit-appearance: none; width: 0.7vw; background-color: black; }
+::-webkit-scrollbar { -webkit-appearance: none; width: 0.5vw; background-color: black; }
 ::-webkit-scrollbar:hover { cursor: pointer; }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 4px;
+    border-radius: 2px;
     background-color: #219d51;
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
 }
