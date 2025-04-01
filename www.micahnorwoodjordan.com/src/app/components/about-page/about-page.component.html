@@ -125,10 +125,7 @@
 <div *ngIf="!getUserIsOnMobile()" class="contact-me-section pd-top-2" fxLayout="row" fxLayoutAlign="center center">
     <div class="" fxLayout="column" fxFill fxFlex>
         <div class="pd-left-5">
-            <h1>
-                <p class="contact-me-header">Contact Me</p>
-            </h1>
-            <br>
+            <p class="contact-me-header">Contact Me</p>
         </div>
         <p class="content contact-me-content pd-left-5 pd-right-5">
             If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
@@ -172,7 +169,9 @@
                 <mat-error *ngIf="form.get('message')?.hasError('min')">Message field cannot be empty</mat-error>
                 <mat-error *ngIf="form.get('message')?.hasError('max')">Message cannot exceed 120 characters</mat-error>
             </mat-form-field>
-            <button mat-flat-button class="submit-button" type="submit" (click)="onSubmit()">SEND</button>
+            <div class="pd-top-5">
+                <button mat-flat-button class="submit-button" type="submit" (click)="onSubmit()">SEND</button>
+            </div>
         </div>
     </div>
 </div>
@@ -180,9 +179,7 @@
 <div *ngIf="getUserIsOnMobile()" class="contact-me-section-mobile" fxLayout="column" fxLayoutAlign="center center">
     <div fxLayout="column">
         <div class="contact-me-form" fxLayout="column">
-            <h1>
-                <p class="contact-me-header-mobile">Contact Me</p>
-            </h1>
+            <p class="contact-me-header-mobile">Contact Me</p>
             <p class="content contact-me-content pd-left-5 pd-right-5">
                 If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
             </p>
@@ -227,7 +224,7 @@
                     <mat-error *ngIf="form.get('message')?.hasError('max')">Message cannot exceed 120 characters</mat-error>
                 </mat-form-field>
             </div>
-            <div>
+            <div class="pd-top-5">
                 <button mat-flat-button class="submit-button-mobile" type="submit" (click)="onSubmit()">SEND</button>
             </div>
             <br><br><br>

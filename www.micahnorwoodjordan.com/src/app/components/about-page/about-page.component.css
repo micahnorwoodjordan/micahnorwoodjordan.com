@@ -4,29 +4,31 @@
 .about-me-subheader { font-size: xx-large; transform: scale(1);  font-weight: 200; color: white; }
 .about-me-subheader-mobile { font-size: x-large; transform: scale(1);  font-weight: 200; color: white; }
 
-.contact-me-header { font-size: 70px; font-weight: 400; color: white; }
-.contact-me-header-mobile { font-size: 60px; font-weight: 400; color: white; }
-.contact-me-section { width: 100%; height:65vh; background-color: #219d51; }
-.contact-me-section-mobile { width: 90vw; background-color: #219d51; }
+.contact-me-header { font-size: 70px; font-weight: 600; color: white; }
+.contact-me-header-mobile { font-size: 60px; font-weight: 700; color: white; }
+.contact-me-section { width: 100%; height: 65vh; background-color: rgb(21, 21, 21); border-radius: 15px; border: 1px solid orange; }
+.contact-me-section-mobile { width: 90vw; background-color: rgb(21, 21, 21); border-radius: 15px; border: 1px solid orange; }
+
 .image { width: 55%; height: auto; }
 .image-mobile { width: 80vw; height: 40vh; }
+
 .ezra-party-image-mobile { width: 95vw; height: 35vh; }
 .content { font-size: large; font-weight: 300; color: white; }
 .contact-me-content { color: white }
 
-.name-field { width: 10vw; font-weight: 400; background-color: #219d51; }
-.name-field-mobile { width: 80vw; font-weight: 400; background-color: #219d51; }
+.name-field { width: 10vw; font-weight: 400; background-color: rgb(21, 21, 21); color: white; }
+.name-field-mobile { width: 80vw; font-weight: 400; background-color: rgb(21, 21, 21); color: white; }
 
-.email-field { width: 22vw; font-weight: 400; background-color: #219d51; }
-.email-field-mobile { width: 80vw; font-weight: 400; background-color: #219d51; }
+.email-field { width: 22vw; font-weight: 400; background-color: rgb(21, 21, 21); color: white; }
+.email-field-mobile { width: 80vw; font-weight: 400; background-color: rgb(21, 21, 21); color: white; }
 
-.message-field { width: 22vw; font-weight: 400; background-color: #219d51; }
-.message-field-mobile { width: 80vw; font-weight: 400; background-color: #219d51; }
+.message-field { width: 22vw; font-weight: 400; background-color: rgb(21, 21, 21); color: white; }
+.message-field-mobile { width: 80vw; font-weight: 400; background-color: rgb(21, 21, 21); color: white; }
 
 .email-textarea { resize: none; }
 
-.submit-button  { height: 7vh; width: 8vw; font-size: 15px; font-weight: 450; }
-.submit-button-mobile  { height: 11vh; width: 45vw; font-size: 17px; font-weight: 450; }
+.submit-button  { height: 7vh; width: 8vw; font-size: large; font-weight: 300; color: white; }
+.submit-button-mobile  { height: 11vh; width: 45vw; font-size: 17px; font-weight: 300; }
 
 .contact-me-form { text-align: center; }
 
