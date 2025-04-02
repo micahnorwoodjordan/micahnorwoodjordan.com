@@ -9,8 +9,4 @@
     <app-footer></app-footer>
 </div>
 <app-canvas></app-canvas>
-<div *ngIf="getUserIsOnMobile()" id="mobile-nav" class="mobile-nav" fxLayout="column" fxLayoutAlign="space-evenly center">
-    <span class="icon-span" (click)="openBottomSheet()">
-        <mat-icon class="icon">play_arrow</mat-icon>
-    </span>
-</div>
+<app-tracker></app-tracker>
