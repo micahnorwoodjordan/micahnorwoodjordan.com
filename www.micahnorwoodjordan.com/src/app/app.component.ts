@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { NgIf } from '@angular/common';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
 
 import { BlankComponent } from './components/blank/blank.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -17,7 +18,8 @@ import { ContextService } from './services/context.service';
     FooterComponent,
     CanvasComponent,
     FlexLayoutModule,
-    NgIf
+    NgIf,
+    MatIconModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -31,13 +33,11 @@ export class AppComponent implements AfterViewInit {
 
   setMobileNav(htmlElement: HTMLElement) { this.mobileNav = htmlElement; }
   
-
-
   ngAfterViewInit() {
     if (this.getUserIsOnMobile()) {
       window.addEventListener('load', () => {
         if (this.mobileNav !== null) {
-          let newPosition = window.scrollY + (this.windowHeight / 2);
+          let newPosition = window.scrollY;
           this.mobileNav.style.top = `${newPosition}px`;
         }
       });
@@ -45,14 +45,15 @@ export class AppComponent implements AfterViewInit {
       this.setMobileNav(this.mobileNavRef.nativeElement.querySelector("#mobile-nav") as HTMLElement);
       window.addEventListener('scroll', () => {
         if (this.mobileNav !== null) {
-          
-          let newPosition = window.scrollY + (this.windowHeight / 2);
-          console.log(newPosition);
-          console.log(this.windowHeight);
+          let newPosition = window.scrollY + (this.windowHeight / 2.5);
+          this.mobileNav.style.transition = 'top 0.5s ease-out 0.05s';
           this.mobileNav.style.top = `${newPosition}px`;
         }
       });
     }
   }
+
   getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
+
+  openBottomSheet() {  }
 }

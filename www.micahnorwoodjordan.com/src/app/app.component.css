@@ -1,1 +1,10 @@
-.mobile-nav { height: 10vh; width: 5vw; border: 1px solid red; position: absolute; }
+.mobile-nav {
+    height: auto;
+    right: 90vw;
+    width: 10vw;
+    position: absolute;
+}
+
+.icon { color: #219d51; transform: scale(2); }
+
+.icon-span { }
