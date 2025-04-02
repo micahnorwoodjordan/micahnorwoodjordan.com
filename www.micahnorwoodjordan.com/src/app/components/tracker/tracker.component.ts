@@ -1,10 +1,12 @@
-import { AfterViewInit, Component, ElementRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject } from '@angular/core';
 import { NgIf } from '@angular/common';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
+import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 import { ContextService } from '../../services/context.service';
+import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
 
 
 @Component({
@@ -12,7 +14,8 @@ import { ContextService } from '../../services/context.service';
   imports: [
     FlexLayoutModule,
     NgIf,
-    MatIconModule
+    MatIconModule,
+    MatBottomSheetModule
   ],
   templateUrl: './tracker.component.html',
   styleUrl: './tracker.component.css'
@@ -20,11 +23,12 @@ import { ContextService } from '../../services/context.service';
 export class TrackerComponent implements AfterViewInit {
   constructor(private contextService: ContextService, private mobileNavRef: ElementRef) { }
 
-  mobileNav: HTMLElement | null = null;
-  windowHeight: number = window.innerHeight || document.documentElement.clientHeight;
-  scrollY: number = window.scrollY;
+  public mobileNav: HTMLElement | null = null;
+  private _bottomSheet = inject(MatBottomSheet);
+  private windowHeight: number = window.innerHeight || document.documentElement.clientHeight;
+  private scrollY: number = window.scrollY;
 
-  public openBottomSheet() {  }
+  public openBottomSheet() { this._bottomSheet.open(BottomsheetComponent); }
   public getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
   private setMobileNav(htmlElement: HTMLElement) { this.mobileNav = htmlElement; }
   
