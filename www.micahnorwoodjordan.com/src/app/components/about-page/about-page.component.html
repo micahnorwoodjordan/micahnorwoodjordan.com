@@ -122,67 +122,12 @@
     </div>
 </div>
 
-<div *ngIf="!getUserIsOnMobile()" class="contact-me-section pd-top-2" fxLayout="row" fxLayoutAlign="center center">
-    <div class="" fxLayout="column" fxFill fxFlex>
-        <div class="pd-left-5">
-            <h1>
+<div class="pd-left-2">
+    <div *ngIf="!getUserIsOnMobile()" class="contact-me-section pd-top-2" fxLayout="row" fxLayoutAlign="center center">
+        <div class="" fxLayout="column" fxFill fxFlex>
+            <div class="pd-left-5">
                 <p class="contact-me-header">Contact Me</p>
-            </h1>
-            <br>
-        </div>
-        <p class="content contact-me-content pd-left-5 pd-right-5">
-            If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
-        </p>
-        <br>
-        <p class="content contact-me-content pd-left-5 pd-right-5">
-            <u>micahnorwoodjordan&#64;gmail.com</u>
-        </p>
-        <p class="content contact-me-content pd-left-5 pd-right-5">
-            (602) 317-1807
-        </p>
-    </div>
-    <div fxFlex="2">
-        <mat-spinner *ngIf="isWaitingForAPIResponse" class="spinner"></mat-spinner>
-    </div>
-    
-    <div fxLayout="column" fxFlex>
-        <div fxLayout="row" fxLayoutAlign="center center">
-            <mat-form-field class="name-field pd-right-2">
-                <mat-label>First Name</mat-label>
-                <input matInput [formControl]="firstName" placeholder="Ex. John" value="">
-                <mat-error *ngIf="form.get('firstName')?.hasError('required')">First Name is required</mat-error>
-            </mat-form-field>
-            <mat-form-field class="name-field">
-                <mat-label>Last Name</mat-label>
-                <input matInput [formControl]="lastName" placeholder="Ex. Doe" value="">
-                <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required</mat-error>
-            </mat-form-field>
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center center">
-            <mat-form-field class="email-field pd-top-5">
-                <mat-label>Email</mat-label>
-                <input matInput [formControl]="email" placeholder="youremailaddress@gmail.com" value="">
-                <mat-error *ngIf="form.get('email')?.invalid">Invalid email format</mat-error>
-                <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
-            </mat-form-field>
-            <mat-form-field class="message-field pd-top-5 pd-bottom-2">
-                <mat-label>Message</mat-label>
-                <textarea class="email-textarea" matInput [formControl]="message" placeholder="type your message here"></textarea>
-                <mat-error *ngIf="form.get('message')?.hasError('required')">Message is required</mat-error>
-                <mat-error *ngIf="form.get('message')?.hasError('min')">Message field cannot be empty</mat-error>
-                <mat-error *ngIf="form.get('message')?.hasError('max')">Message cannot exceed 120 characters</mat-error>
-            </mat-form-field>
-            <button mat-flat-button class="submit-button" type="submit" (click)="onSubmit()">SEND</button>
-        </div>
-    </div>
-</div>
-
-<div *ngIf="getUserIsOnMobile()" class="contact-me-section-mobile" fxLayout="column" fxLayoutAlign="center center">
-    <div fxLayout="column">
-        <div class="contact-me-form" fxLayout="column">
-            <h1>
-                <p class="contact-me-header-mobile">Contact Me</p>
-            </h1>
+            </div>
             <p class="content contact-me-content pd-left-5 pd-right-5">
                 If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
             </p>
@@ -194,43 +139,99 @@
                 (602) 317-1807
             </p>
         </div>
-        <div class="contact-me-form" fxLayout="column">
-            <div>
-                <mat-form-field class="name-field-mobile">
+        <div fxFlex="2">
+            <mat-spinner *ngIf="isWaitingForAPIResponse" class="spinner"></mat-spinner>
+        </div>
+        
+        <div fxLayout="column" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="center center">
+                <mat-form-field class="name-field pd-right-2">
                     <mat-label>First Name</mat-label>
                     <input matInput [formControl]="firstName" placeholder="Ex. John" value="">
                     <mat-error *ngIf="form.get('firstName')?.hasError('required')">First Name is required</mat-error>
                 </mat-form-field>
-            
-                <mat-form-field class="name-field-mobile">
+                <mat-form-field class="name-field">
                     <mat-label>Last Name</mat-label>
                     <input matInput [formControl]="lastName" placeholder="Ex. Doe" value="">
                     <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required</mat-error>
                 </mat-form-field>
-
-                <div class="spinner-mobile">
-                    <mat-spinner *ngIf="isWaitingForAPIResponse"></mat-spinner>
-                </div>
-
-                <mat-form-field class="email-field-mobile">
+            </div>
+            <div fxLayout="column" fxLayoutAlign="center center">
+                <mat-form-field class="email-field pd-top-5">
                     <mat-label>Email</mat-label>
                     <input matInput [formControl]="email" placeholder="youremailaddress@gmail.com" value="">
                     <mat-error *ngIf="form.get('email')?.invalid">Invalid email format</mat-error>
                     <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
                 </mat-form-field>
-            
-                <mat-form-field class="message-field-mobile">
+                <mat-form-field class="message-field pd-top-5 pd-bottom-2">
                     <mat-label>Message</mat-label>
                     <textarea class="email-textarea" matInput [formControl]="message" placeholder="type your message here"></textarea>
                     <mat-error *ngIf="form.get('message')?.hasError('required')">Message is required</mat-error>
                     <mat-error *ngIf="form.get('message')?.hasError('min')">Message field cannot be empty</mat-error>
                     <mat-error *ngIf="form.get('message')?.hasError('max')">Message cannot exceed 120 characters</mat-error>
                 </mat-form-field>
+                <div class="pd-top-5">
+                    <button mat-flat-button class="submit-button" type="submit" (click)="onSubmit()">SEND</button>
+                </div>
             </div>
-            <div>
-                <button mat-flat-button class="submit-button-mobile" type="submit" (click)="onSubmit()">SEND</button>
-            </div>
-            <br><br><br>
         </div>
     </div>
+</div>
+
+<div class="pd-left-2">
+    <div *ngIf="getUserIsOnMobile()" class="contact-me-section-mobile" fxLayout="column" fxLayoutAlign="center center">
+        <div fxLayout="column">
+            <div class="contact-me-form" fxLayout="column">
+                <p class="contact-me-header-mobile">Contact Me</p>
+                <p class="content contact-me-content pd-left-5 pd-right-5">
+                    If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
+                </p>
+                <br>
+                <p class="content contact-me-content pd-left-5 pd-right-5">
+                    <u>micahnorwoodjordan&#64;gmail.com</u>
+                </p>
+                <p class="content contact-me-content pd-left-5 pd-right-5">
+                    (602) 317-1807
+                </p>
+            </div>
+            <div class="contact-me-form" fxLayout="column">
+                <div>
+                    <mat-form-field class="name-field-mobile">
+                        <mat-label>First Name</mat-label>
+                        <input matInput [formControl]="firstName" placeholder="Ex. John" value="">
+                        <mat-error *ngIf="form.get('firstName')?.hasError('required')">First Name is required</mat-error>
+                    </mat-form-field>
+                
+                    <mat-form-field class="name-field-mobile">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput [formControl]="lastName" placeholder="Ex. Doe" value="">
+                        <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required</mat-error>
+                    </mat-form-field>
+    
+                    <div class="spinner-mobile">
+                        <mat-spinner *ngIf="isWaitingForAPIResponse"></mat-spinner>
+                    </div>
+    
+                    <mat-form-field class="email-field-mobile">
+                        <mat-label>Email</mat-label>
+                        <input matInput [formControl]="email" placeholder="youremailaddress@gmail.com" value="">
+                        <mat-error *ngIf="form.get('email')?.invalid">Invalid email format</mat-error>
+                        <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
+                    </mat-form-field>
+                
+                    <mat-form-field class="message-field-mobile">
+                        <mat-label>Message</mat-label>
+                        <textarea class="email-textarea" matInput [formControl]="message" placeholder="type your message here"></textarea>
+                        <mat-error *ngIf="form.get('message')?.hasError('required')">Message is required</mat-error>
+                        <mat-error *ngIf="form.get('message')?.hasError('min')">Message field cannot be empty</mat-error>
+                        <mat-error *ngIf="form.get('message')?.hasError('max')">Message cannot exceed 120 characters</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="pd-top-5">
+                    <button mat-flat-button class="submit-button-mobile" type="submit" (click)="onSubmit()">SEND</button>
+                </div>
+                <br><br><br>
+            </div>
+        </div>
+    </div>    
 </div>
