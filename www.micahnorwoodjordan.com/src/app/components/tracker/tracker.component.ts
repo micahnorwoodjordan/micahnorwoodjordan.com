@@ -27,16 +27,35 @@ export class TrackerComponent implements AfterViewInit {
   private _bottomSheet = inject(MatBottomSheet);
   private windowHeight: number = window.innerHeight || document.documentElement.clientHeight;
   private scrollY: number = window.scrollY;
+  private transitionComplete: boolean = false;
 
   public openBottomSheet() { this._bottomSheet.open(BottomsheetComponent); }
   public getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
   private setMobileNav(htmlElement: HTMLElement) { this.mobileNav = htmlElement; }
+  private setTransitionComplete(newValue: boolean) { this.transitionComplete = newValue; }
+
+  private _scale(complete: boolean, scaleValue: number) {  // used underscore to avoid namespacing clash with the css function
+    if (this.mobileNav !== null) {
+      this.mobileNav.style.scale = scaleValue.toString();
+      this.mobileNav.style.transition = '1s';
+      this.setTransitionComplete(!complete)
+    }
+  }
+
+  private changeColor(complete: boolean, colorCode: string) {
+    if (this.mobileNav !== null) {
+      this.mobileNav.style.color = colorCode;
+      this.mobileNav.style.transition = '1s';
+      this.setTransitionComplete(!complete)
+    }
+  }
   
   ngAfterViewInit() {
     if (this.getUserIsOnMobile()) {
       this.setMobileNav(this.mobileNavRef.nativeElement.querySelector("#mobile-nav") as HTMLElement);
       window.addEventListener('load', () => this.trackToScrollYPosition());
       window.addEventListener('scroll', () => this.trackToScrollYPosition());
+      this.animate();
     } else {
       console.log(`AppComponent initialization summary:\ngetUserIsOnMobile: ${this.getUserIsOnMobile()}`);
     }
@@ -50,5 +69,17 @@ export class TrackerComponent implements AfterViewInit {
     } else {
       console.log(`AppComponent initialization summary (ERROR):\nmobile nav null check: ${this.mobileNav === null}\nscrollY: ${this.scrollY}\nwindowInnerHeight: ${this.windowHeight}`)
     }
+  }
+
+  private animate() {
+    setInterval(() => {
+      if (this.transitionComplete) {
+        this._scale(true, 1.3);
+        this.changeColor(true, '#219d51');
+      } else {
+        this._scale(false, 2);
+        this.changeColor(false, 'orange');
+      }
+    }, 1000)
   }
 }
