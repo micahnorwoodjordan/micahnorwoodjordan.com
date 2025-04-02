@@ -1,5 +1,5 @@
 .about-me-header { font-size: xx-large; transform: scale(1.4);  font-weight: 200; color: white; }
-.about-me-header-mobile { font-size: x-large; transform: scale(1.4);  font-weight: 200; color: white; }
+.about-me-header-mobile { font-size: xx-large;  font-weight: 200; color: white; }
 
 .about-me-subheader { font-size: xx-large; transform: scale(1);  font-weight: 200; color: white; }
 .about-me-subheader-mobile { font-size: x-large; transform: scale(1);  font-weight: 200; color: white; }
@@ -33,3 +33,5 @@
 .contact-me-form { text-align: center; }
 
 .chipset { color: white; }
+
+.about-me-section-mobile { width: 87vw; }
