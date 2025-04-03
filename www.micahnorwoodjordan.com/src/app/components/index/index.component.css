@@ -12,11 +12,26 @@
 .content { font-size: xx-large; font-weight: 250; color: white; }
 .content-mobile { font-size: x-large; font-weight: 100; color: white; }
 
-.learn-more-button { height: 10vh; width: 15vw; font-size: 20px; font-weight: 200; }
+.learn-more-button { height: 12vh; width: 11vw; font-size: 20px; font-weight: 200; }
 .learn-more-button-mobile { height: 11vh; width: 45vw; font-size: 20px; font-weight: 200; }
 
-.extra-buttons { height: 6vh; width: 9vw; font-size: 17px; font-weight: 200; }
-.extra-buttons-mobile { height: 11vh; width: 45vw; font-size: 17px; font-weight: 200; }
+/* https://stackoverflow.com/questions/11078509/how-to-increase-the-clickable-area-of-a-a-tag-button */
+.learn-more-button-a-tag-text {
+    text-decoration: none !important;
+    color: white;
+    font-weight: 200;
+    z-index: 1;
+    padding: 2.4em;
+    margin: -2.4em;
+}
+.learn-more-button-a-tag-text-mobile {
+    text-decoration: none !important;
+    color: white;
+    font-weight: 200;
+    z-index: 1;
+    padding: 1.5em;
+    margin: -1.5em;
+}
 
 .image { width: 25vw; }
 .image-mobile { width: 90vw; }

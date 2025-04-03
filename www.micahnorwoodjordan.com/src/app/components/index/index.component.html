@@ -15,7 +15,9 @@
         <p class="subtitle">(Also, if you couldn't tell, his favorite color is green)</p>
         <br>
         <br>
-        <button class="learn-more-button" mat-flat-button (click)="navigateToURL(getMyAboutPageURL())">LEARN MORE</button>
+        <button class="learn-more-button" mat-flat-button>
+            <a class="learn-more-button-a-tag-text" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">LEARN MORE</a>
+        </button>
     </div>
 </div>
 
@@ -27,6 +29,8 @@
         <br>
         <br>
         <br>
-        <button class="learn-more-button-mobile" mat-flat-button (click)="navigateToURL(getMyAboutPageURL())">LEARN MORE</button>
+        <button class="learn-more-button-mobile" mat-flat-button>
+            <a class="learn-more-button-a-tag-text-mobile" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">LEARN MORE</a>
+        </button>
     </div>
 </div>
