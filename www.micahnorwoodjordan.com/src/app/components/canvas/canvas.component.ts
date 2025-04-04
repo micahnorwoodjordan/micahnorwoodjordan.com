@@ -37,7 +37,17 @@ export class CanvasComponent implements OnInit {
   ngOnInit() {
     this.setUserOnMobile(this.contextService.userIsOnMobile);
     this.setCanvas(document.getElementById('matrixCanvas') as HTMLCanvasElement);
-    this.setMobileDesktopValueMapping(this.getNewMobileDesktopValueMapping());
+
+    this.setMobileDesktopValueMapping(
+      {
+        canvasContextFontSizeScaleCoefficient: this.userOnMobile ? 1.21 : 1.18,
+        fontSize: this.userOnMobile ? this.fontSizeMobile : this.fontSizeDesktop,
+        fontString: this.userOnMobile ? this.fontSizeMobile + this.fontName : this.fontSizeDesktop + this.fontName,
+        yCoordinateDrawCoefficient: this.userOnMobile ? 1.5 : 1,  // distance between any 2 letters within a "raindrop"
+        columnSpreadCoefficient: this.userOnMobile ? this.fontSizeMobile : this.fontSizeDesktop,  // distance between any 2 "raindrops"
+        drawFrequencyCoefficient: this.userOnMobile ? 0.975 : 0.985  // how often the "raindrops" fall
+      }
+    );
 
     if (this.canvas !== null) {
       this.canvasContext = this.canvas.getContext('2d');
@@ -47,45 +57,16 @@ export class CanvasComponent implements OnInit {
       this.setColumns(Math.floor(this.canvas.width / this.mobileDesktopValueMapping.columnSpreadCoefficient));
       this.setColumnPositions(Array(this.columns).fill(1));
       this.animateMatrix();
-      this.drawNewMatrixAnimation();
+      this.changeMatrixColor();
     }
   }
 
-  private getRandomFloatBetweenBounds(upperBound: number, lowerBound: number) {
-    let newRandomFloat: number = Math.random();
-
-    while (newRandomFloat !>= lowerBound || newRandomFloat !<=upperBound) {
-      newRandomFloat = Math.random();
-    }
-    return newRandomFloat;
-  }
-
-  private drawNewMatrixAnimation() {
+  private changeMatrixColor() {
     setInterval(() => {
       if (this.canvasContext !== null) {
         Math.round(Math.random()) === 1 ? this.setMatrixColor('#219d51') : this.setMatrixColor('orange');
-        this.setMobileDesktopValueMapping(this.getNewMobileDesktopValueMapping());
       }
     }, this.matrixColorChangeFrequencyMillis)
-  }
-
-  private getNewMobileDesktopValueMapping(): any {
-    // THIS METHOD ONLY PRODUCES NEW MATRIX DRAW COEFFIECIENTS
-    // FONT SIZE AND FONT STRINGS REMAIN THE SAME
-    return {
-      canvasContextFontSizeScaleCoefficient: this.getRandomFloatBetweenBounds(0.05, 0.99) + 1,
-      fontSize: this.userOnMobile ? this.fontSizeMobile : this.fontSizeDesktop,
-      fontString: this.userOnMobile ? this.fontSizeMobile + this.fontName : this.fontSizeDesktop + this.fontName,
-
-      // distance between any 2 letters within a "raindrop"
-      yCoordinateDrawCoefficient: this.userOnMobile ? this.getRandomFloatBetweenBounds(0.3, 0.999) : this.getRandomFloatBetweenBounds(0.3, 0.999),
-
-      // distance between any 2 "raindrops"
-      columnSpreadCoefficient: this.userOnMobile ? this.fontSizeMobile : this.fontSizeDesktop,
-
-      // // how often the "raindrops" fall
-      drawFrequencyCoefficient: this.userOnMobile ? this.getRandomFloatBetweenBounds(0.990, 0.995) : this.getRandomFloatBetweenBounds(0.975, 0.995)
-    }
   }
 
   private setCanvasFillStyle(newFillStyle: string) {
