@@ -17,7 +17,7 @@
 }
 .location-card-mobile {
     height: 25vh;
-    width: 90vw;
+    width: 80vw;
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
@@ -33,7 +33,7 @@
 }
 .contact-card-mobile {
     height: 30vh;
-    width: 90vw;
+    width: 80vw;
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
@@ -50,7 +50,7 @@
 }
 .joshua-card-mobile {
     height: 30vh;
-    width: 90vw;
+    width: 80vw;
     color: white;
     border-radius: 30px;
     font-family: 'DinaRemaster', 'Roboto', sans-serif;
@@ -58,3 +58,5 @@
 }
 .title { font-size: xx-large; }
 .subtitle { font-size: large; }
+
+.card-div-mobile { width: 85vw; }

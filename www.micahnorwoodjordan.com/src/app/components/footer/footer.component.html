@@ -32,35 +32,37 @@
     </div>
 </div>
 
-<div *ngIf="getUserIsOnMobile()" class="pd-left-2 pd-top-10" fxLayout="column" fxLayoutAlign="space-between start">
-    <div class="pd-top-5">
-        <mat-card class="joshua-card-mobile" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly center" fxFlex="90vw">
-            <mat-card-header>
-                <mat-card-title class="joshua-reference-mobile pd-bottom-2">Joshua 1:9</mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="joshu-verse-mobile">
-                <a href="https://www.bible.com/bible/114/JOS.1.NKJV" target="_blank">{{joshuaVerse}}</a>
-            </mat-card-content>
-        </mat-card>
-    </div>
-
-    <div class="pd-top-10">
-        <mat-card class="location-card-mobile" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly center">
-            <mat-card-header>
-              <mat-card-title class="title pd-bottom-2">Location</mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="subtitle">Phoenix, AZ, 85027</mat-card-content>
-        </mat-card>
-    </div>
-
-    <div class="pd-top-10">
-        <mat-card class="pd-left-2 contact-card-mobile" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly center">
-            <mat-card-header>
-              <mat-card-title class="title pd-bottom-2">Contact</mat-card-title>
-            </mat-card-header>
-            <mat-card-content class="subtitle"><a class="content" href="https://www.linkedin.com/in/micah-norwood777" target="_blank">LinkedIn</a></mat-card-content>
-            <mat-card-content class="subtitle">micahnorwoodjordan&#64;gmail.com</mat-card-content>
-            <mat-card-content class="subtitle">(602) 317-1807</mat-card-content>
-        </mat-card>
-    </div>
+<div *ngIf="getUserIsOnMobile()" fxLayout="column" fxLayoutAlign="center center">
+    <div class="card-div-mobile pd-top-5" fxLayout="column" fxLayoutAlign="center center">
+        <div class="pd-top-5">
+            <mat-card class="joshua-card-mobile" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly center">
+                <mat-card-header>
+                    <mat-card-title class="joshua-reference-mobile pd-bottom-2">Joshua 1:9</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="joshu-verse-mobile">
+                    <a href="https://www.bible.com/bible/114/JOS.1.NKJV" target="_blank">{{joshuaVerse}}</a>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    
+        <div class="pd-top-10">
+            <mat-card class="location-card-mobile" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly center">
+                <mat-card-header>
+                  <mat-card-title class="title pd-bottom-2">Location</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="subtitle">Phoenix, AZ, 85027</mat-card-content>
+            </mat-card>
+        </div>
+    
+        <div class="pd-top-10">
+            <mat-card class="pd-left-2 contact-card-mobile" appearance="outlined" fxLayout="column" fxLayoutAlign="space-evenly center">
+                <mat-card-header>
+                  <mat-card-title class="title pd-bottom-2">Contact</mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="subtitle"><a class="content" href="https://www.linkedin.com/in/micah-norwood777" target="_blank">LinkedIn</a></mat-card-content>
+                <mat-card-content class="subtitle">micahnorwoodjordan&#64;gmail.com</mat-card-content>
+                <mat-card-content class="subtitle">(602) 317-1807</mat-card-content>
+            </mat-card>
+        </div>
+    </div>    
 </div>

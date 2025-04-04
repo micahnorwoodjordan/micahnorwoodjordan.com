@@ -61,68 +61,77 @@
     </div>
 </div>
 
-<div *ngIf="getUserIsOnMobile()">
-    <div class="pd-left-5" fxLayout="column" fxFlex="90vw" fxLayoutAlign="center center">
-        <span class="about-me-header-mobile pd-top-5 pd-bottom-5">Skills & Technologies</span>
-        <span class="about-me-subheader-mobile pd-bottom-2">Languages</span>
-        <mat-chip-set class="chipset pd-bottom-10 pd-left-5" aria-label="Fish selection">
-            <mat-chip>Python/Django</mat-chip>
-            <mat-chip>Javascript/HTML/CSS</mat-chip>
-            <mat-chip>Angular/TypeScript</mat-chip>
-            <mat-chip>C#</mat-chip>
-            <mat-chip>Java</mat-chip>
-        </mat-chip-set>
-        <span class="about-me-subheader-mobile pd-bottom-2">OS's/Platforms</span>
-        <mat-chip-set class="chipset pd-bottom-10 pd-left-5" aria-label="Fish selection">
-            <mat-chip>macOS 12.0+</mat-chip>
-            <mat-chip>Linux (Debian)</mat-chip>
-            <mat-chip>Windows Server (2018+)</mat-chip>
-        </mat-chip-set>
-        <span class="about-me-subheader-mobile pd-bottom-2">Cloud</span>
-        <mat-chip-set class="chipset pd-left-5 pd-bottom-2" aria-label="Fish selection">
-            <mat-chip>AWS</mat-chip>
-            <mat-chip>DigitalOcean</mat-chip>
-        </mat-chip-set>
-        <span class="about-me-header-mobile pd-top-10  pd-bottom-5">Areas of Expertise</span>
-        <mat-chip-set class="chipset pd-left-5" aria-label="Fish selection">
-            <mat-chip>OOP</mat-chip>
-            <mat-chip>CI/CD & DevOps</mat-chip>
-            <mat-chip>PaaS Platforms</mat-chip>
-            <mat-chip>IaC</mat-chip>
-            <mat-chip>SaaS</mat-chip>
-            <mat-chip>OOP</mat-chip>
-            <mat-chip>POA&M</mat-chip>
-            <mat-chip>REST API'S</mat-chip>
-            <mat-chip>Network Optimization</mat-chip>
-            <mat-chip>Security Control Validation</mat-chip>
-            <mat-chip>Test Automation</mat-chip>
-            <mat-chip>Containerization/Virtual Machines</mat-chip>
-            <mat-chip>Systems Administration</mat-chip>
-            <mat-chip>AWS Technologies</mat-chip>
-            <mat-chip>Cloud Architecture</mat-chip>
-            <mat-chip>Vulnerability Management</mat-chip>
-            <mat-chip>Database Design</mat-chip>
-        </mat-chip-set>
-
-        <p class="content pd-top-5">
-            Maybe you need an API built -- done. Do you need it deployed to a cloud compute instance? Consider it handled.
-            Perhaps you need to configure a firewall for your business -- check.
-            What if a rogue process is consuming RAM and CPU in your system? I'll find it.
-            Application services need to be containerized? Easy peasy.
-            In need of synchronous and asynchronous data processing queues? No worries.
-        </p>
-        <p class="content pd-top-2">
-            And this is just the tip of the iceberg.
-        </p>
-        <p class="content pd-top-2 pd-bottom-10">
-            I have 5 years' experience in building and testing secure and performant distributed SaaS applications, while maintaining legacy systems to serve millions of daily users worldwide.
-            Throughout my career, I've tackled a laundry list of technical challenges, and have honed my skills in developing robust backend systems that enhance user experiences. My calculated approach to translating customer needs into software results in satisfied customers.
-            Independently motivated, but customer-focused, I thrive on building complex, fault-tolerant systems.
-        </p>
+<div *ngIf="getUserIsOnMobile()" class="about-me-section-mobile pd-left-2 pd-top-10" fxLayout="column" fxLayoutAlign="space-evenly center">
+    <div>
+        <div class="pd-left-5">
+            <span class="about-me-header-mobile pd-top-5">Skills & Technologies</span>
+            <br>
+            <br>
+            <br>
+            <span class="about-me-subheader-mobile pd-bottom-2">Languages</span>
+            <mat-chip-set class="chipset pd-bottom-10 pd-left-5" aria-label="Fish selection">
+                <mat-chip>Python/Django</mat-chip>
+                <mat-chip>Javascript/HTML/CSS</mat-chip>
+                <mat-chip>Angular/TypeScript</mat-chip>
+                <mat-chip>C#</mat-chip>
+                <mat-chip>Java</mat-chip>
+            </mat-chip-set>
+            <span class="about-me-subheader-mobile pd-bottom-2">OS's/Platforms</span>
+            <mat-chip-set class="chipset pd-bottom-10 pd-left-5" aria-label="Fish selection">
+                <mat-chip>macOS 12.0+</mat-chip>
+                <mat-chip>Linux (Debian)</mat-chip>
+                <mat-chip>Windows Server (2018+)</mat-chip>
+            </mat-chip-set>
+            <span class="about-me-subheader-mobile pd-bottom-2">Cloud</span>
+            <mat-chip-set class="chipset pd-left-5 pd-bottom-2" aria-label="Fish selection">
+                <mat-chip>AWS</mat-chip>
+                <mat-chip>DigitalOcean</mat-chip>
+            </mat-chip-set>
+            <br>
+            <br>
+            <br>
+            <span class="about-me-header-mobile pd-bottom-5">Areas of Expertise</span>
+            <mat-chip-set class="chipset pd-left-5" aria-label="Fish selection">
+                <mat-chip>OOP</mat-chip>
+                <mat-chip>CI/CD & DevOps</mat-chip>
+                <mat-chip>PaaS Platforms</mat-chip>
+                <mat-chip>IaC</mat-chip>
+                <mat-chip>SaaS</mat-chip>
+                <mat-chip>OOP</mat-chip>
+                <mat-chip>POA&M</mat-chip>
+                <mat-chip>REST API'S</mat-chip>
+                <mat-chip>Network Optimization</mat-chip>
+                <mat-chip>Security Control Validation</mat-chip>
+                <mat-chip>Test Automation</mat-chip>
+                <mat-chip>Containerization/Virtual Machines</mat-chip>
+                <mat-chip>Systems Administration</mat-chip>
+                <mat-chip>AWS Technologies</mat-chip>
+                <mat-chip>Cloud Architecture</mat-chip>
+                <mat-chip>Vulnerability Management</mat-chip>
+                <mat-chip>Database Design</mat-chip>
+            </mat-chip-set>
+    
+            <p class="content pd-top-5">
+                Maybe you need an API built -- done. Do you need it deployed to a cloud compute instance? Consider it handled.
+                Perhaps you need to configure a firewall for your business -- check.
+                What if a rogue process is consuming RAM and CPU in your system? I'll find it.
+                Application services need to be containerized? Easy peasy.
+                In need of synchronous and asynchronous data processing queues? No worries.
+            </p>
+            <p class="content pd-top-2">
+                And this is just the tip of the iceberg.
+            </p>
+            <p class="content pd-top-2 pd-bottom-10">
+                I have 5 years' experience in building and testing secure and performant distributed SaaS applications, while maintaining legacy systems to serve millions of daily users worldwide.
+                Throughout my career, I've tackled a laundry list of technical challenges, and have honed my skills in developing robust backend systems that enhance user experiences. My calculated approach to translating customer needs into software results in satisfied customers.
+                Independently motivated, but customer-focused, I thrive on building complex, fault-tolerant systems.
+            </p>
+        </div>
     </div>
 </div>
 
-<div class="pd-left-2">
+
+<div class="pd-left-2" fxLayout="row" fxLayoutAlign="center center">
     <div *ngIf="!getUserIsOnMobile()" class="contact-me-section pd-top-2" fxLayout="row" fxLayoutAlign="center center">
         <div class="" fxLayout="column" fxFill fxFlex>
             <div class="pd-left-5">
@@ -178,60 +187,52 @@
     </div>
 </div>
 
-<div class="pd-left-2">
-    <div *ngIf="getUserIsOnMobile()" class="contact-me-section-mobile" fxLayout="column" fxLayoutAlign="center center">
-        <div fxLayout="column">
-            <div class="contact-me-form" fxLayout="column">
-                <p class="contact-me-header-mobile">Contact Me</p>
-                <p class="content contact-me-content pd-left-5 pd-right-5">
-                    If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
-                </p>
-                <br>
-                <p class="content contact-me-content pd-left-5 pd-right-5">
-                    <u>micahnorwoodjordan&#64;gmail.com</u>
-                </p>
-                <p class="content contact-me-content pd-left-5 pd-right-5">
-                    (602) 317-1807
-                </p>
-            </div>
-            <div class="contact-me-form" fxLayout="column">
-                <div>
-                    <mat-form-field class="name-field-mobile">
-                        <mat-label>First Name</mat-label>
-                        <input matInput [formControl]="firstName" placeholder="Ex. John" value="">
-                        <mat-error *ngIf="form.get('firstName')?.hasError('required')">First Name is required</mat-error>
-                    </mat-form-field>
-                
-                    <mat-form-field class="name-field-mobile">
-                        <mat-label>Last Name</mat-label>
-                        <input matInput [formControl]="lastName" placeholder="Ex. Doe" value="">
-                        <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required</mat-error>
-                    </mat-form-field>
+<div  *ngIf="getUserIsOnMobile()" fxLayout="row" fxLayoutAlign="center center">
+    <div class="contact-me-section-mobile" fxLayout="column" FxLayoutAlign="space-evenly center">
+        <div class="contact-me-form-mobile" fxLayout="column" fxLayoutAlign="center center">
+            <p class="contact-me-header-mobile">Contact Me</p>
+            <p class="content contact-me-content pd-left-5 pd-right-5">
+                If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
+            </p>
+            <br>
+            <p class="content contact-me-content pd-left-5 pd-right-5">
+                <u>micahnorwoodjordan&#64;gmail.com</u>
+            </p>
+            <p class="content contact-me-content pd-left-5 pd-right-5">(602) 317-1807</p>
+            <mat-form-field class="name-field-mobile">
+                <mat-label>First Name</mat-label>
+                <input matInput [formControl]="firstName" placeholder="Ex. John" value="">
+                <mat-error *ngIf="form.get('firstName')?.hasError('required')">First Name is required</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="name-field-mobile">
+                <mat-label>Last Name</mat-label>
+                <input matInput [formControl]="lastName" placeholder="Ex. Doe" value="">
+                <mat-error *ngIf="form.get('lastName')?.hasError('required')">Last Name is required</mat-error>
+            </mat-form-field>
     
-                    <div class="spinner-mobile">
-                        <mat-spinner *ngIf="isWaitingForAPIResponse"></mat-spinner>
-                    </div>
-    
-                    <mat-form-field class="email-field-mobile">
-                        <mat-label>Email</mat-label>
-                        <input matInput [formControl]="email" placeholder="youremailaddress@gmail.com" value="">
-                        <mat-error *ngIf="form.get('email')?.invalid">Invalid email format</mat-error>
-                        <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
-                    </mat-form-field>
-                
-                    <mat-form-field class="message-field-mobile">
-                        <mat-label>Message</mat-label>
-                        <textarea class="email-textarea" matInput [formControl]="message" placeholder="type your message here"></textarea>
-                        <mat-error *ngIf="form.get('message')?.hasError('required')">Message is required</mat-error>
-                        <mat-error *ngIf="form.get('message')?.hasError('min')">Message field cannot be empty</mat-error>
-                        <mat-error *ngIf="form.get('message')?.hasError('max')">Message cannot exceed 120 characters</mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="pd-top-5">
-                    <button mat-flat-button class="submit-button-mobile" type="submit" (click)="onSubmit()">SEND</button>
-                </div>
-                <br><br><br>
+            <div class="spinner-mobile">
+                <mat-spinner *ngIf="isWaitingForAPIResponse"></mat-spinner>
             </div>
+    
+            <mat-form-field class="email-field-mobile">
+                <mat-label>Email</mat-label>
+                <input matInput [formControl]="email" placeholder="youremailaddress@gmail.com" value="">
+                <mat-error *ngIf="form.get('email')?.invalid">Invalid email format</mat-error>
+                <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
+            </mat-form-field>
+        
+            <mat-form-field class="message-field-mobile">
+                <mat-label>Message</mat-label>
+                <textarea class="email-textarea" matInput [formControl]="message" placeholder="type your message here"></textarea>
+                <mat-error *ngIf="form.get('message')?.hasError('required')">Message is required</mat-error>
+                <mat-error *ngIf="form.get('message')?.hasError('min')">Message field cannot be empty</mat-error>
+                <mat-error *ngIf="form.get('message')?.hasError('max')">Message cannot exceed 120 characters</mat-error>
+            </mat-form-field>
+        <div class="pd-top-5">
+            <button mat-flat-button class="submit-button-mobile" type="submit" (click)="onSubmit()">SEND</button>
         </div>
-    </div>    
+        <br><br><br>
+    </div>
+    
 </div>
