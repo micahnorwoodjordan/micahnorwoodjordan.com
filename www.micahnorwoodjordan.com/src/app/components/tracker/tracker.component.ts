@@ -29,7 +29,11 @@ export class TrackerComponent implements AfterViewInit {
   private scrollY: number = window.scrollY;
   private transitionComplete: boolean = false;
 
-  public openBottomSheet() { this._bottomSheet.open(BottomsheetComponent); }
+  public openBottomSheet() {
+    const bottomsheetRef = this._bottomSheet.open(BottomsheetComponent); this.toggleTrackerVisibility(true);
+    bottomsheetRef.afterDismissed().subscribe(() => this.toggleTrackerVisibility(false));
+  }
+
   public getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
   private setMobileNav(htmlElement: HTMLElement) { this.mobileNav = htmlElement; }
   private setTransitionComplete(newValue: boolean) { this.transitionComplete = newValue; }
@@ -47,7 +51,15 @@ export class TrackerComponent implements AfterViewInit {
       this.mobileNav.style.transition = '1s';
     }
   }
-  
+
+  private toggleTrackerVisibility(isVisible: boolean) {
+    // NOTE: truthfully, the tracker translates updward (and i cant figure out why) when the bottomsheet is fired
+    // hiding it is both avoids the visual issue while also creating a more graceful experience for user
+    if (this.mobileNav !== null) {
+      isVisible ? this.mobileNav.style.opacity = '0' : this.mobileNav.style.opacity = '100';
+    }
+  }
+
   ngAfterViewInit() {
     if (this.getUserIsOnMobile()) {
       this.setMobileNav(this.mobileNavRef.nativeElement.querySelector("#mobile-nav") as HTMLElement);
