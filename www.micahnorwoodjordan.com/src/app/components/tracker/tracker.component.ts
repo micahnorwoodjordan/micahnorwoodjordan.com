@@ -42,6 +42,8 @@ export class TrackerComponent implements AfterViewInit {
     if (this.mobileNav !== null) {
       this.mobileNav.style.scale = scaleValue.toString();
       this.mobileNav.style.transition = '1s';
+    } else {
+      console.log('TrackerComponent._scale: mobileNav is NULL');
     }
   }
 
@@ -49,6 +51,8 @@ export class TrackerComponent implements AfterViewInit {
     if (this.mobileNav !== null) {
       this.mobileNav.style.color = colorCode;
       this.mobileNav.style.transition = '1s';
+    } else {
+      console.log('TrackerComponent.changeColor: mobileNav is NULL');
     }
   }
 
@@ -57,6 +61,8 @@ export class TrackerComponent implements AfterViewInit {
     // hiding it is both avoids the visual issue while also creating a more graceful experience for user
     if (this.mobileNav !== null) {
       isVisible ? this.mobileNav.style.opacity = '0' : this.mobileNav.style.opacity = '100';
+    } else {
+      console.log('TrackerComponent.toggleTrackerVisibility: mobileNav is NULL');
     }
   }
 
@@ -72,12 +78,14 @@ export class TrackerComponent implements AfterViewInit {
   }
 
   private trackToScrollYPosition() {
-    if (this.mobileNav !== null && this.scrollY !== null && this.windowHeight !== null) {
-      let newPosition = window.scrollY + (this.windowHeight / 1.75);  // not sure what to name this raw decimal
-      this.mobileNav.style.transition = 'top 0.5s ease-out 0.05s';
-      this.mobileNav.style.top = `${newPosition}px`;
+    if (this.mobileNav !== null) {
+      if (this.scrollY !== null && this.windowHeight !== null) {
+        let newPosition = window.scrollY + (this.windowHeight / 1.75);  // not sure what to name this raw decimal
+        this.mobileNav.style.transition = 'top 0.5s ease-out 0.05s';
+        this.mobileNav.style.top = `${newPosition}px`;
+      }
     } else {
-      console.log(`AppComponent initialization summary (ERROR):\nmobile nav null check: ${this.mobileNav === null}\nscrollY: ${this.scrollY}\nwindowInnerHeight: ${this.windowHeight}`)
+      console.log('TrackerComponent.trackToScrollYPosition: mobileNav is NULL');
     }
   }
 
