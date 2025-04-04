@@ -38,7 +38,6 @@ export class TrackerComponent implements AfterViewInit {
     if (this.mobileNav !== null) {
       this.mobileNav.style.scale = scaleValue.toString();
       this.mobileNav.style.transition = '1s';
-      this.setTransitionComplete(!complete)
     }
   }
 
@@ -46,7 +45,6 @@ export class TrackerComponent implements AfterViewInit {
     if (this.mobileNav !== null) {
       this.mobileNav.style.color = colorCode;
       this.mobileNav.style.transition = '1s';
-      this.setTransitionComplete(!complete)
     }
   }
   
@@ -63,7 +61,7 @@ export class TrackerComponent implements AfterViewInit {
 
   private trackToScrollYPosition() {
     if (this.mobileNav !== null && this.scrollY !== null && this.windowHeight !== null) {
-      let newPosition = window.scrollY + (this.windowHeight / 1.5);  // not sure what to name this raw decimal
+      let newPosition = window.scrollY + (this.windowHeight / 1.75);  // not sure what to name this raw decimal
       this.mobileNav.style.transition = 'top 0.5s ease-out 0.05s';
       this.mobileNav.style.top = `${newPosition}px`;
     } else {
@@ -73,13 +71,9 @@ export class TrackerComponent implements AfterViewInit {
 
   private animate() {
     setInterval(() => {
-      if (this.transitionComplete) {
-        this._scale(true, 1.3);
-        this.changeColor(true, '#219d51');
-      } else {
-        this._scale(false, 2);
-        this.changeColor(false, 'orange');
-      }
+      this.changeColor(this.transitionComplete, Math.round(Math.random()) === 1 ? '#219d51' : 'orange');
+      this._scale(this.transitionComplete, this.transitionComplete ? 1.3 : 2);
+      this.setTransitionComplete(!this.transitionComplete)
     }, 1000)
   }
 }
