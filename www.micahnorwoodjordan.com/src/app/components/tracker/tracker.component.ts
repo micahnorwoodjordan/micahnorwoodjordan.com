@@ -21,9 +21,9 @@ import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
   styleUrl: './tracker.component.css'
 })
 export class TrackerComponent implements AfterViewInit {
-  constructor(private contextService: ContextService, private mobileNavRef: ElementRef) { }
+  constructor(private contextService: ContextService, private trackerElementRef: ElementRef) { }
 
-  public mobileNav: HTMLElement | null = null;
+  public trackerElement: HTMLElement | null = null;
   private _bottomSheet = inject(MatBottomSheet);
   private windowHeight: number = window.innerHeight || document.documentElement.clientHeight;
   private scrollY: number = window.scrollY;
@@ -35,40 +35,40 @@ export class TrackerComponent implements AfterViewInit {
   }
 
   public getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
-  private setMobileNav(htmlElement: HTMLElement) { this.mobileNav = htmlElement; }
+  private setTrackerElement(htmlElement: HTMLElement) { this.trackerElement = htmlElement; }
   private setTransitionComplete(newValue: boolean) { this.transitionComplete = newValue; }
 
   private _scale(complete: boolean, scaleValue: number) {  // used underscore to avoid namespacing clash with the css function
-    if (this.mobileNav !== null) {
-      this.mobileNav.style.scale = scaleValue.toString();
-      this.mobileNav.style.transition = '1s';
+    if (this.trackerElement !== null) {
+      this.trackerElement.style.scale = scaleValue.toString();
+      this.trackerElement.style.transition = '1s';
     } else {
-      console.log('TrackerComponent._scale: mobileNav is NULL');
+      console.log('TrackerComponent._scale: trackerElement is NULL');
     }
   }
 
   private changeColor(complete: boolean, colorCode: string) {
-    if (this.mobileNav !== null) {
-      this.mobileNav.style.color = colorCode;
-      this.mobileNav.style.transition = '1s';
+    if (this.trackerElement !== null) {
+      this.trackerElement.style.color = colorCode;
+      this.trackerElement.style.transition = '1s';
     } else {
-      console.log('TrackerComponent.changeColor: mobileNav is NULL');
+      console.log('TrackerComponent.changeColor: trackerElement is NULL');
     }
   }
 
   private toggleTrackerVisibility(isVisible: boolean) {
     // NOTE: truthfully, the tracker translates updward (and i cant figure out why) when the bottomsheet is fired
     // hiding it is both avoids the visual issue while also creating a more graceful experience for user
-    if (this.mobileNav !== null) {
-      isVisible ? this.mobileNav.style.opacity = '0' : this.mobileNav.style.opacity = '100';
+    if (this.trackerElement !== null) {
+      isVisible ? this.trackerElement.style.opacity = '0' : this.trackerElement.style.opacity = '100';
     } else {
-      console.log('TrackerComponent.toggleTrackerVisibility: mobileNav is NULL');
+      console.log('TrackerComponent.toggleTrackerVisibility: trackerElement is NULL');
     }
   }
 
   ngAfterViewInit() {
     if (this.getUserIsOnMobile()) {
-      this.setMobileNav(this.mobileNavRef.nativeElement.querySelector("#mobile-nav") as HTMLElement);
+      this.setTrackerElement(this.trackerElementRef.nativeElement.querySelector("#mobile-nav") as HTMLElement);
       window.addEventListener('load', () => this.trackToScrollYPosition());
       window.addEventListener('scroll', () => this.trackToScrollYPosition());
       this.animate();
@@ -78,14 +78,14 @@ export class TrackerComponent implements AfterViewInit {
   }
 
   private trackToScrollYPosition() {
-    if (this.mobileNav !== null) {
+    if (this.trackerElement !== null) {
       if (this.scrollY !== null && this.windowHeight !== null) {
         let newPosition = window.scrollY + (this.windowHeight / 1.75);  // not sure what to name this raw decimal
-        this.mobileNav.style.transition = 'top 0.5s ease-out 0.05s';
-        this.mobileNav.style.top = `${newPosition}px`;
+        this.trackerElement.style.transition = 'top 0.5s ease-out 0.05s';
+        this.trackerElement.style.top = `${newPosition}px`;
       }
     } else {
-      console.log('TrackerComponent.trackToScrollYPosition: mobileNav is NULL');
+      console.log('TrackerComponent.trackToScrollYPosition: trackerElement is NULL');
     }
   }
 
