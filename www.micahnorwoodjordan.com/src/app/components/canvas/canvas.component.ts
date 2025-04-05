@@ -65,8 +65,29 @@ export class CanvasComponent implements OnInit {
       if (this.canvasContext !== null) {
         Math.round(Math.random()) === 1 ? this.setMatrixColor('#219d51') : this.setMatrixColor('orange');
         this.setMobileDesktopValueMapping(this.getNewMobileDesktopValueMapping());
+        this.handleCanvasDrawAntialiasing();
       }
     }, this.matrixColorChangeFrequencyMillis)
+  }
+
+  private handleCanvasDrawAntialiasing() {
+    // NOTE: i have not taken the time to think through this code, but Google GPT suggested to manually sanitize each canvas pixel
+    if (this.canvas && this.canvasContext) {
+      const imageData = this.canvasContext.getImageData(0, 0, this.canvas.width, this.canvas.height);
+      const data = imageData.data;
+  
+      for (let i = 0; i < data.length; i += 4) {
+        // Example: Thresholding to remove antialiasing
+        const brightness = (data[i] + data[i + 1] + data[i + 2]) / 3;
+        const threshold = 128; // Adjust as needed
+        const value = brightness < threshold ? 0 : 255;
+        data[i] = value;     // Red
+        data[i + 1] = value; // Green
+        data[i + 2] = value; // Blue
+        // data[i + 3] remains unchanged (alpha)
+      }
+      this.canvasContext.putImageData(imageData, 0, 0);
+    }
   }
 
   private getNewMobileDesktopValueMapping(): any {
