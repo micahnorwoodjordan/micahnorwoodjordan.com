@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../environments/production';
 import { EmailMessage } from '../interfaces/EmailMessage';
+import { Project } from '../interfaces/Project';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +26,10 @@ export class ApiService {
         observe: 'events'
       }
     );
+  }
+
+  getAllProjects(): Observable<Project[]> {
+    let url = `${environment.apiUrl}/projects`;
+    return this.client.get<Project[]>(url);
   }
 }

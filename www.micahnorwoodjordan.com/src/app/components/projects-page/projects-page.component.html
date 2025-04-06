@@ -6,40 +6,17 @@
     <div *ngIf="getUserIsOnMobile()" class="pd-bottom-5">
         <span class="heading-mobile">Links/Projects</span>
     </div>
-    <app-project-card
-        projectName="Github"
-        imageURL="https://static.micahnorwoodjordan.com/github.png"
-        bodyText="My humble Github profile. Only a few repos are public so far -- that of this very website, my music website, and a simple web server I built purely in Java, ya know, just because."
-        projectSubtitle="my public repos"
-        projectURL="https://github.com/micahnorwoodjordan"
-        [userIsOnMobile]="getUserIsOnMobile()"
-    >
-    </app-project-card>
-    <app-project-card
-        projectName="getmybeats.com"
-        imageURL="https://static.micahnorwoodjordan.com/getmybeats.png"
-        bodyText="Listen to some of my music! To accommodate my growing fanbase, I've built this web application so that anyone and everyone has access to my music at all times."
-        projectSubtitle="my music"
-        projectURL="https://getmybeats.com"
-        [userIsOnMobile]="getUserIsOnMobile()"
-    >
-    </app-project-card>
-    <app-project-card
-        projectName="micahnorwoodjordan.com"
-        imageURL="https://static.micahnorwoodjordan.com/me-sitting.png"
-        bodyText="Check out my Gihub repo containing the source code for this very site."
-        projectSubtitle="my portfolio"
-        projectURL="https://github.com/micahnorwoodjordan/micahnorwoodjordan.com"
-        [userIsOnMobile]="getUserIsOnMobile()"
-    >
-    </app-project-card>
-    <app-project-card
-        projectName="Linkedin"
-        imageURL="https://static.micahnorwoodjordan.com/linkedin.png"
-        bodyText="Feel free to connect with me on Linkedin!"
-        projectSubtitle="my Linkedin account"
-        projectURL="https://github.com/micahnorwoodjordan/micahnorwoodjordan.com"
-        [userIsOnMobile]="getUserIsOnMobile()"
-    >
-    </app-project-card>
+    <div fxLayout="column" fxLayoutAlign="center center">
+        <ng-template ngFor [ngForOf]="projects$ | async" let-project let-i="index">
+            <app-project-card
+                projectName="{{project.title}}"
+                imageURL="{{project.imageUrl}}"
+                bodyText="{{project.detail}}"
+                projectSubtitle="{{project.subtitle}}"
+                projectURL="{{project.projectUrl}}"
+                [userIsOnMobile]="getUserIsOnMobile()"
+            >
+            </app-project-card>
+        </ng-template>
+    </div>
 </div>
