@@ -14,14 +14,16 @@ public class Project {
     private String title;
     private String subtitle;
     private String imageUrl;
+    private String projectUrl;
     private String detail;
 
     protected Project() {}
 
-    public Project(String title, String subtitle, String imageUrl, String detail) {
+    public Project(String title, String subtitle, String imageUrl, String projectUrl, String detail) {
         this.title = title;
         this.subtitle = subtitle;
         this.imageUrl = imageUrl;
+        this.projectUrl = projectUrl;
         this.detail = detail;
     }
 
@@ -44,6 +46,10 @@ public class Project {
 
     public String getImageUrl() {
       return imageUrl;
+    }
+
+    public String getProjectUrl() {
+      return projectUrl;
     }
 
     public String getDetail() {
