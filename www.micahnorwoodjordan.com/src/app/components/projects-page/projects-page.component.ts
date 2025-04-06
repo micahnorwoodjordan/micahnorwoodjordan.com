@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { NgIf, NgFor, AsyncPipe } from '@angular/common';
-import { of } from 'rxjs';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { environment } from '../../../environments/production';
 import { ProjectCardComponent } from '../project-card/project-card.component';
 import { ContextService } from '../../services/context.service';
 
