@@ -14,15 +14,15 @@ public class Project {
     private String title;
     private String subtitle;
     private String imageUrl;
-    private String description;
+    private String detail;
 
     protected Project() {}
 
-    public Project(String title, String subtitle, String imageUrl, String description) {
+    public Project(String title, String subtitle, String imageUrl, String detail) {
         this.title = title;
         this.subtitle = subtitle;
         this.imageUrl = imageUrl;
-        this.description = description;
+        this.detail = detail;
     }
 
     @Override
@@ -31,22 +31,22 @@ public class Project {
     }
 
     public Long getId() {
-        return id;
-      }
+      return id;
+    }
     
-      public String getTitle() {
-        return title;
-      }
+    public String getTitle() {
+      return title;
+    }
 
-      public String getSubtitle() {
-        return subtitle;
-      }
+    public String getSubtitle() {
+      return subtitle;
+    }
 
-      public String getImageUrl() {
-        return imageUrl;
-      }
+    public String getImageUrl() {
+      return imageUrl;
+    }
 
-      public String description() {
-        return description;
-      }
+    public String getDetail() {
+      return detail;
+    }
 }

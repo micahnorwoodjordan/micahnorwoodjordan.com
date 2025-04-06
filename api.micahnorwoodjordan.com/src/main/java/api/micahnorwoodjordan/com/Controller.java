@@ -18,7 +18,7 @@ import api.micahnorwoodjordan.com.services.EmailMessageService;
 import api.micahnorwoodjordan.com.services.ProjectService;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200", "http://micahnorwoodjordan.com", "https://micahnorwoodjordan.com"})
+@CrossOrigin(origins = {"http://192.168.0.136:4200", "http://localhost:4200", "https://micahnorwoodjordan.com"})
 public class Controller {
 
     @Autowired
