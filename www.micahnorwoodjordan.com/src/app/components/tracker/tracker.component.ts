@@ -5,9 +5,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
-import { animate } from 'animejs';
-
 import { ContextService } from '../../services/context.service';
+import { AnimationService } from '../../services/animation.service';
 import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
 
 
@@ -23,7 +22,11 @@ import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
   styleUrl: './tracker.component.css'
 })
 export class TrackerComponent implements AfterViewInit {
-  constructor(private contextService: ContextService, private trackerElementRef: ElementRef) { }
+  constructor(
+    private readonly animationService: AnimationService,
+    private readonly  contextService: ContextService,
+    private readonly  trackerElementRef: ElementRef
+  ) { }
 
   private readonly _bottomSheet = inject(MatBottomSheet);
   private readonly windowHeight: number = window.innerHeight || document.documentElement.clientHeight;
@@ -33,43 +36,15 @@ export class TrackerComponent implements AfterViewInit {
   private $tracker: any = null;
 
   public openBottomSheet() {
-    const bottomsheetRef = this._bottomSheet.open(BottomsheetComponent); this.toggleTrackerVisibility(false);
-    bottomsheetRef.afterDismissed().subscribe(() => this.toggleTrackerVisibility(true));
+    const bottomsheetRef = this._bottomSheet.open(BottomsheetComponent);
+    this.animationService.changeElementOpacity(this.$tracker, 0, 250);
+    bottomsheetRef.afterDismissed().subscribe(() => this.animationService.changeElementOpacity(this.$tracker, 1, 1000));
   }
 
   public getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
   private setTransitionComplete(newValue: boolean) { this.transitionComplete = newValue; }
   private setTracker() { this.$tracker = this.trackerElementRef.nativeElement.querySelector(this.trackerSelector); }
 
-  private _scale(scaleValue: number) {  // used underscore to avoid namespacing clash with the css function
-    if (this.$tracker !== null) {
-      animate(this.$tracker, { scale: scaleValue, transition: "1s" })
-    } else {
-      console.log('TrackerComponent._scale: $tracker is NULL');
-    }
-  }
-
-  private changeColor(colorCode: string) {
-    if (this.$tracker !== null) {
-      animate(this.$tracker, { color: colorCode, transition: "1s" })
-    } else {
-      console.log('TrackerComponent.changeColor: $tracker is NULL');
-    }
-  }
-
-  private toggleTrackerVisibility(isVisible: boolean) {
-    // NOTE: truthfully, the tracker translates updward (and i cant figure out why) when the bottomsheet is fired
-    // hiding it is both avoids the visual issue while also creating a more graceful experience for user
-    if (this.$tracker !== null) {
-      if (isVisible) {
-        animate(this.$tracker, { opacity: 1, duration: 1000 });
-       } else {
-        animate(this.$tracker, { opacity: 0, duration: 250 });
-       }
-    } else {
-      console.log('TrackerComponent.toggleTrackerVisibility: $tracker is NULL');
-    }
-  }
 
   ngAfterViewInit() {
     if (this.getUserIsOnMobile()) {
@@ -88,16 +63,14 @@ export class TrackerComponent implements AfterViewInit {
     let newTopPosition: number = window.scrollY + (this.windowHeight / scrollYPositionCoefficient);
 
     if (readyToTransform) {
-      animate(this.$tracker, { top: newTopPosition, ease: 'out(0.5)' });
-    } else {
-      console.log('TrackerComponent.updateTrackerTopPosition: `$tracker` is NULL');
+      this.animationService.translateElementVertically(this.$tracker, newTopPosition);
     }
   }
 
   private animateTracker() {
     setInterval(() => {
-      this.changeColor(Math.round(Math.random()) === 1 ? '#219d51' : 'orange');
-      this._scale(this.transitionComplete ? 1.3 : 2);
+      this.animationService.changeElementColor(this.$tracker, Math.round(Math.random()) === 1 ? '#219d51' : 'orange');
+      this.animationService.scaleElement(this.$tracker, this.transitionComplete ? 1.3 : 2);
       this.setTransitionComplete(!this.transitionComplete);
     }, 1000)
   }
