@@ -28,20 +28,16 @@ export class TrackerComponent implements AfterViewInit {
   private readonly _bottomSheet = inject(MatBottomSheet);
   private readonly windowHeight: number = window.innerHeight || document.documentElement.clientHeight;
   private readonly trackerSelector: string = "#mobile-nav";
-  private scrollY: number = window.scrollY;
+  private readonly scrollY: number = window.scrollY;
   private transitionComplete: boolean = false;
   private $tracker: any = null;
 
-  public trackerElement: HTMLElement | null = null;
-  
-
   public openBottomSheet() {
-    const bottomsheetRef = this._bottomSheet.open(BottomsheetComponent); this.toggleTrackerVisibility(true);
-    bottomsheetRef.afterDismissed().subscribe(() => this.toggleTrackerVisibility(false));
+    const bottomsheetRef = this._bottomSheet.open(BottomsheetComponent); this.toggleTrackerVisibility(false);
+    bottomsheetRef.afterDismissed().subscribe(() => this.toggleTrackerVisibility(true));
   }
 
   public getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
-  private setTrackerElement(htmlElement: HTMLElement) { this.trackerElement = htmlElement; }
   private setTransitionComplete(newValue: boolean) { this.transitionComplete = newValue; }
   private setTracker() { this.$tracker = this.trackerElementRef.nativeElement.querySelector(this.trackerSelector); }
 
@@ -49,7 +45,7 @@ export class TrackerComponent implements AfterViewInit {
     if (this.$tracker !== null) {
       animate(this.$tracker, { scale: scaleValue, transition: "1s" })
     } else {
-      console.log('TrackerComponent._scale: trackerElement is NULL');
+      console.log('TrackerComponent._scale: $tracker is NULL');
     }
   }
 
@@ -57,24 +53,27 @@ export class TrackerComponent implements AfterViewInit {
     if (this.$tracker !== null) {
       animate(this.$tracker, { color: colorCode, transition: "1s" })
     } else {
-      console.log('TrackerComponent.changeColor: trackerElement is NULL');
+      console.log('TrackerComponent.changeColor: $tracker is NULL');
     }
   }
 
   private toggleTrackerVisibility(isVisible: boolean) {
     // NOTE: truthfully, the tracker translates updward (and i cant figure out why) when the bottomsheet is fired
     // hiding it is both avoids the visual issue while also creating a more graceful experience for user
-    if (this.trackerElement !== null) {
-      isVisible ? this.trackerElement.style.opacity = '0' : this.trackerElement.style.opacity = '100';
+    if (this.$tracker !== null) {
+      if (isVisible) {
+        animate(this.$tracker, { opacity: 1, duration: 1000 });
+       } else {
+        animate(this.$tracker, { opacity: 0, duration: 250 });
+       }
     } else {
-      console.log('TrackerComponent.toggleTrackerVisibility: trackerElement is NULL');
+      console.log('TrackerComponent.toggleTrackerVisibility: $tracker is NULL');
     }
   }
 
   ngAfterViewInit() {
     if (this.getUserIsOnMobile()) {
       this.setTracker();
-      this.setTrackerElement(this.trackerElementRef.nativeElement.querySelector("#mobile-nav") as HTMLElement);
       window.addEventListener('load', () => this.updateTrackerTopPosition());
       window.addEventListener('scroll', () => this.updateTrackerTopPosition());
       this.animate();
