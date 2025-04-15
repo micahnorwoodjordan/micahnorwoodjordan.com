@@ -34,8 +34,12 @@ export class AnimationService {
     }
   }
 
-  translateElementVertically(element: any, newTopPosition: number) {
-    if (element !== null) {
+  translateElementVertically(element: any, scrollY: number, windowHeight: number) {
+    let readyToTransform: boolean = element !== null && scrollY !== null && windowHeight !== null;
+    let scrollYPositionCoefficient: number = 1.75;
+    let newTopPosition: number = scrollY + (windowHeight / scrollYPositionCoefficient);
+
+    if (readyToTransform) {
       animate(element, { top: newTopPosition, ease: "out(0.5)" });
     } else {
       this.logNullElementMessageFromMethodCall("AnimationService.translateElementVertically");
@@ -49,5 +53,5 @@ export class AnimationService {
       this.logNullElementMessageFromMethodCall("AnimationService.changeElementOpacity");
     }
   }
-  
+
 }
