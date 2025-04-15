@@ -76,7 +76,7 @@ export class TrackerComponent implements AfterViewInit {
       this.setTracker();
       window.addEventListener('load', () => this.updateTrackerTopPosition());
       window.addEventListener('scroll', () => this.updateTrackerTopPosition());
-      this.animate();
+      this.animateTracker();
     } else {
       console.log(`AppComponent initialization summary:\ngetUserIsOnMobile: ${this.getUserIsOnMobile()}`);
     }
@@ -94,7 +94,7 @@ export class TrackerComponent implements AfterViewInit {
     }
   }
 
-  private animate() {
+  private animateTracker() {
     setInterval(() => {
       this.changeColor(Math.round(Math.random()) === 1 ? '#219d51' : 'orange');
       this._scale(this.transitionComplete ? 1.3 : 2);
