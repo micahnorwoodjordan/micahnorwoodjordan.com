@@ -10,48 +10,20 @@ export class AnimationService {
 
   constructor() { }
 
-  transitionDurationString: string = "1s";
+  readonly transitionDurationString: string = "1s";
+  readonly scrollYPositionCoefficient: number = 1.75;
+  readonly easeAnimationString: string = "in(0.7)";
+  readonly redrawIntervalMilliseconds: number = 1000;
 
-  logNullElementMessageFromMethodCall(methodName: string) { console.log(`${methodName}: target element is null`); }
+  private elementIsValid(element: any): boolean { return element !== null && element !== undefined; }
+  private logNullElementMessage(methodName: string) { console.log(`${methodName}: target element is null`); }
 
-  animateElement(element: any, parameters: any) {
-    animate(element, parameters)
-  }
-
-  changeElementColor(element: any, colorCode: string, transition: string = this.transitionDurationString) {
-    if (element !== null) {
-      animate(element, { color: colorCode, transition: transition });
+  // generic animation function to wrap the anime.js `animate` function and log change attempt
+  animateElement(element: any, parameters: any, animationDescription: string) {
+    if (this.elementIsValid(element)) {
+      animate(element, parameters);
     } else {
-      this.logNullElementMessageFromMethodCall("AnimationService.changeElementColor");
+      this.logNullElementMessage(animationDescription);
     }
   }
-
-  scaleElement(element: any, scaleCoefficient: number, transition: string = this.transitionDurationString) {
-    if (element !== null) {
-      animate(element, { scale: scaleCoefficient, transition: transition });
-    } else {
-      this.logNullElementMessageFromMethodCall("AnimationService.scaleElement");
-    }
-  }
-
-  translateElementVertically(element: any, scrollY: number, windowHeight: number) {
-    let readyToTransform: boolean = element !== null && scrollY !== null && windowHeight !== null;
-    let scrollYPositionCoefficient: number = 1.75;
-    let newTopPosition: number = scrollY + (windowHeight / scrollYPositionCoefficient);
-
-    if (readyToTransform) {
-      animate(element, { top: newTopPosition, ease: "out(0.5)" });
-    } else {
-      this.logNullElementMessageFromMethodCall("AnimationService.translateElementVertically");
-    }
-  }
-
-  changeElementOpacity(element: any, opacityValue: number, duration: number) {
-    if (element !== null) {
-      animate(element, { opacity: opacityValue, duration: duration });
-    } else {
-      this.logNullElementMessageFromMethodCall("AnimationService.changeElementOpacity");
-    }
-  }
-
 }
