@@ -31,7 +31,7 @@ export class TrackerComponent implements AfterViewInit {
   private readonly _bottomSheet = inject(MatBottomSheet);
   private readonly windowHeight: number = window.innerHeight || document.documentElement.clientHeight;
   private readonly trackerSelector: string = "#mobile-nav";
-  private readonly green: string = "#219d51";
+  private readonly green: string = "green";
   private readonly orange: string = "orange";
   private readonly trackerScalingCoefficientGrow: number = 2;
   private readonly trackerScalingCoefficientShrink: number = 1.3;
@@ -75,15 +75,11 @@ export class TrackerComponent implements AfterViewInit {
 
   private redrawTracker() {
     setInterval(() => {
-      let colorCodeChangePayload: any = {
-        color: Math.round(Math.random()) === 1 ? this.green : this.orange,
-        transition: this.animationService.transitionDurationString
-      }
       let scaleChangePayload: any = {
         scale: this.transitionComplete ? this.trackerScalingCoefficientShrink : this.trackerScalingCoefficientGrow,
         transition: this.animationService.transitionDurationString
       }
-      this.animationService.animateElement(this.$tracker, colorCodeChangePayload, "changing element color");
+      this.animationService.animateElement(this.$tracker, { color: Math.round(Math.random()) === 1 ? this.green : this.orange }, "changing element color");
       this.animationService.animateElement(this.$tracker, scaleChangePayload, "changing element scale");
       this.setTransitionComplete(!this.transitionComplete);
     }, this.animationService.redrawIntervalMilliseconds)
