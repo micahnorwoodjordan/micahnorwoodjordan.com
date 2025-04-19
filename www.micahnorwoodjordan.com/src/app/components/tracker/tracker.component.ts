@@ -40,12 +40,16 @@ export class TrackerComponent implements AfterViewInit {
   private $tracker: any = null;
 
   public openBottomSheet() {
+    this.updateTrackerPosition();
     const bottomsheetRef = this._bottomSheet.open(BottomsheetComponent);
-    let opacityChangePayloadHide: any = { opacity: 0, duration: 250 }
-    let opacityChangePayloadShow: any = { opacity: 1, duration: 250 }
+    let opacityChangePayloadHide: any = { opacity: 0, duration: 0 }
+    let opacityChangePayloadShow: any = { opacity: 1, duration: 500 }
 
     this.animationService.animateElement(this.$tracker, opacityChangePayloadHide, "changeing element opacity");
-    bottomsheetRef.afterDismissed().subscribe(() => this.animationService.animateElement(this.$tracker, opacityChangePayloadShow, "changeing element opacity"));
+    bottomsheetRef.afterDismissed().subscribe(() => {
+      this.updateTrackerPosition();
+      this.animationService.animateElement(this.$tracker, opacityChangePayloadShow, "changeing element opacity");
+    });
   }
 
   public getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
