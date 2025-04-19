@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import api.micahnorwoodjordan.com.dataaccess.models.EmailMessage;
-import api.micahnorwoodjordan.com.dataaccess.models.Project;
 import api.micahnorwoodjordan.com.services.EmailMessageService;
+import api.micahnorwoodjordan.com.dataaccess.models.Project;
 import api.micahnorwoodjordan.com.services.ProjectService;
+import api.micahnorwoodjordan.com.dataaccess.models.TechnicalSkillTag;
+import api.micahnorwoodjordan.com.services.TechnicalSkillTagService;
 
 @RestController
 @CrossOrigin(origins = {"http://192.168.0.136:4200", "http://localhost:4200", "https://micahnorwoodjordan.com"})
@@ -26,6 +28,9 @@ public class Controller {
 
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private TechnicalSkillTagService technicalSkillTagService;
 
     @GetMapping("/ping")
 	public ResponseEntity index() {
@@ -64,4 +69,12 @@ public class Controller {
 	public ResponseEntity<List<Project>> getProjects() {
 		return new ResponseEntity<>(projectService.getAllProjects(), HttpStatus.OK);
 	}
+
+    @GetMapping("/technicalskills")
+    public ResponseEntity<List<TechnicalSkillTag>> getTechnicalSkills(@RequestParam(name = "type", required = false) String type) {
+        if (type != null) {
+            return new ResponseEntity<>(technicalSkillTagService.getTechnicalSkillTagsByType(type), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(technicalSkillTagService.getAllTechnicalSkillTags(), HttpStatus.OK);
+    }
 }
