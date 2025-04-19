@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 import { ContextService } from '../../services/context.service';
+import { AnimationService } from '../../services/animation.service';
 import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
 
 
@@ -21,79 +22,70 @@ import { BottomsheetComponent } from '../bottomsheet/bottomsheet.component';
   styleUrl: './tracker.component.css'
 })
 export class TrackerComponent implements AfterViewInit {
-  constructor(private contextService: ContextService, private trackerElementRef: ElementRef) { }
+  constructor(
+    private readonly animationService: AnimationService,
+    private readonly  contextService: ContextService,
+    private readonly  trackerElementRef: ElementRef
+  ) { }
 
-  public trackerElement: HTMLElement | null = null;
-  private _bottomSheet = inject(MatBottomSheet);
-  private windowHeight: number = window.innerHeight || document.documentElement.clientHeight;
+  private readonly _bottomSheet = inject(MatBottomSheet);
+  private readonly windowHeight: number = window.innerHeight || document.documentElement.clientHeight;
+  private readonly trackerSelector: string = "#mobile-nav";
+  private readonly green: string = "green";
+  private readonly orange: string = "orange";
+  private readonly trackerScalingCoefficientGrow: number = 2;
+  private readonly trackerScalingCoefficientShrink: number = 1.3;
   private scrollY: number = window.scrollY;
   private transitionComplete: boolean = false;
+  private $tracker: any = null;
 
   public openBottomSheet() {
-    const bottomsheetRef = this._bottomSheet.open(BottomsheetComponent); this.toggleTrackerVisibility(true);
-    bottomsheetRef.afterDismissed().subscribe(() => this.toggleTrackerVisibility(false));
+    this.updateTrackerPosition();
+    const bottomsheetRef = this._bottomSheet.open(BottomsheetComponent);
+    let opacityChangePayloadHide: any = { opacity: 0, duration: 0 }
+    let opacityChangePayloadShow: any = { opacity: 1, duration: 500 }
+
+    this.animationService.animateElement(this.$tracker, opacityChangePayloadHide, "changeing element opacity");
+    bottomsheetRef.afterDismissed().subscribe(() => {
+      this.updateTrackerPosition();
+      this.animationService.animateElement(this.$tracker, opacityChangePayloadShow, "changeing element opacity");
+    });
   }
 
   public getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
-  private setTrackerElement(htmlElement: HTMLElement) { this.trackerElement = htmlElement; }
   private setTransitionComplete(newValue: boolean) { this.transitionComplete = newValue; }
-
-  private _scale(complete: boolean, scaleValue: number) {  // used underscore to avoid namespacing clash with the css function
-    if (this.trackerElement !== null) {
-      this.trackerElement.style.scale = scaleValue.toString();
-      this.trackerElement.style.transition = '1s';
-    } else {
-      console.log('TrackerComponent._scale: trackerElement is NULL');
-    }
-  }
-
-  private changeColor(complete: boolean, colorCode: string) {
-    if (this.trackerElement !== null) {
-      this.trackerElement.style.color = colorCode;
-      this.trackerElement.style.transition = '1s';
-    } else {
-      console.log('TrackerComponent.changeColor: trackerElement is NULL');
-    }
-  }
-
-  private toggleTrackerVisibility(isVisible: boolean) {
-    // NOTE: truthfully, the tracker translates updward (and i cant figure out why) when the bottomsheet is fired
-    // hiding it is both avoids the visual issue while also creating a more graceful experience for user
-    if (this.trackerElement !== null) {
-      isVisible ? this.trackerElement.style.opacity = '0' : this.trackerElement.style.opacity = '100';
-    } else {
-      console.log('TrackerComponent.toggleTrackerVisibility: trackerElement is NULL');
-    }
-  }
+  private setTracker() { this.$tracker = this.trackerElementRef.nativeElement.querySelector(this.trackerSelector); }
+  private setScrollY(newValue: number) { this.scrollY = newValue; }
 
   ngAfterViewInit() {
     if (this.getUserIsOnMobile()) {
-      this.setTrackerElement(this.trackerElementRef.nativeElement.querySelector("#mobile-nav") as HTMLElement);
-      window.addEventListener('load', () => this.trackToScrollYPosition());
-      window.addEventListener('scroll', () => this.trackToScrollYPosition());
-      this.animate();
+      this.setTracker();
+      window.addEventListener('load', () => this.updateTrackerPosition());
+      window.addEventListener('scroll', () => this.updateTrackerPosition());
+      this.redrawTracker();
     } else {
-      console.log(`AppComponent initialization summary:\ngetUserIsOnMobile: ${this.getUserIsOnMobile()}`);
+      console.log(`TrackerComponent.ngAfterViewInit:\ngetUserIsOnMobile: ${this.getUserIsOnMobile()}`);
     }
   }
 
-  private trackToScrollYPosition() {
-    if (this.trackerElement !== null) {
-      if (this.scrollY !== null && this.windowHeight !== null) {
-        let newPosition = window.scrollY + (this.windowHeight / 1.75);  // not sure what to name this raw decimal
-        this.trackerElement.style.transition = 'top 0.5s ease-out 0.05s';
-        this.trackerElement.style.top = `${newPosition}px`;
-      }
-    } else {
-      console.log('TrackerComponent.trackToScrollYPosition: trackerElement is NULL');
+  private updateTrackerPosition() {
+    let trackerTranslationPayload: any = {
+      top: this.scrollY + (this.windowHeight / this.animationService.scrollYPositionCoefficient),
+      ease: this.animationService.easeAnimationString
     }
+    this.setScrollY(window.scrollY);
+    this.animationService.animateElement(this.$tracker, trackerTranslationPayload, "changing element Y position");
   }
 
-  private animate() {
+  private redrawTracker() {
     setInterval(() => {
-      this.changeColor(this.transitionComplete, Math.round(Math.random()) === 1 ? '#219d51' : 'orange');
-      this._scale(this.transitionComplete, this.transitionComplete ? 1.3 : 2);
-      this.setTransitionComplete(!this.transitionComplete)
-    }, 1000)
+      let scaleChangePayload: any = {
+        scale: this.transitionComplete ? this.trackerScalingCoefficientShrink : this.trackerScalingCoefficientGrow,
+        transition: this.animationService.transitionDurationString
+      }
+      this.animationService.animateElement(this.$tracker, { color: Math.round(Math.random()) === 1 ? this.green : this.orange }, "changing element color");
+      this.animationService.animateElement(this.$tracker, scaleChangePayload, "changing element scale");
+      this.setTransitionComplete(!this.transitionComplete);
+    }, this.animationService.redrawIntervalMilliseconds)
   }
 }
