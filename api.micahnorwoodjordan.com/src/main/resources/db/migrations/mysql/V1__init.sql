@@ -1,6 +1,4 @@
-CREATE DATABASE IF NOT EXISTS `staging_micahnorwoodjordan_com` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-
-USE `staging_micahnorwoodjordan_com`;
+USE `micahnorwoodjordan_com`;
 
 -- MySQLShell dump 2.0.1  Distrib Ver 9.2.0 for macos15 on arm64 - for MySQL 9.2.0 (MySQL Community Server (GPL)), for macos15 (arm64)
 --
