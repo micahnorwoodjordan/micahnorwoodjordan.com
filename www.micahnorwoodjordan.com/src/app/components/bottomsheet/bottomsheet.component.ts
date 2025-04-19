@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
-
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-bottomsheet',
@@ -10,7 +10,8 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-    MatListModule
+    MatListModule,
+    MatIconModule
   ],
   templateUrl: './bottomsheet.component.html',
   styleUrl: './bottomsheet.component.css'

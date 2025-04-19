@@ -4,6 +4,15 @@ html {
     font-weight: 200;
 }
 
+.bottomsheet { text-align: center; font-family: "DinaRemaster", "Courier New", Courier, monospace; }
+
+.mat-bottom-sheet-container {
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    padding: 16px;
+    overflow: hidden;
+}
+
 ::-webkit-scrollbar { -webkit-appearance: none; width: 0.5vw; background-color: black; }
 ::-webkit-scrollbar:hover { cursor: pointer; }
 
@@ -42,7 +51,6 @@ a:active { color: #219d51; background-color: transparent; text-decoration: under
 .pd-bottom-10 { padding-bottom: 10vh; }
 .pd-bottom-20 { padding-bottom: 20vh; }
 
-.bottomsheet { text-align: center; }
 .bottomsheet-item-title { font-size: xx-large; }
 .bottomsheet-subtext { font-size: small; }
 .bottomsheet-item-border { border-bottom: thin solid white; width: 50vw; position: absolute; right: 25vw; }

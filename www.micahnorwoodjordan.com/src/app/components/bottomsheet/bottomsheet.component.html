@@ -1,16 +1,22 @@
 <mat-nav-list class="bottomsheet">
-    <a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
-      <span matListItemTitle class="bottomsheet-item-title">HOME</span>
-      <span matLine class="bottomsheet-subtext">Who is Micah?</span>
-    </a>
-    <div class="bottomsheet-item-border"></div>
-    <a routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
-      <span matListItemTitle class="bottomsheet-item-title">ABOUT</span>
-      <span matLine class="bottomsheet-subtext">Learn more about Micah</span>
-    </a>
-    <div class="bottomsheet-item-border"></div>
-    <a routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
-      <span matListItemTitle class="bottomsheet-item-title">PROJECTS / LINKS</span>
-      <span matLine class="bottomsheet-subtext">See Micah's projects and links</span>
-    </a>
-  </mat-nav-list>
+  <a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
+    <span matListItemTitle class="bottomsheet-item-title">
+      <mat-icon>house</mat-icon>
+    </span>
+    <span matLine class="bottomsheet-subtext">home</span>
+  </a>
+  <div class="bottomsheet-item-border"></div>
+  <a routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
+    <span matListItemTitle class="bottomsheet-item-title">
+      <mat-icon>search</mat-icon>
+    </span>
+    <span matLine class="bottomsheet-subtext">about</span>
+  </a>
+  <div class="bottomsheet-item-border"></div>
+  <a routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
+    <span matListItemTitle class="bottomsheet-item-title">
+      <mat-icon>build</mat-icon>
+    </span>
+    <span matLine class="bottomsheet-subtext">projects / links</span>
+  </a>
+</mat-nav-list>
