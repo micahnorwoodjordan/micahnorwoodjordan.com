@@ -77,4 +77,12 @@ public class Controller {
         }
         return new ResponseEntity<>(technicalSkillTagService.getAllTechnicalSkillTags(), HttpStatus.OK);
     }
+
+    @PostMapping("/technicalskills")
+    public ResponseEntity<String> commitTechnicalSkillTags(@RequestBody List<TechnicalSkillTag> technicalSkillTags) {
+        if (technicalSkillTagService.bulkCommitTechnicalSkillTags(technicalSkillTags)) {
+            return new ResponseEntity<>("Created", HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>("Invalid tag type", HttpStatus.BAD_REQUEST);
+    }
 }

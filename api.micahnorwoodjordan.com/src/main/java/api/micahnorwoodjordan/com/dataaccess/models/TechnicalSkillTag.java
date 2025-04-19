@@ -7,13 +7,6 @@ import jakarta.persistence.Id;
 
 @Entity
 public class TechnicalSkillTag {
-  enum TechnicalSkillTagType {
-    PROGRAMMING_LANGUAGE,
-    PROGRAMMING_LANGUAGE_FRAMEWORK,
-    OPERATING_SYSTEM_PLATFORM,
-    CLOUD_HOSTING_PLATFORM,
-    GENERAL_SKILL
-  }
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -25,14 +18,8 @@ public class TechnicalSkillTag {
     protected TechnicalSkillTag() {}
 
     public TechnicalSkillTag(String title, String type) {
-      for (TechnicalSkillTagType t : TechnicalSkillTagType.values()) {
-        if (t.name().equals(type)) {
-          this.type = type;
-          this.title = title;
-          return;
-        }
-      }
-      throw new IllegalArgumentException("Invalid type: " + type);
+      this.type = type;
+      this.title = title;
     }
 
     @Override
