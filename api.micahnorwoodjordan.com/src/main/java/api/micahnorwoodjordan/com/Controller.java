@@ -75,11 +75,15 @@ public class Controller {
 	}
 
     @GetMapping("/technicalskills")
-    public ResponseEntity<List<TechnicalSkillTag>> getTechnicalSkills(@RequestParam(name = "type", required = false) String type) {
-        if (type != null) {
-            return new ResponseEntity<>(technicalSkillTagService.getTechnicalSkillTagsByType(type), HttpStatus.OK);
+    public ResponseEntity<APIResponse<Map<String, Object>>> getTechnicalSkills(@RequestParam(name = "type", required = false) String type) {
+        if (type == null) {
+            List<TechnicalSkillTag> tags = technicalSkillTagService.getAllTechnicalSkillTags();
+            Map<String, Object> data = Map.of("technicalSkillTags", tags, "count", tags.size());
+            return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records retrieved successfully", data));
         }
-        return new ResponseEntity<>(technicalSkillTagService.getAllTechnicalSkillTags(), HttpStatus.OK);
+        List<TechnicalSkillTag> tags = technicalSkillTagService.getTechnicalSkillTagsByType(type);
+        Map<String, Object> data = Map.of("technicalSkillTags", tags, "count", tags.size());
+        return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records retrieved successfully", data));
     }
 
     @PostMapping("/technicalskills")
