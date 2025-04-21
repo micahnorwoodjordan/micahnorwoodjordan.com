@@ -1,6 +1,7 @@
 package api.micahnorwoodjordan.com;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,9 @@ import api.micahnorwoodjordan.com.dataaccess.models.Project;
 import api.micahnorwoodjordan.com.services.ProjectService;
 import api.micahnorwoodjordan.com.dataaccess.models.TechnicalSkillTag;
 import api.micahnorwoodjordan.com.services.TechnicalSkillTagService;
+
+import api.response.APIResponse;
+
 
 @RestController
 @CrossOrigin(origins = {"http://192.168.0.136:4200", "http://localhost:4200", "https://micahnorwoodjordan.com"})
@@ -79,10 +83,13 @@ public class Controller {
     }
 
     @PostMapping("/technicalskills")
-    public ResponseEntity<String> commitTechnicalSkillTags(@RequestBody List<TechnicalSkillTag> technicalSkillTags) {
-        if (technicalSkillTagService.bulkCommitTechnicalSkillTags(technicalSkillTags)) {
-            return new ResponseEntity<>("Created", HttpStatus.CREATED);
+    public ResponseEntity<APIResponse<Map<String, Object>>> commitTechnicalSkillTags(@RequestBody List<TechnicalSkillTag> technicalSkillTags) {
+        boolean success = technicalSkillTagService.bulkCommitTechnicalSkillTags(technicalSkillTags);
+        Map<String, Object> data = Map.of("technicalSkillTags", technicalSkillTags, "count", technicalSkillTags.size());
+
+        if (!success) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(APIResponse.error("ERROR creating TechnicalSkillTag records", data));
         }
-        return new ResponseEntity<>("Invalid tag type", HttpStatus.BAD_REQUEST);
+        return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records created successfully", data));
     }
 }
