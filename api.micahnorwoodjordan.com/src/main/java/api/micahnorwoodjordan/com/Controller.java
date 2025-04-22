@@ -20,6 +20,9 @@ import api.micahnorwoodjordan.com.services.ProjectService;
 import api.micahnorwoodjordan.com.dataaccess.models.TechnicalSkillTag;
 import api.micahnorwoodjordan.com.services.TechnicalSkillTagService;
 
+import api.micahnorwoodjordan.com.exceptions.TechnicalSkillTagServiceException;
+import api.micahnorwoodjordan.com.exceptions.DatabaseOperationException;
+
 import api.response.APIResponse;
 
 
@@ -76,24 +79,39 @@ public class Controller {
 
     @GetMapping("/technicalskills")
     public ResponseEntity<APIResponse<Map<String, Object>>> getTechnicalSkills(@RequestParam(name = "type", required = false) String type) {
-        if (type == null) {
-            List<TechnicalSkillTag> tags = technicalSkillTagService.getAllTechnicalSkillTags();
+        try {
+            if (type == null) {
+                List<TechnicalSkillTag> tags = technicalSkillTagService.geTechnicalSkillTags();
+                Map<String, Object> data = Map.of("technicalSkillTags", tags, "count", tags.size());
+                return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records retrieved successfully", data));
+                
+            }
+            List<TechnicalSkillTag> tags = technicalSkillTagService.geTechnicalSkillTags(type);
             Map<String, Object> data = Map.of("technicalSkillTags", tags, "count", tags.size());
             return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records retrieved successfully", data));
+
+        } catch (TechnicalSkillTagServiceException e) {
+            Map<String, Object> data = Map.of("technicalSkillTagType", type);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(APIResponse.error(e.getMessage(), data));
+        } catch (DatabaseOperationException e) {
+            Map<String, Object> data = Map.of("technicalSkillTagType", type);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error(e.getMessage(), data));
         }
-        List<TechnicalSkillTag> tags = technicalSkillTagService.getTechnicalSkillTagsByType(type);
-        Map<String, Object> data = Map.of("technicalSkillTags", tags, "count", tags.size());
-        return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records retrieved successfully", data));
     }
 
     @PostMapping("/technicalskills")
     public ResponseEntity<APIResponse<Map<String, Object>>> commitTechnicalSkillTags(@RequestBody List<TechnicalSkillTag> technicalSkillTags) {
-        boolean success = technicalSkillTagService.bulkCommitTechnicalSkillTags(technicalSkillTags);
-        Map<String, Object> data = Map.of("technicalSkillTags", technicalSkillTags, "count", technicalSkillTags.size());
-
-        if (!success) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(APIResponse.error("ERROR creating TechnicalSkillTag records", data));
+        Map<String, Object> data = Map.of(
+            "technicalSkillTags", technicalSkillTags,
+            "count", technicalSkillTags.size()
+        );
+        try {
+            technicalSkillTagService.bulkCommitTechnicalSkillTags(technicalSkillTags);
+            return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records created successfully", data));
+        } catch (TechnicalSkillTagServiceException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(APIResponse.error(e.getMessage(), data));
+        } catch (DatabaseOperationException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error(e.getMessage(), data));
         }
-        return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records created successfully", data));
     }
 }
