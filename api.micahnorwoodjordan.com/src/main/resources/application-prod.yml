@@ -1,0 +1,18 @@
+spring:
+  server:
+    port: ${SERVER_PORT}
+
+  datasource:
+    url: ${DATABASE_CONNECTION_STRING}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+
+  flyway:
+    url: ${DATABASE_CONNECTION_STRING}
+    user: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+    baseline-on-migrate: false
+
+  mail:
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PASSWORD}
