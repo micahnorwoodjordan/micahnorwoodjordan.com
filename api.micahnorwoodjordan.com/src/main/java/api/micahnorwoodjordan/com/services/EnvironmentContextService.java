@@ -15,7 +15,7 @@ public class EnvironmentContextService {
 		Environment env = ctx.getEnvironment();
 		String[] activeProfiles = env.getActiveProfiles();
 
-		if (activeProfiles.length == 1 && activeProfiles[0].equals("development")) {
+		if (activeProfiles.length == 1 && activeProfiles[0].equals("dev")) {
 			System.out.println("Beans provided by Spring Boot:");
 
 			String[] beanNames = ctx.getBeanDefinitionNames();
