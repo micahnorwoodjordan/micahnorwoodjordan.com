@@ -24,17 +24,17 @@ public class EnvironmentContextService {
 				System.out.println(beanName);
 			}
 			System.out.println("Detected active non-production profile: " + env.getActiveProfiles()[0].toUpperCase());
-		}
 
-		if (env instanceof ConfigurableEnvironment configurableEnv) {
-			for (PropertySource<?> propertySource : configurableEnv.getPropertySources()) {
-				if (propertySource instanceof EnumerablePropertySource<?> enumerable) {
-					for (String name : enumerable.getPropertyNames()) {
-						String value = env.getProperty(name);
-						System.out.printf("%s: %s%n", name.toUpperCase(), value);
-					}
-				}
-			}
+                        if (env instanceof ConfigurableEnvironment configurableEnv) {
+                                for (PropertySource<?> propertySource : configurableEnv.getPropertySources()) {
+                                        if (propertySource instanceof EnumerablePropertySource<?> enumerable) {
+                                                for (String name : enumerable.getPropertyNames()) {
+                                                        String value = env.getProperty(name);
+                                                        System.out.printf("%s: %s%n", name.toUpperCase(), value);
+                                                }
+                                        }
+                                }
+                        }
 		}
 	}
 }
