@@ -1,5 +1,6 @@
-server:
-  port: ${SERVER_PORT:${PORT:8080}}
+spring:
+  server:
+    port: ${SERVER_PORT:${PORT:8080}}
 
   datasource:
     url: ${DATABASE_CONNECTION_STRING}
@@ -15,4 +16,3 @@ server:
   mail:
     username: ${SMTP_USERNAME}
     password: ${SMTP_PASSWORD}
-

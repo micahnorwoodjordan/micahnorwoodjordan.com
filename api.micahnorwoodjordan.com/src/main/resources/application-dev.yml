@@ -1,5 +1,6 @@
-server:
-  port: ${SERVER_PORT:${PORT:80}}
+spring:
+  server:
+    port: ${SERVER_PORT:${PORT:80}}
 
   datasource:
     url: ${DATABASE_CONNECTION_STRING}
