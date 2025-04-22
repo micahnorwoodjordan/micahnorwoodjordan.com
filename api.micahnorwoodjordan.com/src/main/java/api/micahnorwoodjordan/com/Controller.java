@@ -89,13 +89,13 @@ public class Controller {
             List<TechnicalSkillTag> tags = technicalSkillTagService.geTechnicalSkillTags(type);
             Map<String, Object> data = Map.of("technicalSkillTags", tags, "count", tags.size());
             return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records retrieved successfully", data));
-
         } catch (TechnicalSkillTagServiceException e) {
             Map<String, Object> data = Map.of("technicalSkillTagType", type);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(APIResponse.error(e.getMessage(), data));
         } catch (DatabaseOperationException e) {
-            Map<String, Object> data = Map.of("technicalSkillTagType", type);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error(e.getMessage(), data));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error(e.getMessage(), null));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error("an unknown error has occurred", null));
         }
     }
 
@@ -112,6 +112,8 @@ public class Controller {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(APIResponse.error(e.getMessage(), data));
         } catch (DatabaseOperationException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error(e.getMessage(), data));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error("an unknown error has occurred", null));
         }
     }
 }

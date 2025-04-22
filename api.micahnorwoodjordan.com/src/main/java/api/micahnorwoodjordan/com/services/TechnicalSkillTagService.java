@@ -31,7 +31,7 @@ public class TechnicalSkillTagService {
             try {
                 return technicalSkillTagRepository.findBytype(type);
             } catch (Exception e) {
-                throw new DatabaseOperationException("an unknown error occurred while attempting to retrieve technical skill tags");  // TODO: log this
+                throw new DatabaseOperationException("an unknown database communication error occurred while attempting to retrieve technical skill tags");  // TODO: log this
             }
         } else{
             throw new TechnicalSkillTagServiceException("an invalid tag type was provided: " + type);  // TODO: log this
@@ -42,7 +42,7 @@ public class TechnicalSkillTagService {
         try {
             return technicalSkillTagRepository.findAll();
         } catch (Exception e) {
-            throw new DatabaseOperationException("an unknown error occurred while attempting to retrieve technical skill tags");  // TODO: log this
+            throw new DatabaseOperationException("an unknown database communication error occurred while attempting to retrieve technical skill tags");  // TODO: log this
         }
     }
 
@@ -62,7 +62,7 @@ public class TechnicalSkillTagService {
         try {
             technicalSkillTagRepository.saveAll(tagsToSave);
         } catch (Exception e) {
-            throw new DatabaseOperationException("an unknown error occurred while attempting to commit technical skill tags");  // TODO: log this
+            throw new DatabaseOperationException("an unknown database communication error occurred while attempting to commit technical skill tags");  // TODO: log this
         }
     }
 }
