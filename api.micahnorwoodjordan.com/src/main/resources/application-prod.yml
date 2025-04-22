@@ -1,6 +1,6 @@
 spring:
   server:
-    port: 8080
+    port: ${SERVER_PORT}
 
   datasource:
     url: ${DATABASE_CONNECTION_STRING}
