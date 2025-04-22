@@ -27,7 +27,6 @@ public class Application {
 			for (String beanName : beanNames) {
 				System.out.println(beanName);
 			}
-			System.getenv().forEach((k, v) -> System.out.println(k + "=" + v));
 		};
 	}
 
