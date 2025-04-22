@@ -1,5 +1,10 @@
 FROM maven:3.9-eclipse-temurin-17
 
+
+# NOTE:
+#       these env vars are passed as a build arg from App Platform
+#       they are promoted to an ENV var here so that Spring Boot picks them up at runtime
+
 ARG DATABASE_CONNECTION_STRING
 ARG DATABASE_USER
 ARG DATABASE_PASSWORD
