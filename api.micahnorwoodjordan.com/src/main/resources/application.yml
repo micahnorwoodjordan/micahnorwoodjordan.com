@@ -1,6 +1,8 @@
 spring:
   application:
     name: api.micahnorwoodjordan.com
+    profiles:
+      active: ${SPRING_PROFILES_ACTIVE:dev}  # default to dev profile for App Platform build test. env vars are finicky during this step
 
   jpa:
     show-sql: true
