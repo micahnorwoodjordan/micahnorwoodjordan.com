@@ -28,7 +28,6 @@ spring:
     password: ${DATABASE_PASSWORD}
     locations: classpath:db/migrations/mysql
     driver-class-name: com.mysql.cj.jdbc.Driver
-    baseline-on-migrate: true
 
   mail:
     host: smtp.mailgun.org
