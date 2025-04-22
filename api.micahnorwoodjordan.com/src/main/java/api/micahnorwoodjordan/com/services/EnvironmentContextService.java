@@ -37,6 +37,6 @@ public class EnvironmentContextService {
 
 		}
 
-                System.out.println("Detected active non-production profile: " + env.getActiveProfiles()[0].toUpperCase());
+                System.out.println("Active Spring Profile: " + env.getActiveProfiles()[0].toUpperCase());
 	}
 }
