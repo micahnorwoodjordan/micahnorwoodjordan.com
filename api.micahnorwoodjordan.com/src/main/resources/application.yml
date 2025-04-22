@@ -1,0 +1,47 @@
+server:
+  port: ${SERVER_PORT:${PORT:8080}}
+
+spring:
+  application:
+    name: api.micahnorwoodjordan.com
+
+  datasource:
+    url: ${DATABASE_CONNECTION_STRING}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      dialect: org.hibernate.dialect.MySQL8Dialect
+    properties:
+      hibernate.jdbc.batch_size: 50
+      hibernate.order_inserts: true
+      hibernate.order_updates: true
+      hibernate.generate_statistics: true
+
+  flyway:
+    enabled: true
+    url: ${DATABASE_CONNECTION_STRING}
+    user: ${DATABASE_USER}
+    password: ${DATABASE_PASSWORD}
+    locations: classpath:db/migrations/mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  mail:
+    host: smtp.mailgun.org
+    port: 587
+    username: ${SMTP_USERNAME}
+    password: ${SMTP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+logging:
+  level:
+    org.flywaydb: DEBUG
+    org.hibernate.SQL: DEBUG
