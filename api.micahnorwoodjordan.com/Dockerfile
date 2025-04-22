@@ -22,5 +22,3 @@ WORKDIR /srv/api
 RUN chmod +x ./mvnw && ./mvnw clean package
 
 ENTRYPOINT [ "java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar" ]
-
-EXPOSE 8080
