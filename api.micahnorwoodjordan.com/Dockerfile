@@ -10,12 +10,16 @@ ARG DATABASE_USER
 ARG DATABASE_PASSWORD
 ARG SPRING_PROFILES_ACTIVE
 ARG SERVER_PORT
+ARG SMTP_USERNAME
+ARG SMTP_PASSWORD
 
 ENV DATABASE_CONNECTION_STRING=${DATABASE_CONNECTION_STRING}
 ENV DATABASE_USER=${DATABASE_USER}
 ENV DATABASE_PASSWORD=${DATABASE_PASSWORD}
 ENV SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE}
 ENV SERVER_PORT=${SERVER_PORT}
+ENV SMTP_USERNAME=${SMTP_USERNAME}
+ENV SMTP_PASSWORD=${SMTP_PASSWORD}
 
 COPY . /srv/api
 
@@ -23,4 +27,6 @@ WORKDIR /srv/api
 
 RUN chmod +x ./mvnw && ./mvnw clean package
 
-ENTRYPOINT [ "java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar" ]
+# RUN chmod +x /srv/api/target/api.micahnorwoodjordan.com-build.jar
+
+ENTRYPOINT [ "java", "-jar", "/srv/api/target/api.micahnorwoodjordan.com-build.jar"]
