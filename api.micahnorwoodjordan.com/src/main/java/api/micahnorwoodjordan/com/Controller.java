@@ -46,6 +46,7 @@ public class Controller {
 
     @GetMapping("/ping")
 	public ResponseEntity ping() {
+        logger.logMessage(LogLevel.INFO, "PONG in resonse to ping");  // to help verify DigitalOcean health checks
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
