@@ -21,12 +21,12 @@ public class Application {
 
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-		return args -> EnvironmentContextService.evaluateApplicationContextAndPrintInformation(ctx);
+		return args -> EnvironmentContextService.evaluateApplicationContextAndLogInformation(ctx);
 	}
 
 	@EventListener
 	public void handleContextRefresh(ContextRefreshedEvent event) {
 		ApplicationContext ctx = event.getApplicationContext();
-		EnvironmentContextService.evaluateApplicationContextAndPrintInformation(ctx);
+		EnvironmentContextService.evaluateApplicationContextAndLogInformation(ctx);
 	}
 }
