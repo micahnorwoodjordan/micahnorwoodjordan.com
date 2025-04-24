@@ -1,5 +1,6 @@
 services:
   api:
+    user: deployuser
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     build:
@@ -28,3 +29,12 @@ services:
           echo "RUNNING APPLICATION IN WATCH MODE";
           ./mvnw spring-boot:run;
         fi
+    healthcheck:
+      test:
+        - "CMD"
+        - "curl"
+        - "http://localhost:${SERVER_PORT}/ping"
+      interval: 10s
+      timeout: 30s
+      retries: 5
+  
