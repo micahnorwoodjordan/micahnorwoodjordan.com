@@ -34,7 +34,7 @@ services:
       - |
         if [ "$DOCKER_DEPLOYMENT_METHOD" = "build" ]; then
         echo "RUNNING APPLICATION AS JAR";
-        ./mvnw clean package && java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar;
+        java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar;
         else
           echo "RUNNING APPLICATION IN WATCH MODE";
           ./mvnw spring-boot:run;
