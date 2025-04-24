@@ -32,5 +32,6 @@ logging:
   level:
     org.flywaydb: DEBUG
     org.hibernate.SQL: DEBUG
+    api.micahnorwoodjordan.com: DEBUG
   file:
     name: /var/log/api.micahnorwoodjordan.com/output.log
