@@ -19,15 +19,9 @@ services:
     volumes:
       - ./api.micahnorwoodjordan.com:/srv/api
       
-    environment:
-      DOCKER_DEPLOYMENT_METHOD: ${DOCKER_DEPLOYMENT_METHOD}
-      DATABASE_CONNECTION_STRING: ${DATABASE_CONNECTION_STRING}
-      DATABASE_USER: ${DATABASE_USER}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
-      SERVER_PORT: ${SERVER_PORT}
-      SMTP_USERNAME: ${SMTP_USERNAME}
-      SMTP_PASSWORD: ${SMTP_PASSWORD}
+    env_file:
+      - .env
+
     command: 
       - /bin/bash
       - -c

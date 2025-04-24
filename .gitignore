@@ -8,3 +8,4 @@ mailgun-credentials.md
 notes.md
 
 .DS_Store
+.env
