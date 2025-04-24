@@ -25,8 +25,8 @@ COPY . /srv/api
 
 WORKDIR /srv/api
 
+RUN mkdir -p /var/log/api.micahnorwoodjordan.com
 RUN chmod +x ./mvnw && ./mvnw clean package
 
-# RUN chmod +x /srv/api/target/api.micahnorwoodjordan.com-build.jar
-
+# use exec form of ENTRYPOINT to avoid arg parse errors
 ENTRYPOINT [ "java", "-jar", "/srv/api/target/api.micahnorwoodjordan.com-build.jar"]
