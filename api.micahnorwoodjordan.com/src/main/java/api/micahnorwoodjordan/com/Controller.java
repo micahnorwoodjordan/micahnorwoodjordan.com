@@ -25,6 +25,9 @@ import api.micahnorwoodjordan.com.exceptions.DatabaseOperationException;
 
 import api.response.APIResponse;
 
+import api.micahnorwoodjordan.com.services.LogService;
+import api.micahnorwoodjordan.com.services.enums.LogLevel;
+
 
 @RestController
 @CrossOrigin(origins = {"http://192.168.0.136:4200", "http://localhost:4200", "https://micahnorwoodjordan.com"})
@@ -39,8 +42,11 @@ public class Controller {
     @Autowired
     private TechnicalSkillTagService technicalSkillTagService;
 
+    private LogService logger = new LogService(Controller.class.getName());
+
     @GetMapping("/ping")
-	public ResponseEntity index() {
+	public ResponseEntity ping() {
+        logger.logMessage(LogLevel.INFO, "PONG in resonse to ping");  // to help verify DigitalOcean health checks
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
@@ -57,7 +63,7 @@ public class Controller {
             );
             isSuccess = emailMessageService.sendEmailMessage(email);
         } catch(Exception e) {
-            System.out.println("exception occurred: " + e);  // Log this
+            logger.logMessage(LogLevel.DEBUG, "exception occurred: " + e);
         }
 
         if (isSuccess) {
@@ -79,6 +85,8 @@ public class Controller {
 
     @GetMapping("/technicalskills")
     public ResponseEntity<APIResponse<Map<String, Object>>> getTechnicalSkills(@RequestParam(name = "type", required = false) String type) {
+        String errorLogMessagePrefix = "ERROR AT getTechnicalSkills: ";
+
         try {
             if (type == null) {
                 List<TechnicalSkillTag> tags = technicalSkillTagService.geTechnicalSkillTags();
@@ -91,28 +99,33 @@ public class Controller {
             return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records retrieved successfully", data));
         } catch (TechnicalSkillTagServiceException e) {
             Map<String, Object> data = Map.of("technicalSkillTagType", type);
+            logger.logMessage(LogLevel.DEBUG, errorLogMessagePrefix + e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(APIResponse.error(e.getMessage(), data));
         } catch (DatabaseOperationException e) {
+            logger.logMessage(LogLevel.DEBUG, errorLogMessagePrefix + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error(e.getMessage(), null));
         } catch (Exception e) {
+            logger.logMessage(LogLevel.DEBUG, errorLogMessagePrefix + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error("an unknown error has occurred", null));
         }
     }
 
     @PostMapping("/technicalskills")
     public ResponseEntity<APIResponse<Map<String, Object>>> commitTechnicalSkillTags(@RequestBody List<TechnicalSkillTag> technicalSkillTags) {
-        Map<String, Object> data = Map.of(
-            "technicalSkillTags", technicalSkillTags,
-            "count", technicalSkillTags.size()
-        );
+        Map<String, Object> data = Map.of("technicalSkillTags", technicalSkillTags, "count", technicalSkillTags.size());
+        String errorLogMessagePrefix = "ERROR AT commitTechnicalSkillTags: ";
+
         try {
             technicalSkillTagService.bulkCommitTechnicalSkillTags(technicalSkillTags);
             return ResponseEntity.ok(APIResponse.success("TechnicalSkillTag records created successfully", data));
         } catch (TechnicalSkillTagServiceException e) {
+            logger.logMessage(LogLevel.DEBUG, errorLogMessagePrefix+ e.getMessage());
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(APIResponse.error(e.getMessage(), data));
         } catch (DatabaseOperationException e) {
+            logger.logMessage(LogLevel.DEBUG, errorLogMessagePrefix + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error(e.getMessage(), data));
         } catch (Exception e) {
+            logger.logMessage(LogLevel.DEBUG, errorLogMessagePrefix + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error("an unknown error has occurred", null));
         }
     }

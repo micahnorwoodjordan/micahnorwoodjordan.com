@@ -1,14 +1,30 @@
 services:
   api:
     ports:
-      - 8080:8080
+      - ${SERVER_PORT}:${SERVER_PORT}
     build:
-      dockerfile: api.micahnorwoodjordan.com/Dockerfile
-      
+      dockerfile: Dockerfile
+      context: ./api.micahnorwoodjordan.com
+      args:
+        DATABASE_CONNECTION_STRING: ${DATABASE_CONNECTION_STRING}
+        DATABASE_USER: ${DATABASE_USER}
+        DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+        SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE}
+        SERVER_PORT: ${SERVER_PORT}
+        SMTP_USERNAME: ${SMTP_USERNAME}
+        SMTP_PASSWORD: ${SMTP_PASSWORD}
     volumes:
-      - ./api.micahnorwoodjordan.com:/srv/api.micahnorwoodjordan.com
-    # command: bash -c "java -jar ./target/api.micahnorwoodjordan.com-build.jar"
-    environment:
-      DATABASE_CONNECTION_STRING: ${DATABASE_CONNECTION_STRING}
-      DATABASE_USER: ${DATABASE_USER}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      - ./api.micahnorwoodjordan.com:/srv/api
+    env_file:
+      - .env
+    command: 
+      - /bin/bash
+      - -c
+      - |
+        if [ "$DOCKER_DEPLOYMENT_METHOD" = "build" ]; then
+        echo "RUNNING APPLICATION AS JAR";
+        java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar;
+        else
+          echo "RUNNING APPLICATION IN WATCH MODE";
+          ./mvnw spring-boot:run;
+        fi

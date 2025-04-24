@@ -9,6 +9,7 @@ import org.springframework.mail.MailAuthenticationException;
 
 import api.micahnorwoodjordan.com.dataaccess.EmailMessageRepository;
 import api.micahnorwoodjordan.com.dataaccess.models.EmailMessage;
+import api.micahnorwoodjordan.com.services.enums.LogLevel;
 
 
 @Service
@@ -16,6 +17,8 @@ public class EmailMessageService {
 
     private static final String DEFAULT_RECIPIENT_EMAIL_ADDRESS = "api.micahnorwoodjordan.com@gmail.com";
     private static final String DEFAULT_EMAIL_SUBJECT = "Message from MICAHNORWOODJORDAN.COM frontend:";
+
+    private LogService logger = new LogService(EmailMessageService.class.getName());
 
     @Autowired
     private JavaMailSender mailSender;
@@ -26,6 +29,7 @@ public class EmailMessageService {
     private boolean send(String to, String subject, String body) {
         boolean success = true;
         SimpleMailMessage message = new SimpleMailMessage();
+        String logErrorMessagePrefix = "ERROR AT send: ";
 
         try {
             message.setTo(to);
@@ -33,11 +37,11 @@ public class EmailMessageService {
             message.setText(body);
             mailSender.send(message);
         } catch(MailAuthenticationException authException) {
-            // TODO: log this
             success = false;
+            logger.logMessage(LogLevel.DEBUG, logErrorMessagePrefix + authException.getMessage());
         } catch(Exception exception) {
-            // TODO: log this
             success = false;
+            logger.logMessage(LogLevel.DEBUG, logErrorMessagePrefix + exception.getMessage());
         }
         return success;
     }
