@@ -17,9 +17,10 @@ services:
 
       
     volumes:
-      - ./api.micahnorwoodjordan.com:/srv/api.micahnorwoodjordan.com
+      - ./api.micahnorwoodjordan.com:/srv/api
       
     environment:
+      DOCKER_DEPLOYMENT_METHOD: ${DOCKER_DEPLOYMENT_METHOD}
       DATABASE_CONNECTION_STRING: ${DATABASE_CONNECTION_STRING}
       DATABASE_USER: ${DATABASE_USER}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
@@ -27,3 +28,14 @@ services:
       SERVER_PORT: ${SERVER_PORT}
       SMTP_USERNAME: ${SMTP_USERNAME}
       SMTP_PASSWORD: ${SMTP_PASSWORD}
+    command: 
+      - /bin/bash
+      - -c
+      - |
+        if [ "$DOCKER_DEPLOYMENT_METHOD" = "build" ]; then
+        echo "RUNNING APPLICATION AS JAR";
+        ./mvnw clean package && java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar;
+        else
+          echo "RUNNING APPLICATION IN WATCH MODE";
+          ./mvnw spring-boot:run;
+        fi
