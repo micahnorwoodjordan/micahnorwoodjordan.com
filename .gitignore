@@ -1,11 +1,11 @@
 node_modules/
 .angular/cache/
 .vscode/
+znotes/
 
 ide-notes.md
 spring-boot-notes.md
 mailgun-credentials.md
-notes.md
 
 .DS_Store
 .env
