@@ -34,7 +34,7 @@ public class EnvironmentContextService {
                                         if (propertySource instanceof EnumerablePropertySource<?> enumerable) {
                                                 for (String name : enumerable.getPropertyNames()) {
                                                         String value = env.getProperty(name);
-                                                        logger.logMessage(LogLevel.DEBUG, String.format("%s: %s%n", name.toUpperCase(), value));
+                                                        logger.logMessage(LogLevel.DEBUG, String.format("%s: %s", name.toUpperCase(), value));
                                                 }
                                         }
                                 }

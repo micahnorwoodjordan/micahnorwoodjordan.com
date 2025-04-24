@@ -28,4 +28,4 @@ COPY . /srv/api
 WORKDIR /srv/api
 
 RUN mkdir -p /var/log/api.micahnorwoodjordan.com
-RUN chmod +x ./mvnw && ./mvnw clean package
+RUN chmod +x ./mvnw && ./mvnw clean package && ./mvnw install
