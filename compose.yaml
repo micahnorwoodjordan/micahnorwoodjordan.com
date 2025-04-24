@@ -2,7 +2,6 @@ services:
   api:
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
-
     build:
       dockerfile: Dockerfile
       context: ./api.micahnorwoodjordan.com
@@ -14,14 +13,10 @@ services:
         SERVER_PORT: ${SERVER_PORT}
         SMTP_USERNAME: ${SMTP_USERNAME}
         SMTP_PASSWORD: ${SMTP_PASSWORD}
-
-      
     volumes:
       - ./api.micahnorwoodjordan.com:/srv/api
-      
     env_file:
       - .env
-
     command: 
       - /bin/bash
       - -c
