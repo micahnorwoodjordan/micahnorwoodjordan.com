@@ -23,9 +23,16 @@ ENV SMTP_USERNAME=${SMTP_USERNAME}
 ENV SMTP_PASSWORD=${SMTP_PASSWORD}
 ENV DOCKER_DEPLOYMENT_METHOD=${DOCKER_DEPLOYMENT_METHOD}
 
+RUN useradd -m deployuser
+
+RUN mkdir -p /var/log/api.micahnorwoodjordan.com
+
 COPY . /srv/api
 
 WORKDIR /srv/api
 
-RUN mkdir -p /var/log/api.micahnorwoodjordan.com
-RUN chmod +x ./mvnw && ./mvnw clean package && ./mvnw install
+RUN chmod +x ./mvnw && chown -R deployuser:deployuser /srv/api
+
+USER deployuser
+
+RUN ./mvnw clean package && ./mvnw install
