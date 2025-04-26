@@ -24,14 +24,18 @@ import api.micahnorwoodjordan.com.exceptions.DatabaseOperationException;
 @RequestMapping("/projects")
 public class ProjectsController {
         private LogService logger = new LogService(ProjectsController.class.getName());
-    
+
+        private static final String apiV2HeaderName = "useAPIV2";
+
         @Autowired
         private ProjectService projectService;
-    
-        @GetMapping("")
-            public ResponseEntity<APIResponse<List<Project>>> getProjects() {
-                try{
-                        return ResponseEntity.ok(APIResponse.success("Success", projectService.getAllProjects()));
+
+        // NOTE: this is to allow the frontend to migrate to the new API standard independently of when it gets deployed
+        //      avoids breaking the current handling of the `getProjects` response so that the project components render properly while still using the old API response model
+        @GetMapping(headers = {apiV2HeaderName})
+        public ResponseEntity<APIResponse<List<Project>>> getProjects() {
+                try {
+                        return ResponseEntity.ok(APIResponse.success("Success", projectService.getProjects()));
                 } catch (DatabaseOperationException e) {
                         logger.logMessage(LogLevel.ERROR, "Error retrieving projects: " + e.getMessage());
                         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
@@ -39,5 +43,18 @@ public class ProjectsController {
                         logger.logMessage(LogLevel.ERROR, "Error retrieving projects: " + e.getMessage());
                         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
                 }   
-            }
+        }
+
+        @GetMapping("")
+        public ResponseEntity<List<Project>> getProjectsLegacy() {
+                try {
+                        return new ResponseEntity<>(projectService.getProjects(), HttpStatus.OK);
+                } catch (DatabaseOperationException e) {
+                        logger.logMessage(LogLevel.ERROR, "Error retrieving projects: " + e.getMessage());
+                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+                } catch (Exception e) {
+                        logger.logMessage(LogLevel.ERROR, "Error retrieving projects: " + e.getMessage());
+                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+                }   
+        }
 }

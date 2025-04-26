@@ -11,14 +11,13 @@ import api.micahnorwoodjordan.com.dataaccess.models.Project;
 import api.micahnorwoodjordan.com.exceptions.DatabaseOperationException;
 
 
-// TODO override below methods instead of `getProject` vs `getAllProjects`
 @Service
 public class ProjectService {
 
     @Autowired
     private ProjectRepository projectRepository;
 
-    public Project getProject(long projectId) throws DatabaseOperationException, IllegalArgumentException {
+    public Project getProjects(long projectId) throws DatabaseOperationException, IllegalArgumentException {
         try {
             if (projectId < 0) {
                 throw new IllegalArgumentException("Project ID must be >= 0");
@@ -31,7 +30,7 @@ public class ProjectService {
         }
     }
 
-    public List<Project> getAllProjects() throws DatabaseOperationException {
+    public List<Project> getProjects() throws DatabaseOperationException {
         try {
             return projectRepository.findAll();
         } catch (Exception e) {
