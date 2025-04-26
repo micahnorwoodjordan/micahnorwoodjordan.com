@@ -1,4 +1,4 @@
-package api.micahnorwoodjordan.com;
+package api.micahnorwoodjordan.com.controllers;
 
 import java.util.List;
 import java.util.Map;
@@ -9,79 +9,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import api.micahnorwoodjordan.com.dataaccess.models.EmailMessage;
-import api.micahnorwoodjordan.com.services.EmailMessageService;
-import api.micahnorwoodjordan.com.dataaccess.models.Project;
-import api.micahnorwoodjordan.com.services.ProjectService;
+import api.response.APIResponse;
+
 import api.micahnorwoodjordan.com.dataaccess.models.TechnicalSkillTag;
 import api.micahnorwoodjordan.com.services.TechnicalSkillTagService;
-
 import api.micahnorwoodjordan.com.exceptions.TechnicalSkillTagServiceException;
-import api.micahnorwoodjordan.com.exceptions.DatabaseOperationException;
-
-import api.response.APIResponse;
 
 import api.micahnorwoodjordan.com.services.LogService;
 import api.micahnorwoodjordan.com.services.enums.LogLevel;
 
+import api.micahnorwoodjordan.com.exceptions.DatabaseOperationException;
+
 
 @RestController
-public class Controller {
-
-    @Autowired
-    private EmailMessageService emailMessageService;
-
-    @Autowired
-    private ProjectService projectService;
+@RequestMapping("/technicalskills")
+public class TechnicalSkillsController {
+    private LogService logger = new LogService(TechnicalSkillsController.class.getName());
 
     @Autowired
     private TechnicalSkillTagService technicalSkillTagService;
 
-    private LogService logger = new LogService(Controller.class.getName());
-
-    @GetMapping("/ping")
-	public ResponseEntity ping() {
-        logger.logMessage(LogLevel.INFO, "200: PONG");  // to help verify DigitalOcean health checks
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
-
-    @PostMapping(path="/notifications/email/send")
-    public ResponseEntity<String> sendEmailMessage(@RequestBody EmailMessage emailMessage) {
-        boolean isSuccess = false;
-
-        try {
-            EmailMessage email = new EmailMessage(
-                emailMessage.getMessageBody(),
-                emailMessage.getSenderFirstName(),
-                emailMessage.getSenderLastName(),
-                emailMessage.getSenderEmailAddress()
-            );
-            isSuccess = emailMessageService.sendEmailMessage(email);
-        } catch(Exception e) {
-            logger.logMessage(LogLevel.DEBUG, "exception occurred: " + e);
-        }
-
-        if (isSuccess) {
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-
-        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-    @GetMapping("/notifications/email")
-	public ResponseEntity<EmailMessage> getEmailMessage(@RequestParam(name = "id", required = true) long emailMessageId) {
-		return new ResponseEntity<>(emailMessageService.getEmailMessage(emailMessageId), HttpStatus.OK);
-	}
-
-    @GetMapping("/projects")
-	public ResponseEntity<List<Project>> getProjects() {
-		return new ResponseEntity<>(projectService.getAllProjects(), HttpStatus.OK);
-	}
-
-    @GetMapping("/technicalskills")
+    @GetMapping("")
     public ResponseEntity<APIResponse<Map<String, Object>>> getTechnicalSkills(@RequestParam(name = "type", required = false) String type) {
         String errorLogMessagePrefix = "ERROR AT getTechnicalSkills: ";
 
@@ -108,7 +60,7 @@ public class Controller {
         }
     }
 
-    @PostMapping("/technicalskills")
+    @PostMapping("")
     public ResponseEntity<APIResponse<Map<String, Object>>> commitTechnicalSkillTags(@RequestBody List<TechnicalSkillTag> technicalSkillTags) {
         Map<String, Object> data = Map.of("technicalSkillTags", technicalSkillTags, "count", technicalSkillTags.size());
         String errorLogMessagePrefix = "ERROR AT commitTechnicalSkillTags: ";
