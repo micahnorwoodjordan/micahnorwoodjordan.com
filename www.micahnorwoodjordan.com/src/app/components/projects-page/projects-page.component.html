@@ -7,16 +7,18 @@
         <span class="heading-mobile">Links/Projects</span>
     </div>
     <div fxLayout="column" fxLayoutAlign="center center">
-        <ng-template ngFor [ngForOf]="projects$ | async" let-project let-i="index">
-            <app-project-card
-                projectName="{{project.title}}"
-                imageURL="{{project.imageUrl}}"
-                bodyText="{{project.detail}}"
-                projectSubtitle="{{project.subtitle}}"
-                projectURL="{{project.projectUrl}}"
-                [userIsOnMobile]="getUserIsOnMobile()"
-            >
-            </app-project-card>
-        </ng-template>
+        <ng-container *ngIf="projects$ | async as apiResponse">
+            <ng-container *ngFor="let project of apiResponse.data; let i = index">
+                <app-project-card
+                    projectName="{{project.title}}"
+                    imageURL="{{project.imageUrl}}"
+                    bodyText="{{project.detail}}"
+                    projectSubtitle="{{project.subtitle}}"
+                    projectURL="{{project.projectUrl}}"
+                    [userIsOnMobile]="getUserIsOnMobile()"
+                >
+                </app-project-card>
+            </ng-container>
+        </ng-container>
     </div>
 </div>
