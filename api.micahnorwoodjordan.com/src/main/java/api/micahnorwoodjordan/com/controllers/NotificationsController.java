@@ -1,12 +1,10 @@
 package api.micahnorwoodjordan.com.controllers;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,12 +18,7 @@ import api.micahnorwoodjordan.com.services.EmailMessageService;
 import api.micahnorwoodjordan.com.services.LogService;
 import api.micahnorwoodjordan.com.services.enums.LogLevel;
 
-import api.micahnorwoodjordan.com.exceptions.DatabaseOperationException;
 
-
-// TODO: use standardized API responses
-// TODO: implement error handling
-// TODO: implement logging
 @RestController
 @RequestMapping("/notifications")
 public class NotificationsController {
@@ -35,23 +28,19 @@ public class NotificationsController {
         private EmailMessageService emailMessageService;
 
         @PostMapping(path = "/email/send")
-        public ResponseEntity<String> sendEmailMessage(@RequestBody EmailMessage emailMessage) {
-                boolean isSuccess = false;
+        public ResponseEntity<APIResponse<Map<String, Object>>> sendEmailMessage(@RequestBody EmailMessage emailMessage) {
                 try {
                         EmailMessage email = new EmailMessage(
-                                        emailMessage.getMessageBody(),
-                                        emailMessage.getSenderFirstName(),
-                                        emailMessage.getSenderLastName(),
-                                        emailMessage.getSenderEmailAddress());
-                        isSuccess = emailMessageService.sendEmailMessage(email);
+                                emailMessage.getMessageBody(),
+                                emailMessage.getSenderFirstName(),
+                                emailMessage.getSenderLastName(),
+                                emailMessage.getSenderEmailAddress()
+                        );
+                        emailMessageService.sendEmailMessage(email);
+                        return ResponseEntity.ok(APIResponse.success("Success", null));
                 } catch (Exception e) {
                         logger.logMessage(LogLevel.DEBUG, "exception occurred: " + e);
+                        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIResponse.error("an unknown error occurred", null));
                 }
-
-                if (isSuccess) {
-                        return new ResponseEntity<>(HttpStatus.OK);
-                }
-
-                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
 }
