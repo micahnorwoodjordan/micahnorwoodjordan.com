@@ -19,20 +19,20 @@ import api.micahnorwoodjordan.com.services.enums.LogLevel;
 
 import api.micahnorwoodjordan.com.exceptions.DatabaseOperationException;
 
+import api.micahnorwoodjordan.com.APIConstants;
+
 
 @RestController
 @RequestMapping("/projects")
 public class ProjectsController {
         private LogService logger = new LogService(ProjectsController.class.getName());
 
-        private static final String apiV2HeaderName = "useAPIV2";
-
         @Autowired
         private ProjectService projectService;
 
         // NOTE: this is to allow the frontend to migrate to the new API standard independently of when it gets deployed
         //      avoids breaking the current handling of the `getProjects` response so that the project components render properly while still using the old API response model
-        @GetMapping(headers = {apiV2HeaderName})
+        @GetMapping(headers = {APIConstants.apiV2HeaderName})
         public ResponseEntity<APIResponse<List<Project>>> getProjects() {
                 try {
                         return ResponseEntity.ok(APIResponse.success("Success", projectService.getProjects()));
