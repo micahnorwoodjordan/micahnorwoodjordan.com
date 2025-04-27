@@ -8,6 +8,7 @@ import { ContextService } from '../../services/context.service';
 
 import { Project } from '../../interfaces/Project';
 import { ApiService } from '../../services/api.service';
+import { APIResponse } from '../../api/interfaces/APIResponse';
 import { Observable } from 'rxjs';
 
 
@@ -34,7 +35,7 @@ export class ProjectsPageComponent {
   projectSubtitle: string = "";
   projectURL: string = "";
 
-  projects$: Observable<Project[]>;
+  projects$: Observable<APIResponse<Project[]>>;
 
   getUserIsOnMobile(): boolean { return this.contextService.userIsOnMobile; }
 }

@@ -3,14 +3,11 @@ services:
     networks:
       - internal
     user: deployuser
-    ports:
-      - ${UI_PORT}:${UI_PORT}  # take advantage of browser reloads thanks to Angular's communication over WebSockets
     build:
       dockerfile: Dockerfile
       context: ./www.micahnorwoodjordan.com
       args:
         UI_PORT: ${UI_PORT}
-        SERVER_PORT: ${SERVER_PORT}
     volumes:
       - ./www.micahnorwoodjordan.com:/srv/ui
     env_file:
@@ -34,8 +31,6 @@ services:
     networks:
       - internal
     user: deployuser
-    ports:
-      - ${SERVER_PORT}
     build:
       dockerfile: Dockerfile
       context: ./api.micahnorwoodjordan.com
@@ -63,26 +58,29 @@ services:
           ./mvnw spring-boot:run;
         fi
 
-  # nginx container:
-  #   serves as a reverse proxy on home LAN network and internal docker network
-  #   listens on port 80
-  #   routes traffic to the UI container's port 4200
+  # web container:
+  #   serves as a proxy between my home LAN network and the internal docker network, consisting of the api container and ui container
+  #   listens on port 80 of host
+  #   routes traffic to the UI container
+  #   routes traffic to the API container
+  #   is exposed to host's LAN network
   web:
     networks:
       lan:
-        ipv4_address: 192.168.0.136
+        ipv4_address: ${WEB_CONTAINER_IP_ADDRESS}
       internal: {}
     build:
       context: .
       args:
+        WEB_PORT: ${WEB_PORT}
         SERVER_PORT: ${SERVER_PORT}
-    image: nginx:latest
+    image: nginx:1.27.3
     volumes:
       - ./docker.conf/nginx.conf:/etc/nginx/nginx.conf
     env_file:
       - .env
     ports:
-      - 80:80
+      - ${WEB_PORT}:${WEB_PORT}
     healthcheck:
       test:
         - "CMD"
@@ -102,5 +100,5 @@ networks:
        parent: eth0  # LAN interface
      ipam:
        config:
-         - subnet: "192.168.0.0/24"  # reserve only last octet for containers
-           gateway: "192.168.0.1"  # router's IP address
+         - subnet: ${WEB_LAN_SUBNET}  # reserve only last octet for containers
+           gateway: ${WEB_GATEWAY_IP_ADDRESS}  # router's IP address

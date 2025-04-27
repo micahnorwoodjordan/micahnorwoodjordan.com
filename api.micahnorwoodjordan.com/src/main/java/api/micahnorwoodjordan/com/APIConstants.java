@@ -3,7 +3,8 @@ package api.micahnorwoodjordan.com;
 public class APIConstants {
         private APIConstants () {}
 
-        public static final String apiV2HeaderName = "useapiv2";  // header name comes across the wire all lowercase
+        public static final String apiV2HeaderName = "x-api-version";  // header name comes across the wire all lowercase
+        public static final String apiV2HeaderValue = "v2";  // header name comes across the wire all lowercase
         public static final String corsRoutesMatch = "/**";
 
         public static final String DELETE = "DELETE";
