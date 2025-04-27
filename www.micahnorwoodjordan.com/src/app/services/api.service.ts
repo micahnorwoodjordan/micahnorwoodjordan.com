@@ -32,6 +32,8 @@ export class ApiService {
 
   getAllProjects(): Observable<APIResponse<Project[]>> {
     let url = `${environment.apiUrl}/projects`;
-    return this.client.get<APIResponse<Project[]>>(url, { headers: new HttpHeaders().set(APIConstants.apiV2HeaderName, "true") });
+    return this.client.get<APIResponse<Project[]>>(url, {
+      headers: new HttpHeaders().set(APIConstants.apiV2HeaderName, APIConstants.apiV2HeaderValue)
+    });
   }
 }
