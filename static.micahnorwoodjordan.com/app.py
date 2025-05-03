@@ -25,11 +25,11 @@ s3_client = S3Client(
 @app.route('/ping')
 def ping():
     print(os.getcwd())
-    s3_client.download('static/bowling-ball.png')  # test s3 call
+    s3_client.download('bowling-ball.png')
     return 'PONG'
 
 
-@app.route('/<path:filename>')  # TODO: verify and update if needed
+@app.route('/<path:filename>')
 def serve_static(filename):
     try:
         return send_from_directory(STATIC_DIR, filename)

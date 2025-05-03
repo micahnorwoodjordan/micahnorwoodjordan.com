@@ -8,6 +8,9 @@ class S3Exception(Exception):
     pass
 
 
+BUCKET_PREFIX = 'static/'
+
+
 class S3Client:
     def __init__(self, aws_access_key_id, aws_secret_access_key, region_name, bucket):
         self.aws_access_key_id = aws_access_key_id
@@ -19,7 +22,7 @@ class S3Client:
     def download(self, key):
         try:
             local_filepath = os.path.basename(key)
-            self.s3.download_file(self.bucket, key, local_filepath)
+            self.s3.download_file(self.bucket, f'{BUCKET_PREFIX}{key}', local_filepath)
         except NoCredentialsError:
             print('no credentials provided')
         except ClientError as e:
