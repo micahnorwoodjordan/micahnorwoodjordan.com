@@ -14,8 +14,10 @@ def ping():
 @main.route('/<path:filename>')
 def serve_static(filename):
     try:
+        print(f'trying file: {filename}')
         return send_from_directory(STATIC_DIR, filename)
     except FileNotFoundError:
+        print(f'filename not found: {filename}')
         abort(404)
     except Exception as e:
         print(f'there was an error: {e}')

@@ -19,22 +19,15 @@ class S3Client:
         self.bucket = bucket
         self.s3 = boto3.client('s3')
 
-    def download(self, key):
-        try:
-            local_filepath = os.path.basename(key)
-            self.s3.download_file(self.bucket, f'{BUCKET_PREFIX}{key}', local_filepath)
-        except NoCredentialsError:
-            print('no credentials provided')
-        except ClientError as e:
-            print(f'client error: {e}')
-        except Exception as e:
-            print(f'error downloading file: {key}')
-            raise S3Exception from e
-
     def download_all(self):
         objects = self.s3.list_objects_v2(Bucket=self.bucket, Prefix=BUCKET_PREFIX)
         for obj in objects.get('Contents', []):
             key = obj['Key']
+            filename = os.path.basename(key)
 
             if key != BUCKET_PREFIX:
-                self.s3.download_file(self.bucket, key, os.path.basename(key))
+                try:
+                    self.s3.download_file(self.bucket, key, filename)
+                    print(f'downloaded s3 file: {filename}')
+                except Exception as e:
+                    print(f'error downloading file: {filename}')
