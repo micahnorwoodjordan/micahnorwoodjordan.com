@@ -45,9 +45,15 @@
               "outputHashing": "none"
             },
             "development": {
-              "optimization": false,
+              "optimization": {
+                "scripts": false,
+                "styles": false
+              },
+              "sourceMap": false,
+              "aot": false,
               "extractLicenses": false,
-              "sourceMap": true,
+              "namedChunks": false,
+              "outputHashing": "none",
               "fileReplacements": [
                 {
                   "replace": "src/environments/production.ts",
