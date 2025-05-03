@@ -13,6 +13,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "sourceMap": false,
+            "optimization": {
+              "scripts": false,
+              "styles": false
+            },
+            "aot": false,
+            "extractLicenses": false,
             "outputPath": "dist/micahnorwoodjordan.com",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -45,15 +52,7 @@
               "outputHashing": "none"
             },
             "development": {
-              "optimization": {
-                "scripts": false,
-                "styles": false
-              },
-              "sourceMap": false,
-              "aot": false,
               "extractLicenses": false,
-              "namedChunks": false,
-              "outputHashing": "none",
               "fileReplacements": [
                 {
                   "replace": "src/environments/production.ts",
