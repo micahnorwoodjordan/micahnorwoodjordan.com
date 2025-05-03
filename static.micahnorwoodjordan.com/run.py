@@ -13,8 +13,3 @@ app = create_app()
 
 if __name__ == '__main__':
     install_s3_artifacts()
-    app.run(
-        host=HOST,
-        debug=True if ENV['DEBUG'] == 'true' else False,  # TODO: this can be handled more gracefully
-        port=ENV['SERVER_PORT']
-    )
