@@ -20,6 +20,8 @@
             },
             "aot": false,
             "extractLicenses": false,
+            "namedChunks": false,
+            "outputHashing": "none",
             "outputPath": "dist/micahnorwoodjordan.com",
             "index": "src/index.html",
             "browser": "src/main.ts",
