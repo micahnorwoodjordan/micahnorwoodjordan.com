@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "http-server ./dist/micahnorwoodjordan --port 443 --fallback index.html",
+    "start": "http-server ./dist/micahnorwoodjordan --port 443 --proxy http://127.0.0.1:443?",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
