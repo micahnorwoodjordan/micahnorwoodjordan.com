@@ -2,6 +2,10 @@ import os
 
 from flask import Flask, send_from_directory, abort
 
+from aws.s3.client import S3Client
+
+from environment.parse_variables import is_production_mode
+
 
 ENV = os.environ
 STATIC_DIR = os.path.abspath("files")  # TODO: update
@@ -10,17 +14,17 @@ HOST = '0.0.0.0'
 
 app = Flask(__name__)
 
-
-def is_production_mode(mode: str) -> bool:
-    if 'true' in mode.lower():
-        return True
-    elif 'false' in mode.lower():
-        return False
-    return False
+s3_client = S3Client(
+    ENV['AWS_ACCESS_KEY_ID'],
+    ENV['AWS_SECRET_ACCESS_KEY'],
+    ENV['REGION_NAME'],
+    ENV['BUCKET']
+)
 
 
 @app.route('/ping')
 def ping():
+    s3_client.download('static/bowling_ball.png')
     return 'PONG'
 
 
