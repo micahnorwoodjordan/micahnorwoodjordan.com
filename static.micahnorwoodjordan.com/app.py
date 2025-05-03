@@ -28,6 +28,12 @@ def serve_static(filename):
         abort(404)
     except Exception as e:
         print(f'there was an error: {e}')
+        abort(404)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return '', 204  # No content
 
 
 if __name__ == '__main__':

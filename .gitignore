@@ -1,4 +1,8 @@
+*.pyc
+
 static.micahnorwoodjordan.com/venv/
+static.micahnorwoodjordan.com/*.png
+static.micahnorwoodjordan.com/*.ttc
 
 node_modules/
 .angular/cache/
