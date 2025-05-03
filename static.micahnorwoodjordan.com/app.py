@@ -5,6 +5,7 @@ from flask import Flask, send_from_directory, abort
 
 ENV = os.environ
 STATIC_DIR = os.path.abspath("files")  # TODO: update
+HOST = '0.0.0.0'
 
 
 app = Flask(__name__)
@@ -35,6 +36,7 @@ def serve_static(filename):
 
 if __name__ == '__main__':
     app.run(
+        host=HOST,
         debug=is_production_mode(ENV['DEBUG']),
         port=ENV['SERVER_PORT']
     )
