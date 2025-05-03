@@ -8,7 +8,7 @@ from environment.parse_variables import is_production_mode
 
 
 ENV = os.environ
-STATIC_DIR = os.path.abspath("files")  # TODO: update
+STATIC_DIR = os.path.abspath("/workspace/static.micahnorwoodjordan.com")
 HOST = '0.0.0.0'
 
 
