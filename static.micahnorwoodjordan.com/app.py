@@ -25,7 +25,7 @@ s3_client = S3Client(
 @app.route('/ping')
 def ping():
     print(os.getcwd())
-    s3_client.download('bowling-ball.png')
+    s3_client.download_all()
     return 'PONG'
 
 

@@ -30,3 +30,10 @@ class S3Client:
         except Exception as e:
             print(f'error downloading file: {key}')
             raise S3Exception from e
+
+    def download_all(self):
+        paginator = self.s3.get_paginator('list_objects_v2')
+        for page in paginator.paginate(Bucket=self.bucket, Prefix=BUCKET_PREFIX):
+            for obj in page.get('Contents', []):
+                key = obj['Key']
+                self.s3.download_file(self.bucket, key, local_filepath = os.path.basename(key))
