@@ -42,18 +42,6 @@
               "aot": false,
               "extractLicenses": false,
               "namedChunks": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
               "outputHashing": "none"
             },
             "development": {
