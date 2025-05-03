@@ -36,4 +36,4 @@ class S3Client:
         for page in paginator.paginate(Bucket=self.bucket, Prefix=BUCKET_PREFIX):
             for obj in page.get('Contents', []):
                 key = obj['Key']
-                self.s3.download_file(self.bucket, key, local_filepath = os.path.basename(key))
+                self.s3.download_file(self.bucket, key, os.path.basename(key))
