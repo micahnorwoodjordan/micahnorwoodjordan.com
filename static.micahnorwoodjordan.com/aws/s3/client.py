@@ -32,9 +32,8 @@ class S3Client:
             raise S3Exception from e
 
     def download_all(self):
-        paginator = self.s3.get_paginator('list_objects_v2')
-        for page in paginator.paginate(Bucket=self.bucket, Prefix=BUCKET_PREFIX):
-            for obj in page.get('Contents', []):
-                print(obj)
-                key = obj['Key']
-                self.s3.download_file(self.bucket, key, os.path.basename(key))
+        objects = self.s3.list_objects_v2(Bucket=self.bucket, Prefix=BUCKET_PREFIX)
+        for obj in objects.get('Contents', []):
+            print(obj)
+            key = obj['Key']
+            self.s3.download_file(self.bucket, key, os.path.basename(key))
