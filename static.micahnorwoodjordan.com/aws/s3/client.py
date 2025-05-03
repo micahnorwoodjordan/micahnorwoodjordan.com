@@ -34,6 +34,7 @@ class S3Client:
     def download_all(self):
         objects = self.s3.list_objects_v2(Bucket=self.bucket, Prefix=BUCKET_PREFIX)
         for obj in objects.get('Contents', []):
-            print(obj)
             key = obj['Key']
-            self.s3.download_file(self.bucket, key, os.path.basename(key))
+
+            if key != BUCKET_PREFIX:
+                self.s3.download_file(self.bucket, key, os.path.basename(key))

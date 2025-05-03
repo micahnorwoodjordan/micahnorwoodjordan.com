@@ -4,28 +4,19 @@ from flask import Flask, send_from_directory, abort
 
 from aws.s3.client import S3Client
 
-from environment.parse_variables import is_production_mode
+from environment.environment import ENV, HOST, STATIC_DIR
 
 
-ENV = os.environ
-STATIC_DIR = os.path.abspath("/workspace/static.micahnorwoodjordan.com")
-HOST = '0.0.0.0'
+# TODO: log all errors instead of printing them
 
 
 app = Flask(__name__)
 
-s3_client = S3Client(
-    ENV['AWS_ACCESS_KEY_ID'],
-    ENV['AWS_SECRET_ACCESS_KEY'],
-    ENV['REGION_NAME'],
-    ENV['BUCKET']
-)
+s3_client = S3Client(ENV['AWS_ACCESS_KEY_ID'], ENV['AWS_SECRET_ACCESS_KEY'], ENV['REGION_NAME'], ENV['BUCKET'])
 
 
 @app.route('/ping')
 def ping():
-    print(os.getcwd())
-    s3_client.download_all()
     return 'PONG'
 
 
@@ -40,8 +31,9 @@ def serve_static(filename):
 
 
 if __name__ == '__main__':
+    s3_client.download_all()
     app.run(
         host=HOST,
-        debug=is_production_mode(ENV['DEBUG']),
+        debug=True if ENV['DEBUG'] == 'true' else False,  # TODO: this can be handled more gracefully
         port=ENV['SERVER_PORT']
     )
