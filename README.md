@@ -33,6 +33,8 @@
 - Admittedly, CDN is sort of a misnomer here, as the "network" portion of the acronym is comprised of only a single node, `static.micahnorwoodjordan.com`, which is an Ubuntu droplet that I manually deployed and configured to serve static images and fonts via Nginx. It's more of a Content Delivery Instance 🤫
 - I thought about committing some of the deployment scripts and configuration files to the codebase since I'm a fan of IaC, but I just haven't yet for some reason.
 - I had a lot of fun figuring out how to get this Content Delivery Instance to serve one of my favorite fonts, `DinaRemaster`
+#### UPDATED: May 3, 2025
+- I've since automated this site build process by deploying a Python Flask application as another App Platform App 🐍🏆.
 
 ### deployment strategy 🚀
 
