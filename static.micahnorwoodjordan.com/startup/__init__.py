@@ -1,6 +1,6 @@
 from flask import Flask
 
-from .install_artifacts import install_s3_artifacts
+from .tasks.install_artifacts import install_s3_artifacts
 
 
 def create_app():
