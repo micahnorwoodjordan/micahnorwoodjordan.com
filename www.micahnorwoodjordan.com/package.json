@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "http-server ./dist/micahnorwoodjordan/browser index.html --port 443",
+    "start": "http-server-spa ./dist/micahnorwoodjordan/browser index.html --port 443",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "^19.2.0",
     "@angular/router": "^19.2.0",
     "animejs": "^4.0.1",
-    "http-server": "^14.1.1",
+    "http-server-spa": "^1.3.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
