@@ -60,6 +60,7 @@ services:
   static:
       networks:
       - internal
+      user: deployuser
       build:
         context: ./static.micahnorwoodjordan.com
         dockerfile: Dockerfile
@@ -72,6 +73,8 @@ services:
           BUCKET: ${BUCKET}
           STATIC_DIRECTORY: ${STATIC_DIRECTORY}
           RUNNING_LOCALLY: ${RUNNING_LOCALLY}
+      volumes:
+        - ./static.micahnorwoodjordan.com:/srv/static
       env_file:
         - .env
       command: /bin/bash -c "gunicorn -b 0.0.0.0:80 run:app"
