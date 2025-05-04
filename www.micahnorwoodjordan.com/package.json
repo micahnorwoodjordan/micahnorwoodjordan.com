@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "http-server-spa dist/micahnorwoodjordan.com/browser index.html --port 443",
+    "start": "http-server-spa dist/micahnorwoodjordan.com/browser index.html 443",
     "build": "ng build --configuration production && chmod -R a+rX dist",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
