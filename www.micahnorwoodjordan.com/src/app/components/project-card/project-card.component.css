@@ -18,7 +18,3 @@
 .rounded { border-radius: 15px; }
 .card-image {  height: 30vh; }
 .card-image-mobile {  height: 20vh; }
-.card-avatar-image {
-    background-image: url('https://static.micahnorwoodjordan.com/me-cowboy.png');
-    background-size: cover;
-}

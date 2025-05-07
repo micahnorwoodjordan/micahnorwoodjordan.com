@@ -24,6 +24,7 @@ export class ProjectCardComponent {
   @Input() projectSubtitle: string = "";
   @Input() projectURL: string = "";
   @Input() userIsOnMobile: boolean = false;
+  @Input() avatarUrl: string = "";
 
   navigateToURL(url: string) { window.location.href = url; }
 
