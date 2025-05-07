@@ -1,11 +1,14 @@
 <div *ngIf="!userIsOnMobile" class="pd-bottom-10" fxLayout="column" fxLayoutAlign="center center">
     <mat-card class="card white rounded" appearance="outlined" (click)="onClick()">
         <mat-card-header>
-          <div mat-card-avatar class="card-avatar-image"></div>
+          <div mat-card-avatar [ngStyle]="{
+            'background-image': 'url(' + avatarUrl + ')',
+            'background-size': 'cover'
+          }"></div>
           <mat-card-title>{{projectName}}</mat-card-title>
           <mat-card-subtitle>{{projectSubtitle}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image class="card-image" src="{{imageURL}}">
+        <img mat-card-image class="card-image" src="{{projectImageURL}}">
         <mat-card-content>
           <p>{{bodyText}}</p>
         </mat-card-content>
@@ -19,7 +22,7 @@
       <mat-card-title>{{projectName}}</mat-card-title>
       <mat-card-subtitle>{{projectSubtitle}}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image class="card-image-mobile" src="{{imageURL}}">
+    <img mat-card-image class="card-image-mobile" src="{{projectImageURL}}">
     <mat-card-content>
       <p>{{bodyText}}</p>
     </mat-card-content>

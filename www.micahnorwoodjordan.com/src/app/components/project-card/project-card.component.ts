@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 
-
 @Component({
   selector: 'app-project-card',
   imports: [
@@ -19,12 +18,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 })
 export class ProjectCardComponent {
 
-  @Input() imageURL: string = "https://static.micahnorwoodjordan.com/me-sitting.png";
+  @Input() projectImageURL: string = "";
   @Input() bodyText: string = "";
   @Input() projectName: string = "";
   @Input() projectSubtitle: string = "";
   @Input() projectURL: string = "";
   @Input() userIsOnMobile: boolean = false;
+  @Input() avatarUrl: string = "";
 
   navigateToURL(url: string) { window.location.href = url; }
 

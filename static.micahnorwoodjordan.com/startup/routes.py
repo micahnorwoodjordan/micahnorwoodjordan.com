@@ -13,7 +13,7 @@ def ping():
     return 'PONG'
 
 
-@cross_origin(origins=['https://micahnorwoodjordan.com', '192.168.0.136'])
+@cross_origin(origins=['https://micahnorwoodjordan.com'])
 @main.route('/<path:filename>')
 def serve_static(filename):
     try:

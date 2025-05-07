@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { ProjectCardComponent } from '../project-card/project-card.component';
 import { ContextService } from '../../services/context.service';
+import { environment } from '../../../environments/production';
 
 import { Project } from '../../interfaces/Project';
 import { ApiService } from '../../services/api.service';
@@ -29,13 +30,9 @@ export class ProjectsPageComponent {
     this.projects$ = this.apiService.getAllProjects();
   }
 
-  imageURL: string = "";
-  bodyText: string = "";
-  projectName: string = "";
-  projectSubtitle: string = "";
-  projectURL: string = "";
-
   projects$: Observable<APIResponse<Project[]>>;
+
+  defaultProjectAvatarImageUrl: string = `${environment.staticSiteUrl}/me-cowboy.png`;
 
   getUserIsOnMobile(): boolean { return this.contextService.userIsOnMobile; }
 }

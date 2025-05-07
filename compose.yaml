@@ -57,6 +57,27 @@ services:
           echo "RUNNING APPLICATION IN WATCH MODE";
           ./mvnw spring-boot:run;
         fi
+  static:
+      networks:
+      - internal
+      user: deployuser
+      build:
+        context: ./static.micahnorwoodjordan.com
+        dockerfile: Dockerfile
+        args:
+          FLASK_ENV: ${FLASK_ENV}
+          DEBUG: ${DEBUG}
+          AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+          AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+          REGION_NAME: ${REGION_NAME}
+          BUCKET: ${BUCKET}
+          STATIC_DIRECTORY: ${STATIC_DIRECTORY}
+          RUNNING_LOCALLY: ${RUNNING_LOCALLY}
+      volumes:
+        - ./static.micahnorwoodjordan.com:/srv/static
+      env_file:
+        - .env
+      command: /bin/bash -c "gunicorn -b 0.0.0.0:80 run:app"
 
   # web container:
   #   serves as a proxy between my home LAN network and the internal docker network, consisting of the api container and ui container
