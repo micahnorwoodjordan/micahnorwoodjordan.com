@@ -29,12 +29,6 @@ export class ProjectsPageComponent {
     this.projects$ = this.apiService.getAllProjects();
   }
 
-  imageURL: string = "";
-  bodyText: string = "";
-  projectName: string = "";
-  projectSubtitle: string = "";
-  projectURL: string = "";
-
   projects$: Observable<APIResponse<Project[]>>;
 
   getUserIsOnMobile(): boolean { return this.contextService.userIsOnMobile; }

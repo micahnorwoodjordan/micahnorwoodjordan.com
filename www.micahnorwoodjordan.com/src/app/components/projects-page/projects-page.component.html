@@ -11,7 +11,7 @@
             <ng-container *ngFor="let project of apiResponse.data; let i = index">
                 <app-project-card
                     projectName="{{project.title}}"
-                    imageURL="{{project.imageUrl}}"
+                    projectImageURL="{{project.imageUrl}}"
                     bodyText="{{project.detail}}"
                     projectSubtitle="{{project.subtitle}}"
                     projectURL="{{project.projectUrl}}"
