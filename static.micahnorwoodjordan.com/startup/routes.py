@@ -1,6 +1,4 @@
-from flask_cors import cross_origin
-
-from flask import Blueprint, send_from_directory, abort
+from flask import Blueprint, send_from_directory, abort, request
 
 from environment.environment import STATIC_DIR
 
@@ -13,9 +11,10 @@ def ping():
     return 'PONG'
 
 
-@cross_origin(origins=['https://micahnorwoodjordan.com'])
-@main.route('/<path:filename>')
+@main.route('/<path:filename>', methods=['GET', 'OPTIONS'])
 def serve_static(filename):
+    if request.method == "OPTIONS":
+        return '', 200
     try:
         print(f'trying file: {filename}')
         if filename.endswith('.ttc'):
