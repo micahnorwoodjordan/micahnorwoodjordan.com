@@ -24,14 +24,20 @@ import { environment } from '../environments/production';
 })
 export class AppComponent {
   title = 'micahnorwoodjordan.com';
+  fontUrl =  `${environment.staticSiteUrl}/DinaRemasterCollection.ttc`;
 
   constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    const link = this.renderer.createElement('link');
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = `${environment.staticSiteUrl}/DinaRemasterCollection.ttc`;
-    this.renderer.appendChild(document.head, link);
+    const style = this.renderer.createElement('style');
+    style.innerHTML = `
+      @font-face {
+        font-family: 'DinaRemaster';
+        src: url('${this.fontUrl}') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+    `;
+    this.renderer.appendChild(document.head, style);
   }
 }

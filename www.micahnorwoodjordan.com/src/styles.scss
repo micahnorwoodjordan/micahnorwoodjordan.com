@@ -22,7 +22,6 @@
   ));
   @include mat.theme((
   color: mat.$green-palette,
-    typography: Roboto,
     density: 0
   ));
 }
@@ -35,7 +34,6 @@
   ));
   @include mat.theme((
   color: mat.$green-palette,
-    typography: Roboto,
     density: 0
   ));
 }
