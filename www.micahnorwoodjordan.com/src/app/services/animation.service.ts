@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import { Constants } from '../constants/Constants';
+
 import { animate } from 'animejs';
 
 
@@ -16,7 +18,6 @@ export class AnimationService {
   readonly redrawIntervalMilliseconds: number = 1000;
 
   // for text decryption visual effect
-  private readonly charset = 'アァカサワガザダバンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   private interval: any;
 
   private elementIsValid(element: any): boolean { return element !== null && element !== undefined; }
@@ -56,7 +57,7 @@ export class AnimationService {
   }
 
   private randomChar(): string {
-    return this.charset.charAt(Math.floor(Math.random() * this.charset.length));
+    return Constants.matrixCharacters.charAt(Math.floor(Math.random() * Constants.matrixCharacters.length));
   }
 
   clear(): void {
