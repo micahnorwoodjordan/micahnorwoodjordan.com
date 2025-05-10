@@ -1,8 +1,3 @@
-<div *ngIf="getUserIsOnMobile()" class="pd-top-10" fxLayout="row" fxLayoutAlign="center center">
-    <img class="image-me-sitting-mobile" src="{{getMeSittingPNGURL()}}" alt="micah sitting">
-</div>
-
-
 <div *ngIf="!getUserIsOnMobile()" class="pd-bottom-10" fxLayout="row" fxLayoutAlign="space-around center">
     <div class="pd-left-5" fxLayout="column" fxFlex="30vw">
         <img class="image-me-sitting" src="{{getMeSittingPNGURL()}}" alt="micah sitting">
@@ -23,9 +18,11 @@
 
 <div *ngIf="getUserIsOnMobile()" fxLayoutAlign="space-around center" >
     <div class="pd-left-2" fxLayout="column" fxFlex="70vw" fxLayoutAlign="space-evenly center">
-        <span class="who-is-micah-subheader-mobile pd-top-10">Who is Micah?</span>
+        <span class="who-is-micah-subheader-mobile pd-top-5 pd-left-10">Who is Micah?</span>
         <p class="content-mobile">{{whoIsMicahDecryptedText}}</p>
         <p class="subtitle-mobile">{{micahNoteDecryptedText}}</p>
+        <br>
+        <img class="image-me-sitting-mobile" src="{{getMeSittingPNGURL()}}" alt="micah sitting">
         <br>
         <br>
         <br>
