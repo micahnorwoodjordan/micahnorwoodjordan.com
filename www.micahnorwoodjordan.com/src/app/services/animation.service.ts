@@ -31,7 +31,7 @@ export class AnimationService {
     }
   }
 
-  applyDecryptionEffectToMarkupText(targetText: string, callback: (text: string) => void, speed: number = 25): void {
+  applyDecryptionEffectToMarkupText(targetText: string, callback: (text: string) => void, speed: number = 100): void {
     let characterIndex = 0;
 
     this.clear(); // Clear any existing interval
