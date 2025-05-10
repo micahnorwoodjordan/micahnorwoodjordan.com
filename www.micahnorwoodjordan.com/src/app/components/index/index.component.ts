@@ -24,10 +24,12 @@ import { AnimationService } from '../../services/animation.service';
 export class IndexComponent implements AfterViewInit {
   constructor(private contextService: ContextService, private animationService: AnimationService) {  }
 
-  whoIsMicahText: string = "Micah is a devout Christian with a childlike love for building software. His goal is to honor Jesus in all aspects of life, even in the lines of code that he writes.";
-  micahNoteText: string = "(Also, if you couldn't tell, his favorite color is green, and he loves the Matrix movies)";
+  private readonly whoIsMicahText: string = "Micah is a devout Christian with a childlike love for building software. His goal is to honor Jesus in all aspects of life, even in the lines of code that he writes.";
+  private readonly micahNoteText: string = "(He also loves the Matrix movies, and his favorite color is green)";
 
   // no actual decryption is taking place; this just refers to a visual effect
+  private readonly whoIsMicahDecryptionSpeedMilliseconds: number = 25;
+  private readonly micahNoteDecryptionSpeedMilliseconds: number = 50;
   whoIsMicahDecryptedText: string = '';
   micahNoteDecryptedText: string = '';
 
@@ -38,12 +40,12 @@ export class IndexComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.animationService.applyDecryptionEffectToMarkupText(this.whoIsMicahText, (text) => {
       this.whoIsMicahDecryptedText = text;
-    }, 12);
+    }, this.whoIsMicahDecryptionSpeedMilliseconds);
 
     setTimeout(() => {  // delay for 5 seconds because both methods will otherwise compete for the same interval
       this.animationService.applyDecryptionEffectToMarkupText(this.micahNoteText, (text) => {
         this.micahNoteDecryptedText = text;        
-      }, 50);
+      }, this.micahNoteDecryptionSpeedMilliseconds);
     }, 5000)
   }
 }
