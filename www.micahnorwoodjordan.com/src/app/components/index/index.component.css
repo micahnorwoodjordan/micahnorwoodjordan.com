@@ -9,8 +9,8 @@
 .who-is-micah-subheader { font-size: 50px; font-weight: 400; color: white; }
 .who-is-micah-subheader-mobile { font-size: xxx-large; font-weight: 200; color: white; }
 
-.content { font-size: xx-large; font-weight: 250; color: white; }
-.content-mobile { font-size: x-large; font-weight: 100; color: white; }
+.content { font-size: xx-large; font-weight: 250; color: #219d51; opacity: 0.8; height: 15vh; width: 40vw; }
+.content-mobile { font-size: x-large; font-weight: 100; color: #219d51; opacity: 0.8; height: 20vh; width: 80vw; }
 
 .learn-more-button { height: 12vh; width: 11vw; font-size: 20px; font-weight: 200; }
 .learn-more-button-mobile { height: 11vh; width: 45vw; font-size: 20px; font-weight: 200; }
@@ -36,5 +36,5 @@
 .image { width: 25vw; }
 .image-mobile { width: 90vw; }
 
-.subtitle { font-size: x-large; color: white; }
-.subtitle-mobile { font-size: large; color: white; }
+.subtitle { font-size: x-large; color: #219d51; opacity: 0.8; height: 10vh; width: 45vw; }
+.subtitle-mobile { font-size: large; color: #219d51; opacity: 0.8; height: 10vh; width: 85vw; }
