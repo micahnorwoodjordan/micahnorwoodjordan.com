@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ContextService } from '../../services/context.service';
 
+import { Constants } from '../../constants/Constants';
+
 
 @Component({
   selector: 'app-canvas',
@@ -15,7 +17,6 @@ export class CanvasComponent implements OnInit {
   private canvas: HTMLCanvasElement | null = null;
   private canvasContext: CanvasRenderingContext2D | null = null;
   private animationFrameId: number = 0;
-  private readonly characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   private readonly fontSizeDesktop = 100;
   private readonly fontSizeMobile = 35;
   private readonly canvasBackdropColorCode: string = 'rgba(0, 0, 0, 0.05)';
@@ -134,7 +135,7 @@ export class CanvasComponent implements OnInit {
       this.canvasContext.font = mapping.fontString;
 
       for (let i = 0; i < this.columns; i++) {;
-        const text = this.characters.charAt(Math.floor(Math.random() * this.characters.length));
+        const text = Constants.matrixCharacters.charAt(Math.floor(Math.random() * Constants.matrixCharacters.length));
         const xCoordinate = i * mapping.fontSize * mapping.canvasContextFontSizeScaleCoefficient;
         const yCoordinate = this.columnPositions[i] * mapping.fontSize * mapping.yCoordinateDrawCoefficient;
 

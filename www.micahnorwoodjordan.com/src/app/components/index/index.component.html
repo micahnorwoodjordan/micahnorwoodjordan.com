@@ -6,10 +6,14 @@
         <p class="who-is-micah-header pd-top-5">
             Who is Micah?
         </p>
-        <p class="content">{{whoIsMicahDecryptedText}}</p>
-        <p class="subtitle">{{micahNoteDecryptedText}}</p>
-        <br>
-        <br>
+        <p class="content">
+            <span class="who-is-micah-text-decrypted">{{whoIsMicahTextObject.decryptedString}}</span>
+            <span class="who-is-micah-text-encrypted">{{whoIsMicahTextObject.encryptedString}}</span>
+        </p>
+        <p class="subtitle">
+            <span class="who-is-micah-text-decrypted">{{micahNoteTextObject.decryptedString}}</span>
+            <span class="who-is-micah-text-encrypted">{{micahNoteTextObject.encryptedString}}</span>
+        </p>
         <button class="learn-more-button" mat-flat-button>
             <a class="learn-more-button-a-tag-text" routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">LEARN MORE</a>
         </button>
@@ -19,9 +23,14 @@
 <div *ngIf="getUserIsOnMobile()" fxLayoutAlign="space-around center" >
     <div class="pd-left-2" fxLayout="column" fxFlex="70vw" fxLayoutAlign="space-evenly center">
         <span class="who-is-micah-subheader-mobile pd-top-5 pd-left-10">Who is Micah?</span>
-        <p class="content-mobile">{{whoIsMicahDecryptedText}}</p>
-        <p class="subtitle-mobile">{{micahNoteDecryptedText}}</p>
-        <br>
+        <p class="content-mobile">
+            <span class="who-is-micah-text-decrypted">{{whoIsMicahTextObject.decryptedString}}</span>
+            <span class="who-is-micah-text-encrypted">{{whoIsMicahTextObject.encryptedString}}</span>
+        </p>
+        <p class="subtitle-mobile">
+            <span class="who-is-micah-text-decrypted">{{micahNoteTextObject.decryptedString}}</span>
+            <span class="who-is-micah-text-encrypted">{{micahNoteTextObject.encryptedString}}</span>
+        </p>
         <img class="image-me-sitting-mobile" src="{{getMeSittingPNGURL()}}" alt="micah sitting">
         <br>
         <br>
