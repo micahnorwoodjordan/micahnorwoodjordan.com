@@ -43,19 +43,14 @@
             </mat-chip-set>
 
             <p class="content pd-top-5">
-                Maybe you need an API built -- done. Do you need it deployed to a cloud compute instance? Consider it handled.
-                Perhaps you need to configure a firewall for your business -- check.
-                What if a rogue process is consuming RAM and CPU in your system? I'll find it.
-                Application services need to be containerized? Easy peasy.
-                In need of synchronous and asynchronous data processing queues? No worries.
-            </p>
-            <p class="content pd-top-2">
-                And this is just the tip of the iceberg.
-            </p>
-            <p class="content pd-top-2">
-                I have 5 years' experience in building and testing secure and performant distributed SaaS applications, while maintaining legacy systems to serve millions of daily users worldwide.
-                Throughout my career, I've tackled a laundry list of technical challenges, and have honed my skills in developing robust backend systems that enhance user experiences. My calculated approach to translating customer needs into software results in satisfied customers.
-                Independently motivated, but customer-focused, I thrive on building complex, fault-tolerant systems.
+                <span class="decrypted-effect">{{textObject1.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject1.encryptedString}}</span>
+                <br><br><br><br>
+                <span class="decrypted-effect">{{textObject2.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject2.encryptedString}}</span>
+                <br><br><br><br>
+                <span class="decrypted-effect">{{textObject3.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject3.encryptedString}}</span>
             </p>
         </div>
     </div>
@@ -111,20 +106,15 @@
                 <mat-chip>Database Design</mat-chip>
             </mat-chip-set>
     
-            <p class="content pd-top-5">
-                Maybe you need an API built -- done. Do you need it deployed to a cloud compute instance? Consider it handled.
-                Perhaps you need to configure a firewall for your business -- check.
-                What if a rogue process is consuming RAM and CPU in your system? I'll find it.
-                Application services need to be containerized? Easy peasy.
-                In need of synchronous and asynchronous data processing queues? No worries.
-            </p>
-            <p class="content pd-top-2">
-                And this is just the tip of the iceberg.
-            </p>
-            <p class="content pd-top-2 pd-bottom-10">
-                I have 5 years' experience in building and testing secure and performant distributed SaaS applications, while maintaining legacy systems to serve millions of daily users worldwide.
-                Throughout my career, I've tackled a laundry list of technical challenges, and have honed my skills in developing robust backend systems that enhance user experiences. My calculated approach to translating customer needs into software results in satisfied customers.
-                Independently motivated, but customer-focused, I thrive on building complex, fault-tolerant systems.
+            <p class="content-mobile pd-top-5 pd-left-2">
+                <span class="decrypted-effect">{{textObject1.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject1.encryptedString}}</span>
+                <br><br>
+                <span class="decrypted-effect">{{textObject2.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject2.encryptedString}}</span>
+                <br><br>
+                <span class="decrypted-effect">{{textObject3.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject3.encryptedString}}</span>
             </p>
         </div>
     </div>
@@ -137,14 +127,14 @@
             <div class="pd-left-5">
                 <p class="contact-me-header">Contact Me</p>
             </div>
-            <p class="content contact-me-content pd-left-5 pd-right-5">
+            <p class="contact-me-content pd-left-5 pd-right-5">
                 If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
             </p>
             <br>
-            <p class="content contact-me-content pd-left-5 pd-right-5">
+            <p class="contact-me-content pd-left-5 pd-right-5">
                 <u>micahnorwoodjordan&#64;gmail.com</u>
             </p>
-            <p class="content contact-me-content pd-left-5 pd-right-5">
+            <p class="contact-me-content pd-left-5 pd-right-5">
                 (602) 317-1807
             </p>
         </div>
@@ -191,14 +181,14 @@
     <div class="contact-me-section-mobile" fxLayout="column" FxLayoutAlign="space-evenly center">
         <div class="contact-me-form-mobile" fxLayout="column" fxLayoutAlign="center center">
             <p class="contact-me-header-mobile">Contact Me</p>
-            <p class="content contact-me-content pd-left-5 pd-right-5">
+            <p class="contact-me-content pd-left-5 pd-right-5">
                 If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
             </p>
             <br>
-            <p class="content contact-me-content pd-left-5 pd-right-5">
+            <p class="contact-me-content pd-left-5 pd-right-5">
                 <u>micahnorwoodjordan&#64;gmail.com</u>
             </p>
-            <p class="content contact-me-content pd-left-5 pd-right-5">(602) 317-1807</p>
+            <p class="contact-me-content pd-left-5 pd-right-5">(602) 317-1807</p>
             <mat-form-field class="name-field-mobile">
                 <mat-label>First Name</mat-label>
                 <input matInput [formControl]="firstName" placeholder="Ex. John" value="">
