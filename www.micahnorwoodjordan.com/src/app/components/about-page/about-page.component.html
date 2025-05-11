@@ -43,16 +43,14 @@
             </mat-chip-set>
 
             <p class="content pd-top-5">
-                <span>{{textObject1.decryptedString}}</span>
-                <span>{{textObject1.encryptedString}}</span>
-            </p>
-            <p class="content pd-top-2">
-                <span>{{textObject2.decryptedString}}</span>
-                <span>{{textObject2.encryptedString}}</span>
-            </p>
-            <p class="content pd-top-2">
-                <span>{{textObject3.decryptedString}}</span>
-                <span>{{textObject3.encryptedString}}</span>
+                <span class="decrypted-effect">{{textObject1.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject1.encryptedString}}</span>
+                <br><br><br><br>
+                <span class="decrypted-effect">{{textObject2.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject2.encryptedString}}</span>
+                <br><br><br><br>
+                <span class="decrypted-effect">{{textObject3.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject3.encryptedString}}</span>
             </p>
         </div>
     </div>
@@ -108,17 +106,15 @@
                 <mat-chip>Database Design</mat-chip>
             </mat-chip-set>
     
-            <p class="content pd-top-5">
-                <span>{{textObject1.decryptedString}}</span>
-                <span>{{textObject1.encryptedString}}</span>
-            </p>
-            <p class="content pd-top-2">
-                <span>{{textObject2.decryptedString}}</span>
-                <span>{{textObject2.encryptedString}}</span>
-            </p>
-            <p class="content pd-top-2">
-                <span>{{textObject3.decryptedString}}</span>
-                <span>{{textObject3.encryptedString}}</span>
+            <p class="content-mobile pd-top-5 pd-left-2">
+                <span class="decrypted-effect">{{textObject1.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject1.encryptedString}}</span>
+                <br><br>
+                <span class="decrypted-effect">{{textObject2.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject2.encryptedString}}</span>
+                <br><br>
+                <span class="decrypted-effect">{{textObject3.decryptedString}}</span>
+                <span class="encrypted-effect">{{textObject3.encryptedString}}</span>
             </p>
         </div>
     </div>
@@ -131,14 +127,14 @@
             <div class="pd-left-5">
                 <p class="contact-me-header">Contact Me</p>
             </div>
-            <p class="content contact-me-content pd-left-5 pd-right-5">
+            <p class="contact-me-content pd-left-5 pd-right-5">
                 If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
             </p>
             <br>
-            <p class="content contact-me-content pd-left-5 pd-right-5">
+            <p class="contact-me-content pd-left-5 pd-right-5">
                 <u>micahnorwoodjordan&#64;gmail.com</u>
             </p>
-            <p class="content contact-me-content pd-left-5 pd-right-5">
+            <p class="contact-me-content pd-left-5 pd-right-5">
                 (602) 317-1807
             </p>
         </div>
@@ -185,14 +181,14 @@
     <div class="contact-me-section-mobile" fxLayout="column" FxLayoutAlign="space-evenly center">
         <div class="contact-me-form-mobile" fxLayout="column" fxLayoutAlign="center center">
             <p class="contact-me-header-mobile">Contact Me</p>
-            <p class="content contact-me-content pd-left-5 pd-right-5">
+            <p class="contact-me-content pd-left-5 pd-right-5">
                 If you'd like to get in touch, please shoot me an email, and I will contact you soon. Looking forward to our correspondence!
             </p>
             <br>
-            <p class="content contact-me-content pd-left-5 pd-right-5">
+            <p class="contact-me-content pd-left-5 pd-right-5">
                 <u>micahnorwoodjordan&#64;gmail.com</u>
             </p>
-            <p class="content contact-me-content pd-left-5 pd-right-5">(602) 317-1807</p>
+            <p class="contact-me-content pd-left-5 pd-right-5">(602) 317-1807</p>
             <mat-form-field class="name-field-mobile">
                 <mat-label>First Name</mat-label>
                 <input matInput [formControl]="firstName" placeholder="Ex. John" value="">

@@ -38,6 +38,10 @@ export class AboutPageComponent {
     private readonly contextService: ContextService,
     private readonly animationService: AnimationService
   ) {
+    if (this.contextService.userIsOnMobile) {
+      this.setScrollYPositionDecryptionEffectThreshold(window.innerHeight);
+    }
+
     window.addEventListener('scroll', async () => {
       this.setScrollYPosition(window.scrollY);
       if (!this.decryptionEffectAlreadyTriggered) {
@@ -47,7 +51,7 @@ export class AboutPageComponent {
             await this.animationService.applyDecryptionEffectToMarkupText(textObject.targetString, (encrypted, decrypted) => {
              textObject.encryptedString = encrypted;
              textObject.decryptedString = decrypted;
-            }, Constants.decryptionEffectSpeedMillisFastest);
+            }, Constants.decryptionEffectSpeedMillisFaster);
           }
         }
       }
@@ -88,6 +92,7 @@ export class AboutPageComponent {
     message: this.message
   });
 
+  setScrollYPositionDecryptionEffectThreshold(newValue: number) { this.scrollYPositionDecryptionEffectThreshold = newValue; }
   setDecryptionEffectAlreadyTriggered(newValue: boolean) { this.decryptionEffectAlreadyTriggered = newValue; }
   setScrollYPosition(newValue: number) { this.scrollYPosition = newValue; }
   setIsWaitingForAPIResponse(newValue: boolean) { this.isWaitingForAPIResponse = newValue; }
