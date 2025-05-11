@@ -44,37 +44,42 @@ export class AnimationService {
     }
   }
 
-  applyDecryptionEffectToMarkupText(
+  async applyDecryptionEffectToMarkupText(
     targetText: string,
     callback: (encryptedText: string, decryptedText: string) => void,
     speed: number = 100
-  ): void {
-    // make a copy of the "who is micah" string
+  ): Promise<void> {
+    // make a copy of the target string
     // set every character in the copy to a randomly generated character sequence consisting of matrix characters
-    // every 1/10 seconds by default, replace one character in the copy with one true character from the true "who is micah" string
-    // by calling the callback function, which should update some string attribute of a component with the partially "decrypted" text
+    // every 1/10 seconds by default, replace one character in the copy with one true character from the target string by calling the callback function
+    // which should update some string attribute of a component with the partially "decrypted" text
 
     let decryptedCharIdx = 0;
 
     this.clear(); // Clear any existing interval
 
-    this.interval = setInterval(() => {
-      let decryptedText = targetText.slice(0, decryptedCharIdx + 1);
-      let encryptedText = '';
-
-      if (decryptedCharIdx >= targetText.length) {
-        this.clear();
-        return;
-      }
-
-      for (let count = 0; count < targetText.length - decryptedCharIdx - 1; count++) {
-        encryptedText += this.randomChar();
-      }
-
-      callback(encryptedText, decryptedText);
-
-      decryptedCharIdx++;
-    }, speed);
+    return new Promise((resolve) =>{
+      this.interval = setInterval(() => {
+        let decryptedText = targetText.slice(0, decryptedCharIdx + 1);
+        let encryptedText = '';
+  
+        if (decryptedCharIdx >= targetText.length) {
+          this.clear();
+          callback(encryptedText, decryptedText);
+          // if the caller function calls this method within a loop, make it await for the Promise to finally resolve
+          // that way the decryption visual effect finishes on the current iteration before moving on to the next
+          resolve();
+        }
+  
+        for (let count = 0; count < targetText.length - decryptedCharIdx - 1; count++) {
+          encryptedText += this.randomChar();
+        }
+  
+        callback(encryptedText, decryptedText);
+  
+        decryptedCharIdx++;
+      }, speed);
+    })
   }
   // -----------------------------------------------text decryption effect------------------------------------------
 }
