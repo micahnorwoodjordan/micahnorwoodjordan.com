@@ -18,7 +18,10 @@
 <div *ngIf="userIsOnMobile" class="pd-bottom-5 pd-left-2" fxLayout="column" fxLayoutAlign="center center">
   <mat-card class="card-mobile white rounded pd-left-2" appearance="outlined" (click)="onClick()">
     <mat-card-header>
-      <div mat-card-avatar class="card-avatar-image"></div>
+      <div mat-card-avatar [ngStyle]="{
+        'background-image': 'url(' + avatarUrl + ')',
+        'background-size': 'cover'
+      }"></div>
       <mat-card-title>{{projectName}}</mat-card-title>
       <mat-card-subtitle>{{projectSubtitle}}</mat-card-subtitle>
     </mat-card-header>
