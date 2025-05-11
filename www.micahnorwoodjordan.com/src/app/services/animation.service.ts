@@ -46,7 +46,7 @@ export class AnimationService {
 
   applyDecryptionEffectToMarkupText(
     targetText: string,
-    callback: (text: string) => void,
+    callback: (encryptedText: string, decryptedText: string) => void,
     speed: number = 100
   ): void {
     // make a copy of the "who is micah" string
@@ -59,19 +59,19 @@ export class AnimationService {
     this.clear(); // Clear any existing interval
 
     this.interval = setInterval(() => {
+      let decryptedText = targetText.slice(0, decryptedCharIdx + 1);
+      let encryptedText = '';
+
       if (decryptedCharIdx >= targetText.length) {
-        callback(targetText); // Final state
         this.clear();
         return;
       }
 
-      let encryptedText = '';
       for (let count = 0; count < targetText.length - decryptedCharIdx - 1; count++) {
         encryptedText += this.randomChar();
       }
 
-      const partiallyDecryptedText = targetText.slice(0, decryptedCharIdx + 1) + encryptedText;
-      callback(partiallyDecryptedText);
+      callback(encryptedText, decryptedText);
 
       decryptedCharIdx++;
     }, speed);

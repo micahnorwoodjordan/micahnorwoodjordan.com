@@ -31,21 +31,23 @@ export class IndexComponent implements AfterViewInit {
   private readonly whoIsMicahDecryptionSpeedMilliseconds: number = 25;
   private readonly micahNoteDecryptionSpeedMilliseconds: number = 50;
   whoIsMicahDecryptedText: string = '';
-  micahNoteDecryptedText: string = '';
+  whoIsMicahEncryptedText: string = '';
+  // micahNoteDecryptedText: string = '';
 
   getUserIsOnMobile(): boolean { return this.contextService.userIsOnMobile; }
   getViewportWidth(): number { return this.contextService.viewportWidth; }
   getMeSittingPNGURL() { return this.contextService.meSittingPNGURL; }
 
   ngAfterViewInit(): void {
-    this.animationService.applyDecryptionEffectToMarkupText(this.whoIsMicahText, (text) => {
-      this.whoIsMicahDecryptedText = text;
+    this.animationService.applyDecryptionEffectToMarkupText(this.whoIsMicahText, (encrypted, decrypted) => {
+      this.whoIsMicahDecryptedText = decrypted;
+      this.whoIsMicahEncryptedText = encrypted;
     }, this.whoIsMicahDecryptionSpeedMilliseconds);
 
-    setTimeout(() => {  // delay for 5 seconds because both methods will otherwise compete for the same interval
-      this.animationService.applyDecryptionEffectToMarkupText(this.micahNoteText, (text) => {
-        this.micahNoteDecryptedText = text;        
-      }, this.micahNoteDecryptionSpeedMilliseconds);
-    }, 5000)
+    // setTimeout(() => {  // delay for 5 seconds because both methods will otherwise compete for the same interval
+    //   this.animationService.applyDecryptionEffectToMarkupText(this.micahNoteText, (text) => {
+    //     this.micahNoteDecryptedText = text;        
+    //   }, this.micahNoteDecryptionSpeedMilliseconds);
+    // }, 5000)
   }
 }
