@@ -16,14 +16,22 @@ import jakarta.persistence.PrePersist;
 
 @Entity
 public class RequestLog {
+        private static final int WIDE_DATA_VARCHAR_LENGTH = 512;
+
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
-        private String url;
         private String path;
         private String method;
+
+        @Column(length = WIDE_DATA_VARCHAR_LENGTH)
+        private String url;
+
+        @Column(length = WIDE_DATA_VARCHAR_LENGTH)
         private String userAgent;
+
+        @Column(length = WIDE_DATA_VARCHAR_LENGTH)
         private String origin;
 
         @JdbcTypeCode(SqlTypes.JSON)
