@@ -2,6 +2,9 @@ package api.micahnorwoodjordan.com.dataaccess.models;
 
 import java.util.Map;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import java.time.Instant;
 
 import jakarta.persistence.Column;
@@ -18,11 +21,14 @@ public class RequestLog {
         private Long id;
 
         private String url;
+        private String path;
         private String method;
         private String userAgent;
+        private String origin;
 
+        @JdbcTypeCode(SqlTypes.JSON)
         @Column(columnDefinition = "json")
-        private String headers;
+        private Map<String, String> headers;
 
         @Column(name = "created_at", nullable = false, updatable = false)
         private Instant createdAt;
@@ -35,11 +41,13 @@ public class RequestLog {
         protected RequestLog() {
         }
 
-        public RequestLog(String url, String method, String headers, String userAgent) {
+        public RequestLog(String url, String path, String method, Map<String, String> headers, String userAgent, String origin) {
                 this.url = url;
                 this.method = method;
                 this.headers = headers;
                 this.userAgent = userAgent;
+                this.origin = origin;
+                this.path = path;
         }
 
         @Override
@@ -55,11 +63,19 @@ public class RequestLog {
                 return url;
         }
 
+        public String getPath() {
+                return path;
+        }
+
         public String getMethod() {
                 return method;
         }
 
-        public String getHeaders() {
+        public String getOrigin() {
+                return origin;
+        }
+
+        public Map<String, String> getHeaders() {
                 return headers;
         }
 
