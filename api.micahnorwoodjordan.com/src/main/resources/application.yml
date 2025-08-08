@@ -1,7 +1,8 @@
 spring:
   application:
     name: api.micahnorwoodjordan.com
-
+  cache:
+    type: redis
   jpa:
     show-sql: true
     hibernate:
