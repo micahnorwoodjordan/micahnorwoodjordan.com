@@ -1,6 +1,9 @@
 {
   "name": "micahnorwoodjordan.com",
   "version": "0.0.0",
+  "engines": {
+    "node": "22.10.0"
+  },
   "scripts": {
     "ng": "ng",
     "start": "http-server-spa dist/micahnorwoodjordan.com/browser index.html 443",
