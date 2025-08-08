@@ -12,8 +12,8 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 
 @Component
-public class RequestService implements Filter {
-    private LogService logger = new LogService(RequestService.class.getName());
+public class RequestFilterService implements Filter {
+    private LogService logger = new LogService(RequestFilterService.class.getName());
 
     @Autowired
     private RequestLogService requestLogService;
