@@ -9,10 +9,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
 
+import org.springframework.cache.annotation.EnableCaching;
+
 import api.micahnorwoodjordan.com.services.EnvironmentContextService;
 
 
 @SpringBootApplication
+@EnableCaching
 public class Application {
 
 	public static void main(String[] args) {

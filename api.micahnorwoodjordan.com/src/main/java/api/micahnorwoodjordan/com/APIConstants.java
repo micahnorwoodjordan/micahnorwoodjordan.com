@@ -2,7 +2,7 @@ package api.micahnorwoodjordan.com;
 
 public class APIConstants {
         private APIConstants () {}
-
+        public static final String healthCheckPath = "/ping";
         public static final String apiV2HeaderName = "x-api-version";  // header name comes across the wire all lowercase
         public static final String apiV2HeaderValue = "v2";  // header name comes across the wire all lowercase
         public static final String corsRoutesMatch = "/**";
