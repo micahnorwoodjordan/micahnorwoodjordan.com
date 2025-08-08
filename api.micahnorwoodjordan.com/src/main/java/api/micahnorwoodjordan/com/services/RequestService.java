@@ -65,7 +65,7 @@ public class RequestService implements Filter {
                 return true;
             }
         }
-        return false;
+        return true;
     }
 
     private boolean requestAlreadyCached(String userAgent, String path) {
