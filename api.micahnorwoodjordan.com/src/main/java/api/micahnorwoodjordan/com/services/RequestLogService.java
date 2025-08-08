@@ -25,7 +25,7 @@ public class RequestLogService {
         @Autowired
         private RequestLogRepository requestLogRepository;
 
-        private LogService logger = new LogService(RequestService.class.getName());
+        private LogService logger = new LogService(RequestLogService.class.getName());
 
         private HttpRequestContext getHttpRequestContext(ServletRequest request) {
                 HttpServletRequest http = (HttpServletRequest) request;
@@ -61,10 +61,10 @@ public class RequestLogService {
                         try {
                                 this.requestLogRepository.save(new RequestLog(url, path, method, headers, userAgent, origin));
                                 cacheService.putInCache(userAgent, path, host);
-                                logger.logMessage(LogLevel.INFO, "RequestService.doFilter: shouldRecordRequestToDatabase true");
+                                logger.logMessage(LogLevel.INFO, "RequestLogService.recordRequestLog: shouldRecordRequestToDatabase true");
                                 success = true;
                         } catch (Exception e) {
-                                logger.logMessage(LogLevel.ERROR, "RequestService.doFilter: shouldRecordRequestToDatabase true with ERROR");
+                                logger.logMessage(LogLevel.ERROR, "RequestLogService.recordRequestLog: shouldRecordRequestToDatabase true with ERROR");
                         }       
                 }
                 return success;
