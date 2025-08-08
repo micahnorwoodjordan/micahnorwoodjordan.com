@@ -42,6 +42,9 @@ services:
         SERVER_PORT: ${SERVER_PORT}
         SMTP_USERNAME: ${SMTP_USERNAME}
         SMTP_PASSWORD: ${SMTP_PASSWORD}
+        REDIS_PASSWORD: ${REDIS_PASSWORD}
+        REDIS_HOST: ${REDIS_HOST}
+        REDIS_PORT: ${REDIS_PORT}
     volumes:
       - ./api.micahnorwoodjordan.com:/srv/api
     env_file:
@@ -51,12 +54,14 @@ services:
       - -c
       - |
         if [ "$DOCKER_DEPLOYMENT_METHOD" = "build" ]; then
-        echo "RUNNING APPLICATION AS JAR";
-        java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar;
+          echo "RUNNING APPLICATION AS JAR";
+          java -jar /srv/api/target/api.micahnorwoodjordan.com-build.jar;
         else
           echo "RUNNING APPLICATION IN WATCH MODE";
           ./mvnw spring-boot:run;
         fi
+    depends_on:
+      - redis
   static:
       networks:
       - internal
@@ -110,6 +115,17 @@ services:
       interval: 5s
       timeout: 30s
       retries: 5
+  redis:
+    networks:
+      - internal
+    image: redis
+    command:
+      - /bin/bash
+      - -c
+      - |
+        redis-server --bind 0.0.0.0 --requirepass ${REDIS_PASSWORD}
+    env_file:
+      - .env
 
 networks:
   internal:  # internal docker network
