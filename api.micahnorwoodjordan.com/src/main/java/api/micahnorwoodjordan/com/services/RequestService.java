@@ -18,11 +18,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import api.micahnorwoodjordan.com.dataaccess.models.RequestLog;
 import api.micahnorwoodjordan.com.dataaccess.RequestLogRepository;
 import api.micahnorwoodjordan.com.services.enums.LogLevel;
-
+import api.micahnorwoodjordan.com.APIConstants;
 
 @Component
 public class RequestService implements Filter {
     private LogService logger = new LogService(RequestService.class.getName());
+
+    @Autowired
+    private CacheService cacheService;
 
     @Autowired
     private RequestLogRepository requestLogRepository;
@@ -34,21 +37,38 @@ public class RequestService implements Filter {
         String path = http.getRequestURI();
         String method = http.getMethod();
         Map<String, String> headers = Collections.list(http.getHeaderNames()).stream()
-            .collect(Collectors.toMap(
-                name -> name, http::getHeader
-            )
+            .collect(Collectors.toMap(name -> name, http::getHeader)
         );
         String userAgent = http.getHeader("User-Agent");
         String origin = http.getHeader("Origin");
+        String host = http.getRemoteHost();
 
-        logger.logMessage(LogLevel.INFO, "Incoming request from Origin: " + origin + "--" + "host: " + http.getRemoteHost());
-
-        try {
-            RequestLog loggedRequest = new RequestLog(url, path, method, headers, userAgent, origin);
-            this.requestLogRepository.save(loggedRequest);
-        } catch (Exception e) {
-            logger.logMessage(LogLevel.ERROR, "Error saving request data" + e);
+        if (this.shouldRecordRequestToDatabase(userAgent, path)) {
+            try {
+                this.requestLogRepository.save(new RequestLog(url, path, method, headers, userAgent, origin));
+                cacheService.putInCache(userAgent, path, host);
+                logger.logMessage(LogLevel.INFO, "Saved request info from Origin: " + origin + "--" + "host: " + host);
+            } catch (Exception e) {
+                logger.logMessage(LogLevel.ERROR, "Error saving request data" + e);
+            }
         }
+
+        logger.logMessage(LogLevel.INFO, "Incoming request from Origin: " + origin + "--" + "host: " + host);
         chain.doFilter(request, response);
+    }
+
+    private boolean shouldRecordRequestToDatabase(String userAgent, String path) {  // this should be called for any stateless, routine request
+        if (path.equals(APIConstants.healthCheckPath)) {
+            if (this.requestAlreadyCached(userAgent, path)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean requestAlreadyCached(String userAgent, String path) {
+        return cacheService.getFromCache(userAgent, path);
     }
 }
