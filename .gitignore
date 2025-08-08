@@ -8,6 +8,7 @@ node_modules/
 .angular/cache/
 .vscode/
 znotes/
+envs/
 
 ide-notes.md
 spring-boot-notes.md
