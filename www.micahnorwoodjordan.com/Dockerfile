@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:23.9.0
+FROM --platform=linux/amd64 node:22.10.0
 
 ARG UI_PORT
 
