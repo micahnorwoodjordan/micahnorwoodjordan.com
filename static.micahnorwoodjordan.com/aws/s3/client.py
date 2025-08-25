@@ -28,7 +28,8 @@ VALID_S3_OBJECT_KEY_EXTENSIONS = (
     '.png',
     '.jpg',
     '.jpeg',
-    '.ttc'
+    '.ttc',
+    '.pdf'
 )
 
 DEFAULT_CHUNK_SIZE_BYTES = 8192

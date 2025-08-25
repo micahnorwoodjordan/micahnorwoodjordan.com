@@ -3,20 +3,27 @@
     <span matListItemTitle class="bottomsheet-item-title">
       <mat-icon>house</mat-icon>
     </span>
-    <span matLine class="bottomsheet-subtext">home</span>
+    <span matLine class="bottomsheet-subtext">Home</span>
   </a>
   <div class="bottomsheet-item-border"></div>
   <a routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
     <span matListItemTitle class="bottomsheet-item-title">
       <mat-icon>search</mat-icon>
     </span>
-    <span matLine class="bottomsheet-subtext">about</span>
+    <span matLine class="bottomsheet-subtext">About</span>
   </a>
   <div class="bottomsheet-item-border"></div>
   <a routerLink="/projects" routerLinkActive="active" ariaCurrentWhenActive="page" mat-list-item (click)="openLink($event)">
     <span matListItemTitle class="bottomsheet-item-title">
       <mat-icon>build</mat-icon>
     </span>
-    <span matLine class="bottomsheet-subtext">projects / links</span>
+    <span matLine class="bottomsheet-subtext">Projects</span>
+  </a>
+  <div class="bottomsheet-item-border"></div>
+  <a class="heading" href="{{resumeUrl}}" mat-list-item target="_blank">
+    <span matListItemTitle class="bottomsheet-item-title">
+      <mat-icon>file_copy</mat-icon>
+    </span>
+    <span matLine class="bottomsheet-subtext">My Resume</span>
   </a>
 </mat-nav-list>
