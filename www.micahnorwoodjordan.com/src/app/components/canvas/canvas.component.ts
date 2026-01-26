@@ -17,7 +17,7 @@ export class CanvasComponent implements OnInit {
   private canvas: HTMLCanvasElement | null = null;
   private canvasContext: CanvasRenderingContext2D | null = null;
   private animationFrameId: number = 0;
-  private readonly fontSizeDesktop = 100;
+  private readonly fontSizeDesktop = 50;
   private readonly fontSizeMobile = 35;
   private readonly canvasBackdropColorCode: string = 'rgba(0, 0, 0, 0.05)';
   private readonly fontName: string = 'DinaRemaster';
@@ -100,7 +100,7 @@ export class CanvasComponent implements OnInit {
       fontString: this.userOnMobile ? this.fontSizeMobile + this.fontName : this.fontSizeDesktop + this.fontName,
 
       // distance between any 2 letters within a "raindrop"
-      yCoordinateDrawCoefficient: this.userOnMobile ? this.getRandomFloatBetweenBounds(0.3, 0.999) : this.getRandomFloatBetweenBounds(0.3, 0.999),
+      yCoordinateDrawCoefficient: this.userOnMobile ? this.getRandomFloatBetweenBounds(0.3, 0.5) : this.getRandomFloatBetweenBounds(0.1, 0.3),
 
       // distance between any 2 "raindrops"
       columnSpreadCoefficient: this.userOnMobile ? this.fontSizeMobile : this.fontSizeDesktop,
