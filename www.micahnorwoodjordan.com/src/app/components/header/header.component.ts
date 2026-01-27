@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 
 import { ContextService } from '../../services/context.service';
+import { environment } from '../../../environments/production';
 
 
 @Component({
@@ -28,6 +29,10 @@ export class HeaderComponent {
 
   userIsOnMobile: boolean = false;
   displayRouterNav: boolean = false;
+  headerTitle: string = "Micah Norwood";
+  headerSubtitle: string = "Software Engineer";
+  headerContent: string = "Full-Stack | DevOps | Infrastructure";
+  resumeUrl: string = `${environment.staticSiteUrl}/Resume.pdf`;
 
 
   ngOnInit() { this.setUserIsOnMobile(this.contextService.userIsOnMobile); }

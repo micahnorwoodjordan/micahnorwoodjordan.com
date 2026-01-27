@@ -23,23 +23,7 @@
             </mat-chip-set>
             <span class="about-me-header pd-bottom-5 pd-top-5">Areas of Expertise</span>
             <mat-chip-set class="chipset pd-bottom-5 pd-left-2" aria-label="Fish selection">
-                <mat-chip>OOP</mat-chip>
-                <mat-chip>CI/CD & DevOps</mat-chip>
-                <mat-chip>PaaS Platforms</mat-chip>
-                <mat-chip>IaC</mat-chip>
-                <mat-chip>SaaS</mat-chip>
-                <mat-chip>OOP</mat-chip>
-                <mat-chip>POA&M</mat-chip>
-                <mat-chip>REST API'S</mat-chip>
-                <mat-chip>Network Optimization</mat-chip>
-                <mat-chip>Security Control Validation</mat-chip>
-                <mat-chip>Test Automation</mat-chip>
-                <mat-chip>Containerization/Virtual Machines</mat-chip>
-                <mat-chip>Systems Administration</mat-chip>
-                <mat-chip>AWS Technologies</mat-chip>
-                <mat-chip>Cloud Architecture</mat-chip>
-                <mat-chip>Vulnerability Management</mat-chip>
-                <mat-chip>Database Design</mat-chip>
+                    <mat-chip *ngFor="let skillTag of skillTags">{{skillTag}}</mat-chip>
             </mat-chip-set>
 
             <p class="content pd-top-5">
@@ -87,23 +71,7 @@
             <br>
             <span class="about-me-header-mobile pd-bottom-5">Areas of Expertise</span>
             <mat-chip-set class="chipset pd-left-5" aria-label="Fish selection">
-                <mat-chip>OOP</mat-chip>
-                <mat-chip>CI/CD & DevOps</mat-chip>
-                <mat-chip>PaaS Platforms</mat-chip>
-                <mat-chip>IaC</mat-chip>
-                <mat-chip>SaaS</mat-chip>
-                <mat-chip>OOP</mat-chip>
-                <mat-chip>POA&M</mat-chip>
-                <mat-chip>REST API'S</mat-chip>
-                <mat-chip>Network Optimization</mat-chip>
-                <mat-chip>Security Control Validation</mat-chip>
-                <mat-chip>Test Automation</mat-chip>
-                <mat-chip>Containerization/Virtual Machines</mat-chip>
-                <mat-chip>Systems Administration</mat-chip>
-                <mat-chip>AWS Technologies</mat-chip>
-                <mat-chip>Cloud Architecture</mat-chip>
-                <mat-chip>Vulnerability Management</mat-chip>
-                <mat-chip>Database Design</mat-chip>
+                <mat-chip *ngFor="let skillTag of skillTags">{{skillTag}}</mat-chip>
             </mat-chip-set>
     
             <p class="content-mobile pd-top-5 pd-left-2">
@@ -133,9 +101,6 @@
             <br>
             <p class="contact-me-content pd-left-5 pd-right-5">
                 <u>micahnorwoodjordan&#64;gmail.com</u>
-            </p>
-            <p class="contact-me-content pd-left-5 pd-right-5">
-                (602) 317-1807
             </p>
         </div>
         <div fxFlex="2">
@@ -188,7 +153,6 @@
             <p class="contact-me-content pd-left-5 pd-right-5">
                 <u>micahnorwoodjordan&#64;gmail.com</u>
             </p>
-            <p class="contact-me-content pd-left-5 pd-right-5">(602) 317-1807</p>
             <mat-form-field class="name-field-mobile">
                 <mat-label>First Name</mat-label>
                 <input matInput [formControl]="firstName" placeholder="Ex. John" value="">

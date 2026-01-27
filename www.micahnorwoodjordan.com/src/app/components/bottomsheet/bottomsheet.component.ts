@@ -4,6 +4,8 @@ import { MatListModule } from '@angular/material/list';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 
+import { environment } from '../../../environments/production';
+
 @Component({
   selector: 'app-bottomsheet',
   imports: [
@@ -18,6 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class BottomsheetComponent {
   constructor() { }
+
+  resumeUrl: string = `${environment.staticSiteUrl}/Resume.pdf`;
 
   private _bottomSheetRef = inject<MatBottomSheetRef<BottomsheetComponent>>(MatBottomSheetRef);
 

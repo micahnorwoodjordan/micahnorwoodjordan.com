@@ -4,7 +4,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, ReactiveFormsModule, Validators, FormGroup } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+import { NgIf, NgFor } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 
@@ -25,6 +25,7 @@ import { Constants } from '../../constants/Constants';
     ReactiveFormsModule,
     MatButtonModule,
     NgIf,
+    NgFor,
     MatProgressSpinnerModule,
     MatChipsModule
   ],
@@ -57,6 +58,27 @@ export class AboutPageComponent {
       }
     })
   }
+
+  // TODO: fetch from api call
+  skillTags: string[] = [
+    'OOP',
+    'CI/CD & DevOps',
+    'PaaS Platforms',
+    'IaC',
+    'SaaS',
+    'OOP',
+    'POA&M',
+    'REST API\'s',
+    'Network Optimization',
+    'Security Control Validation',
+    'Test Automation',
+    'Containerization/Virtual Machines',
+    'Systems Administration',
+    'AWS Technologies',
+    'Cloud Architecture',
+    'Vulnerability Management',
+    'Database Design'
+  ];
 
   scrollYPosition: number = 0;
   decryptionEffectAlreadyTriggered: boolean = false;
