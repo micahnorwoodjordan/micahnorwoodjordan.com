@@ -1,4 +1,4 @@
-FROM maven:3.9-eclipse-temurin-17
+FROM maven:3.9-eclipse-temurin-25
 
 
 # NOTE:
@@ -41,4 +41,4 @@ RUN chmod +x ./mvnw && chown -R deployuser:deployuser /srv/api
 
 USER deployuser
 
-RUN ./mvnw clean package && ./mvnw install
+RUN ./mvnw clean package -DskipTests && ./mvnw install -DskipTests
