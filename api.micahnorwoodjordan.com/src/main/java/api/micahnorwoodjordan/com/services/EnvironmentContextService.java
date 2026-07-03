@@ -18,6 +18,7 @@ public class EnvironmentContextService {
 
         public static void evaluateApplicationContextAndLogInformation(ApplicationContext ctx) {
 		Environment env = ctx.getEnvironment();
+                System.out.println("NOODLES: " + env.getProperty("spring.datasource.url"));
 		String[] activeProfiles = env.getActiveProfiles();
 
 		if (activeProfiles.length == 1 && activeProfiles[0].equals("dev")) {
