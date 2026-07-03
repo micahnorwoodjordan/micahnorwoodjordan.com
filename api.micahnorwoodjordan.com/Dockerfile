@@ -33,8 +33,6 @@ RUN useradd -m deployuser
 
 RUN mkdir -p /var/log/api.micahnorwoodjordan.com
 
-RUN touch /var/log/api.micahnorwoodjordan.com/output.log
-
 COPY . /srv/api
 
 WORKDIR /srv/api
