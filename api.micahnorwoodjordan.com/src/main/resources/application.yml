@@ -43,4 +43,4 @@ logging:
     console: "%clr([%-5level]){yellow} %clr(%d{yyyy-MM-dd HH:mm:ss}) %clr([%thread]){faint} %clr(%logger{36}){cyan} - %clr([%msg]%n){magenta}"
     file: "%clr([%-5level]){yellow} %clr(%d{yyyy-MM-dd HH:mm:ss}) %clr([%thread]){faint} %clr(%logger{36}){cyan} - %clr([%msg]%n){magenta}"
   file:
-    name: /var/log/api.micahnorwoodjordan.com/output.log
+    name: api.log
