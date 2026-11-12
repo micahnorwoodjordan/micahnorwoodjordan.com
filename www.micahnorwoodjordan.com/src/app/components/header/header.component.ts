@@ -31,7 +31,7 @@ export class HeaderComponent {
   displayRouterNav: boolean = false;
   headerTitle: string = "Micah Norwood";
   headerSubtitle: string = "Senior Software Engineer";
-  headerContent: string = "Backend & Edge Computing | Distributed Systems | AI Inference";
+  headerContent: string = "Edge Computing | Distributed Systems | AI Inference";
   resumeUrl: string = `${environment.staticSiteUrl}/Resume.pdf`;
 
 
