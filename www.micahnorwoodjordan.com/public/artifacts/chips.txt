@@ -1,0 +1,6 @@
+Languages: Python · TypeScript / JavaScript · C# · Java · SQL
+Frameworks: Django · Flask · .NET · Spring · Angular · React Native
+Cloud & Infrastructure: AWS · DigitalOcean · Linux · Docker · ECS · RDS · Lambda · EventBridge · CloudWatch · IoT
+Databases & Data: MySQL · PostgreSQL · SQL Server · AWS DMS
+Networking & Security: TCP/IP · UDP · DNS · MQTT · Routing · VPC · WAF · ACLs · IAM
+Mobile & AI: Android · MDM · Samsung Knox · TensorFlow · ONNX · PyTorch · Hugging Face

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +16,11 @@ import { ContextService } from '../../services/context.service';
 import { AnimationService } from '../../services/animation.service';
 import { TextDecryptionVisualEffectMapping } from '../../interfaces/TextDecryptionVisualEffectMapping';
 import { Constants } from '../../constants/Constants';
+
+interface ChipGroup {
+  label: string;
+  chips: string[];
+}
 
 @Component({
   selector: 'app-about-page',
@@ -33,11 +39,14 @@ import { Constants } from '../../constants/Constants';
   styleUrl: './about-page.component.css'
 })
 
-export class AboutPageComponent {
+export class AboutPageComponent implements OnInit {
+  private readonly chipMaterialPath = '/artifacts/chips.txt';
+
   constructor(
     private readonly apiService: ApiService,
     private readonly contextService: ContextService,
-    private readonly animationService: AnimationService
+    private readonly animationService: AnimationService,
+    private readonly http: HttpClient
   ) {
     if (this.contextService.userIsOnMobile) {
       this.setScrollYPositionDecryptionEffectThreshold(window.innerHeight);
@@ -58,6 +67,8 @@ export class AboutPageComponent {
       }
     })
   }
+
+  chipGroups: ChipGroup[] = [];
 
   // TODO: fetch from api call
   skillTags: string[] = [
@@ -120,7 +131,35 @@ export class AboutPageComponent {
   setIsWaitingForAPIResponse(newValue: boolean) { this.isWaitingForAPIResponse = newValue; }
   setEncounteredError(newValue: boolean) { this.encounteredError = newValue; }
 
+  ngOnInit() {
+    this.http.get(this.chipMaterialPath, { responseType: 'text' }).subscribe({
+      next: contents => {
+        this.chipGroups = this.parseChipFile(contents);
+      },
+      error: () => {
+        this.chipGroups = [];
+      }
+    });
+  }
+
   getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
+
+  private parseChipFile(contents: string): ChipGroup[] {
+    return contents
+      .split(/\r?\n/)
+      .map(line => line.trim())
+      .filter(line => line.length > 0)
+      .map(line => {
+        const separator = line.indexOf(':');
+        const label = (separator === -1 ? line : line.slice(0, separator)).trim();
+        const chips = (separator === -1 ? '' : line.slice(separator + 1))
+          .split('·')
+          .map(chip => chip.trim())
+          .filter(chip => chip.length > 0);
+        return { label, chips };
+      })
+      .filter(group => group.label.length > 0 && group.chips.length > 0);
+  }
 
   private sendEmail(message: EmailMessage) {
     let url = `${environment.apiUrl}/notifications/email/send`;
