@@ -70,26 +70,6 @@ export class AboutPageComponent implements OnInit {
 
   chipGroups: ChipGroup[] = [];
 
-  // TODO: fetch from api call
-  skillTags: string[] = [
-    'OOP',
-    'CI/CD & DevOps',
-    'PaaS Platforms',
-    'IaC',
-    'SaaS',
-    'OOP',
-    'REST API\'s',
-    'Network Optimization',
-    'Security Control Validation',
-    'Test Automation',
-    'Containerization/Virtualization',
-    'Systems Administration',
-    'AWS',
-    'Cloud Infrastructure',
-    'Systems Design',
-    'Database Design'
-  ];
-
   scrollYPosition: number = 0;
   decryptionEffectAlreadyTriggered: boolean = false;
   scrollYPositionDecryptionEffectThreshold: number = window.innerHeight / 4;
@@ -97,17 +77,17 @@ export class AboutPageComponent implements OnInit {
   encounteredError: boolean = false;
 
   textObject1: TextDecryptionVisualEffectMapping = {
-    targetString: "Maybe you need an API built -- done. Do you need it deployed to a cloud compute instance? Consider it handled. Perhaps you need to configure a firewall for your business -- check. What if a rogue process is consuming RAM and CPU in your system? I'll find it. Application services need to be containerized? Easy peasy. In need of synchronous and asynchronous data processing queues? No worries.",
+    targetString: "I build software, design systems, and solve the kinds of engineering problems that don't always have straightforward answers. Whether it's developing backend infrastructure, architecting distributed services, working closer to the operating system, or bringing new ideas into production, I enjoy understanding how things work and figuring out how to make them work better.",
     encryptedString: "",
     decryptedString: ""
   };
   textObject2: TextDecryptionVisualEffectMapping = {
-    targetString: "And this is just the tip of the iceberg.",
+    targetString: "With 8+ years of experience in software engineering, I've worked across the stack, from application development to cloud infrastructure and systems architecture. I've designed, built, and maintained production systems supporting large user bases, taken ownership of critical infrastructure, and worked through challenges involving performance, reliability, security, and scale.",
     encryptedString: "",
     decryptedString: ""
   };
   textObject3: TextDecryptionVisualEffectMapping = {
-    targetString: "I have 8+ years' experience in building and testing secure and performant distributed SaaS applications, while maintaining legacy systems to serve millions of daily users worldwide. Throughout my career, I've tackled a laundry list of technical challenges, and have honed my skills in developing robust backend systems that enhance user experiences. My calculated approach to translating customer needs into software results in satisfied customers. Independently motivated, but customer-focused, I thrive on building complex, fault-tolerant systems.",
+    targetString: "I tend to gravitate toward the more challenging problems: the ones that require digging deeper, thinking through tradeoffs, and understanding the bigger picture. I enjoy building things from the ground up, improving what's already there, and seeing an idea all the way through to a working solution.",
     encryptedString: "",
     decryptedString: ""
   };

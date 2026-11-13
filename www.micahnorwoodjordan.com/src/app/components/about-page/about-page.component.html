@@ -8,10 +8,6 @@
                     <mat-chip *ngFor="let chip of group.chips">{{chip}}</mat-chip>
                 </mat-chip-set>
             </ng-container>
-            <span class="about-me-header pd-bottom-5 pd-top-5">Areas of Expertise</span>
-            <mat-chip-set class="chipset pd-bottom-5 pd-left-2" aria-label="Fish selection">
-                    <mat-chip *ngFor="let skillTag of skillTags">{{skillTag}}</mat-chip>
-            </mat-chip-set>
 
             <p class="content pd-top-5">
                 <span class="decrypted-effect">{{textObject1.decryptedString}}</span>
@@ -43,11 +39,7 @@
             <br>
             <br>
             <br>
-            <span class="about-me-header-mobile pd-bottom-5">Areas of Expertise</span>
-            <mat-chip-set class="chipset pd-left-5" aria-label="Fish selection">
-                <mat-chip *ngFor="let skillTag of skillTags">{{skillTag}}</mat-chip>
-            </mat-chip-set>
-    
+
             <p class="content-mobile pd-top-5 pd-left-2">
                 <span class="decrypted-effect">{{textObject1.decryptedString}}</span>
                 <span class="encrypted-effect">{{textObject1.encryptedString}}</span>
