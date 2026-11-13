@@ -78,16 +78,15 @@ export class AboutPageComponent implements OnInit {
     'IaC',
     'SaaS',
     'OOP',
-    'POA&M',
     'REST API\'s',
     'Network Optimization',
     'Security Control Validation',
     'Test Automation',
-    'Containerization/Virtual Machines',
+    'Containerization/Virtualization',
     'Systems Administration',
-    'AWS Technologies',
-    'Cloud Architecture',
-    'Vulnerability Management',
+    'AWS',
+    'Cloud Infrastructure',
+    'Systems Design',
     'Database Design'
   ];
 
@@ -108,7 +107,7 @@ export class AboutPageComponent implements OnInit {
     decryptedString: ""
   };
   textObject3: TextDecryptionVisualEffectMapping = {
-    targetString: "I have 5 years' experience in building and testing secure and performant distributed SaaS applications, while maintaining legacy systems to serve millions of daily users worldwide. Throughout my career, I've tackled a laundry list of technical challenges, and have honed my skills in developing robust backend systems that enhance user experiences. My calculated approach to translating customer needs into software results in satisfied customers. Independently motivated, but customer-focused, I thrive on building complex, fault-tolerant systems.",
+    targetString: "I have 8+ years' experience in building and testing secure and performant distributed SaaS applications, while maintaining legacy systems to serve millions of daily users worldwide. Throughout my career, I've tackled a laundry list of technical challenges, and have honed my skills in developing robust backend systems that enhance user experiences. My calculated approach to translating customer needs into software results in satisfied customers. Independently motivated, but customer-focused, I thrive on building complex, fault-tolerant systems.",
     encryptedString: "",
     decryptedString: ""
   };
