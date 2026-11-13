@@ -9,4 +9,4 @@ Containerization / Virtualization: Docker · Vagrant · Virtualbox · AWS ECR
 Observability & Telemetry: AWS SQS · AWS SES · AWS Amazon Q · AWS EventBridge · AWS IoT · AWS CloudWatch
 Database Management: MySQL · PostgreSQL · SQL Server · LibSQL
 Networking & Security: TCP/IP · UDP · DNS · MQTT · VPC · WAFs · ACLs · IAM · VPNs
-Mobile & AI: Android · MDMs & EMMs · TensorFlow · ONNX · PyTorch · HuggingFace · Inference · Classification & Diffusion
+Mobile & AI: Android · MDMs & EMMs · TensorFlow · ONNX · PyTorch · HuggingFace · Classification & Diffusion
