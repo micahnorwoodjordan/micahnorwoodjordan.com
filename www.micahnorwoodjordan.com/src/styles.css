@@ -1,9 +1,9 @@
 html {
-    font-family: 'DinaRemaster', 'Roboto', 'Courier New', Courier, monospace;
+    font-family: 'Terminess Nerd Font', 'Roboto', 'Courier New', Courier, monospace;
     font-weight: 200;
 }
 
-.bottomsheet { text-align: center; font-family: "DinaRemaster", "Courier New", Courier, monospace; }
+.bottomsheet { text-align: center; font-family: "Terminess Nerd Font", "Courier New", Courier, monospace; }
 
 .mat-bottom-sheet-container {
     border-top-left-radius: 40px;

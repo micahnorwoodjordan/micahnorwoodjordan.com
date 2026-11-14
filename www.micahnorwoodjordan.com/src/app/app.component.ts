@@ -24,7 +24,7 @@ import { environment } from '../environments/production';
 })
 export class AppComponent {
   title = 'micahnorwoodjordan.com';
-  fontUrl =  `${environment.staticSiteUrl}/DinaRemasterCollection.ttc`;
+  fontUrl =  `${environment.staticSiteUrl}/IosevkaNerdFont.ttc`;
 
   constructor(private renderer: Renderer2) { }
 
@@ -32,7 +32,7 @@ export class AppComponent {
     const style = this.renderer.createElement('style');
     style.innerHTML = `
       @font-face {
-        font-family: 'DinaRemaster';
+        font-family: 'Iosevka Nerd Font Mono';
         src: url('${this.fontUrl}') format('truetype');
         font-weight: normal;
         font-style: normal;
