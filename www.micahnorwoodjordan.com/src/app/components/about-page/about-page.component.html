@@ -2,29 +2,12 @@
     <div class="pd-top-5 pd-bottom-10" fxLayout="row" fxLayoutAlign="center center" fxFill>
         <div fxLayout="column" fxFlex="40vw" fxLayoutAlign="center center">
             <span class="about-me-header pd-bottom-5">Skills & Technologies</span>
-            <span class="about-me-subheader pd-bottom-2">Languages</span>
-            <mat-chip-set class="chipset pd-bottom-5" aria-label="Fish selection">
-                <mat-chip>Python/Django</mat-chip>
-                <mat-chip>Javascript/HTML/CSS</mat-chip>
-                <mat-chip>Angular/TypeScript</mat-chip>
-                <mat-chip>C#</mat-chip>
-                <mat-chip>Java</mat-chip>
-            </mat-chip-set>
-            <span class="about-me-subheader pd-bottom-2">OS's/Platforms</span>
-            <mat-chip-set class="chipset pd-bottom-5" aria-label="Fish selection">
-                <mat-chip>macOS 12.0+</mat-chip>
-                <mat-chip>Linux (Debian)</mat-chip>
-                <mat-chip>Windows Server (2018+)</mat-chip>
-            </mat-chip-set>
-            <span class="about-me-subheader pd-bottom-2">Cloud</span>
-            <mat-chip-set class="chipset" aria-label="Fish selection">
-                <mat-chip>AWS</mat-chip>
-                <mat-chip>DigitalOcean</mat-chip>
-            </mat-chip-set>
-            <span class="about-me-header pd-bottom-5 pd-top-5">Areas of Expertise</span>
-            <mat-chip-set class="chipset pd-bottom-5 pd-left-2" aria-label="Fish selection">
-                    <mat-chip *ngFor="let skillTag of skillTags">{{skillTag}}</mat-chip>
-            </mat-chip-set>
+            <ng-container *ngFor="let group of chipGroups">
+                <span class="about-me-subheader pd-bottom-2">{{group.label}}</span>
+                <mat-chip-set class="chipset pd-bottom-5" [attr.aria-label]="group.label">
+                    <mat-chip *ngFor="let chip of group.chips">{{chip}}</mat-chip>
+                </mat-chip-set>
+            </ng-container>
 
             <p class="content pd-top-5">
                 <span class="decrypted-effect">{{textObject1.decryptedString}}</span>
@@ -47,33 +30,16 @@
             <br>
             <br>
             <br>
-            <span class="about-me-subheader-mobile pd-bottom-2">Languages</span>
-            <mat-chip-set class="chipset pd-bottom-10 pd-left-5" aria-label="Fish selection">
-                <mat-chip>Python/Django</mat-chip>
-                <mat-chip>Javascript/HTML/CSS</mat-chip>
-                <mat-chip>Angular/TypeScript</mat-chip>
-                <mat-chip>C#</mat-chip>
-                <mat-chip>Java</mat-chip>
-            </mat-chip-set>
-            <span class="about-me-subheader-mobile pd-bottom-2">OS's/Platforms</span>
-            <mat-chip-set class="chipset pd-bottom-10 pd-left-5" aria-label="Fish selection">
-                <mat-chip>macOS 12.0+</mat-chip>
-                <mat-chip>Linux (Debian)</mat-chip>
-                <mat-chip>Windows Server (2018+)</mat-chip>
-            </mat-chip-set>
-            <span class="about-me-subheader-mobile pd-bottom-2">Cloud</span>
-            <mat-chip-set class="chipset pd-left-5 pd-bottom-2" aria-label="Fish selection">
-                <mat-chip>AWS</mat-chip>
-                <mat-chip>DigitalOcean</mat-chip>
-            </mat-chip-set>
+            <ng-container *ngFor="let group of chipGroups">
+                <span class="about-me-subheader-mobile pd-bottom-2">{{group.label}}</span>
+                <mat-chip-set class="chipset pd-bottom-10 pd-left-5" [attr.aria-label]="group.label">
+                    <mat-chip *ngFor="let chip of group.chips">{{chip}}</mat-chip>
+                </mat-chip-set>
+            </ng-container>
             <br>
             <br>
             <br>
-            <span class="about-me-header-mobile pd-bottom-5">Areas of Expertise</span>
-            <mat-chip-set class="chipset pd-left-5" aria-label="Fish selection">
-                <mat-chip *ngFor="let skillTag of skillTags">{{skillTag}}</mat-chip>
-            </mat-chip-set>
-    
+
             <p class="content-mobile pd-top-5 pd-left-2">
                 <span class="decrypted-effect">{{textObject1.decryptedString}}</span>
                 <span class="encrypted-effect">{{textObject1.encryptedString}}</span>
@@ -89,7 +55,7 @@
 </div>
 
 
-<div class="pd-left-2" fxLayout="row" fxLayoutAlign="center center">
+<div class="pd-left-2 pd-top-5" fxLayout="row" fxLayoutAlign="center center">
     <div *ngIf="!getUserIsOnMobile()" class="contact-me-section pd-top-2" fxLayout="row" fxLayoutAlign="center center">
         <div class="" fxLayout="column" fxFill fxFlex>
             <div class="pd-left-5">

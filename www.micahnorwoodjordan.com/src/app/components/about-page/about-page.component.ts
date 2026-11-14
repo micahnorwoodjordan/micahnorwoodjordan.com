@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +16,11 @@ import { ContextService } from '../../services/context.service';
 import { AnimationService } from '../../services/animation.service';
 import { TextDecryptionVisualEffectMapping } from '../../interfaces/TextDecryptionVisualEffectMapping';
 import { Constants } from '../../constants/Constants';
+
+interface ChipGroup {
+  label: string;
+  chips: string[];
+}
 
 @Component({
   selector: 'app-about-page',
@@ -33,11 +39,14 @@ import { Constants } from '../../constants/Constants';
   styleUrl: './about-page.component.css'
 })
 
-export class AboutPageComponent {
+export class AboutPageComponent implements OnInit {
+  private readonly chipMaterialPath = '/artifacts/chips.txt';
+
   constructor(
     private readonly apiService: ApiService,
     private readonly contextService: ContextService,
-    private readonly animationService: AnimationService
+    private readonly animationService: AnimationService,
+    private readonly http: HttpClient
   ) {
     if (this.contextService.userIsOnMobile) {
       this.setScrollYPositionDecryptionEffectThreshold(window.innerHeight);
@@ -59,26 +68,7 @@ export class AboutPageComponent {
     })
   }
 
-  // TODO: fetch from api call
-  skillTags: string[] = [
-    'OOP',
-    'CI/CD & DevOps',
-    'PaaS Platforms',
-    'IaC',
-    'SaaS',
-    'OOP',
-    'POA&M',
-    'REST API\'s',
-    'Network Optimization',
-    'Security Control Validation',
-    'Test Automation',
-    'Containerization/Virtual Machines',
-    'Systems Administration',
-    'AWS Technologies',
-    'Cloud Architecture',
-    'Vulnerability Management',
-    'Database Design'
-  ];
+  chipGroups: ChipGroup[] = [];
 
   scrollYPosition: number = 0;
   decryptionEffectAlreadyTriggered: boolean = false;
@@ -87,17 +77,17 @@ export class AboutPageComponent {
   encounteredError: boolean = false;
 
   textObject1: TextDecryptionVisualEffectMapping = {
-    targetString: "Maybe you need an API built -- done. Do you need it deployed to a cloud compute instance? Consider it handled. Perhaps you need to configure a firewall for your business -- check. What if a rogue process is consuming RAM and CPU in your system? I'll find it. Application services need to be containerized? Easy peasy. In need of synchronous and asynchronous data processing queues? No worries.",
+    targetString: "I build software, design systems, and solve the kinds of engineering problems that don't always have straightforward answers. Whether it's developing backend infrastructure, architecting distributed services, working closer to the operating system, or bringing new ideas into production, I enjoy understanding how things work and figuring out how to make them work better.",
     encryptedString: "",
     decryptedString: ""
   };
   textObject2: TextDecryptionVisualEffectMapping = {
-    targetString: "And this is just the tip of the iceberg.",
+    targetString: "With 8+ years of experience in software engineering, I've worked across the stack, from application development to cloud infrastructure and systems architecture. I've designed, built, and maintained production systems supporting large user bases, taken ownership of critical infrastructure, and worked through challenges involving performance, reliability, security, and scale.",
     encryptedString: "",
     decryptedString: ""
   };
   textObject3: TextDecryptionVisualEffectMapping = {
-    targetString: "I have 5 years' experience in building and testing secure and performant distributed SaaS applications, while maintaining legacy systems to serve millions of daily users worldwide. Throughout my career, I've tackled a laundry list of technical challenges, and have honed my skills in developing robust backend systems that enhance user experiences. My calculated approach to translating customer needs into software results in satisfied customers. Independently motivated, but customer-focused, I thrive on building complex, fault-tolerant systems.",
+    targetString: "I tend to gravitate toward the more challenging problems: the ones that require digging deeper, thinking through tradeoffs, and understanding the bigger picture. I enjoy building things from the ground up, improving what's already there, and seeing an idea all the way through to a working solution.",
     encryptedString: "",
     decryptedString: ""
   };
@@ -120,7 +110,35 @@ export class AboutPageComponent {
   setIsWaitingForAPIResponse(newValue: boolean) { this.isWaitingForAPIResponse = newValue; }
   setEncounteredError(newValue: boolean) { this.encounteredError = newValue; }
 
+  ngOnInit() {
+    this.http.get(this.chipMaterialPath, { responseType: 'text' }).subscribe({
+      next: contents => {
+        this.chipGroups = this.parseChipFile(contents);
+      },
+      error: () => {
+        this.chipGroups = [];
+      }
+    });
+  }
+
   getUserIsOnMobile() { return this.contextService.userIsOnMobile; }
+
+  private parseChipFile(contents: string): ChipGroup[] {
+    return contents
+      .split(/\r?\n/)
+      .map(line => line.trim())
+      .filter(line => line.length > 0)
+      .map(line => {
+        const separator = line.indexOf(':');
+        const label = (separator === -1 ? line : line.slice(0, separator)).trim();
+        const chips = (separator === -1 ? '' : line.slice(separator + 1))
+          .split('·')
+          .map(chip => chip.trim())
+          .filter(chip => chip.length > 0);
+        return { label, chips };
+      })
+      .filter(group => group.label.length > 0 && group.chips.length > 0);
+  }
 
   private sendEmail(message: EmailMessage) {
     let url = `${environment.apiUrl}/notifications/email/send`;

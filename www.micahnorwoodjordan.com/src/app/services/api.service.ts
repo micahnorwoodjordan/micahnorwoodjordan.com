@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { environment } from '../../environments/production';
 import { EmailMessage } from '../interfaces/EmailMessage';
@@ -30,10 +30,11 @@ export class ApiService {
     );
   }
 
-  getAllProjects(): Observable<APIResponse<Project[]>> {
+  getAllProjects(inAscending: boolean = true): Observable<APIResponse<Project[]>> {
     let url = `${environment.apiUrl}/projects`;
     return this.client.get<APIResponse<Project[]>>(url, {
-      headers: new HttpHeaders().set(Constants.apiV2HeaderName, Constants.apiV2HeaderValue)
+      headers: new HttpHeaders().set(Constants.apiV2HeaderName, Constants.apiV2HeaderValue),
+      params: new HttpParams().set('inAscending', inAscending)
     });
   }
 }

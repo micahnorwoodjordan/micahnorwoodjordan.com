@@ -29,9 +29,10 @@ export class HeaderComponent {
 
   userIsOnMobile: boolean = false;
   displayRouterNav: boolean = false;
-  headerTitle: string = "Micah Norwood";
-  headerSubtitle: string = "Software Engineer";
-  headerContent: string = "Full-Stack | DevOps | Infrastructure";
+  headerTitle: string = "MICAH NORWOOD";
+  headerSubtitle: string = "SENIOR SOFTWARE ENGINEER";
+  headerContent: string = "Backend & Infrastructure";
+  headerSubContent: string = "Networking | Telemetry | AI Inference";
   resumeUrl: string = `${environment.staticSiteUrl}/Resume.pdf`;
 
 
