@@ -100,7 +100,7 @@ export class CanvasComponent implements OnInit {
       fontString: this.userOnMobile ? this.fontSizeMobile + this.fontName : this.fontSizeDesktop + this.fontName,
 
       // distance between any 2 letters within a "raindrop"
-      yCoordinateDrawCoefficient: this.userOnMobile ? this.getRandomFloatBetweenBounds(0.1, 0.4) : this.getRandomFloatBetweenBounds(0.1, 0.3),
+      yCoordinateDrawCoefficient: this.userOnMobile ? this.getRandomFloatBetweenBounds(0.1, 0.4) : this.getRandomFloatBetweenBounds(0.1, 0.15),
 
       // distance between any 2 "raindrops"
       columnSpreadCoefficient: this.userOnMobile ? this.fontSizeMobile : this.fontSizeDesktop,
