@@ -8,7 +8,8 @@
     </div>
     <div fxLayout="column" fxLayoutAlign="center center">
         <ng-container *ngIf="projects$ | async as apiResponse">
-            <ng-container *ngFor="let project of apiResponse.data; let i = index">
+            <!-- display newest projects first -->
+            <ng-container *ngFor="let project of apiResponse.data.reverse(); let i = index">
                 <app-project-card
                     projectName="{{project.title}}"
                     projectImageURL="{{project.imageUrl}}"
