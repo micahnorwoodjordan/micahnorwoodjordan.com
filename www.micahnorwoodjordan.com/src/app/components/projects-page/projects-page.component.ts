@@ -27,7 +27,7 @@ import { Observable } from 'rxjs';
 })
 export class ProjectsPageComponent {
   constructor(private contextService: ContextService, private apiService: ApiService) {
-    this.projects$ = this.apiService.getAllProjects();
+    this.projects$ = this.apiService.getAllProjects(false);
   }
 
   projects$: Observable<APIResponse<Project[]>>;

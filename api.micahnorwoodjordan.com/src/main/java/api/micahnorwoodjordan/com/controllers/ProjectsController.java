@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import api.response.APIResponse;
 
@@ -33,9 +34,9 @@ public class ProjectsController {
         // NOTE: this is to allow the frontend to migrate to the new API standard independently of when it gets deployed
         //      avoids breaking the current handling of the `getProjects` response so that the project components render properly while still using the old API response model
         @GetMapping(headers = {APIConstants.apiV2HeaderName})
-        public ResponseEntity<APIResponse<List<Project>>> getProjects() {
+        public ResponseEntity<APIResponse<List<Project>>> getProjects(@RequestParam(required = true, defaultValue = "true") String inAscending) {
                 try {
-                        return ResponseEntity.ok(APIResponse.success("Success", projectService.getProjects()));
+                        return ResponseEntity.ok(APIResponse.success("Success", projectService.getProjects(Boolean.parseBoolean(inAscending))));
                 } catch (DatabaseOperationException e) {
                         logger.logMessage(LogLevel.ERROR, "Error retrieving projects: " + e.getMessage());
                         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
@@ -48,7 +49,7 @@ public class ProjectsController {
         @GetMapping("")
         public ResponseEntity<List<Project>> getProjectsLegacy() {
                 try {
-                        return new ResponseEntity<>(projectService.getProjects(), HttpStatus.OK);
+                        return new ResponseEntity<>(projectService.getProjectsLegacy(), HttpStatus.OK);
                 } catch (DatabaseOperationException e) {
                         logger.logMessage(LogLevel.ERROR, "Error retrieving projects: " + e.getMessage());
                         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);

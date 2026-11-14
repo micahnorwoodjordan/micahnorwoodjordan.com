@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+
 import api.micahnorwoodjordan.com.dataaccess.ProjectRepository;
 import api.micahnorwoodjordan.com.dataaccess.models.Project;
 
@@ -30,7 +32,22 @@ public class ProjectService {
         }
     }
 
-    public List<Project> getProjects() throws DatabaseOperationException {
+    public List<Project> getProjects(boolean inAscending) throws DatabaseOperationException {
+        try {
+            List<Project> projects = projectRepository.findAll();
+
+            if (inAscending) {
+                return projects;
+            } else {
+                Collections.reverse(projects);
+                return projects;
+            }
+        } catch (Exception e) {
+            throw new DatabaseOperationException("Error retrieving projects: " + e.getMessage());
+        }
+    }
+
+    public List<Project> getProjectsLegacy() throws DatabaseOperationException {
         try {
             return projectRepository.findAll();
         } catch (Exception e) {
