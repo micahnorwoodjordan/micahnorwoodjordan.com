@@ -1,12 +1,14 @@
 Platforms: AWS · DigitalOcean
 Languages: Python · TypeScript / JavaScript · C# · Java · SQL
 Frameworks: Django · Flask · .NET · Spring · Angular · React Native · Astro
-Infrastructure: AWS State Machines & Step Functions · AWS Cloudformation
-Compute and Storage: AWS ECS · AWS EC2 · AWS S3 · AWS RDS · AWS Lambda · AWS EBS
-CI/CD: AWS Codebuild · AWS CodeDeploy · AWS CodeCommit · AWS CodePipeline · Github Actions
-Availability: AWS Amplify · AWS VPC · Application Load Balancing · Network Load Balancing
-Containerization / Virtualization: Docker · Vagrant · Virtualbox · AWS ECR
-Observability & Telemetry: AWS SQS · AWS SES · AWS Amazon Q · AWS EventBridge · AWS IoT · AWS CloudWatch
-Database Management: MySQL · PostgreSQL · SQL Server · LibSQL
-Networking & Security: TCP/IP · UDP · DNS · MQTT · VPC · WAFs · ACLs · IAM · VPNs
-Mobile & AI: Android · MDMs & EMMs · TensorFlow · ONNX · PyTorch · HuggingFace · Classification & Diffusion
+Infrastructure & Orchestration: AWS Step Functions · AWS CloudFormation
+Compute & Storage: AWS ECS · AWS EC2 · AWS S3 · AWS RDS · AWS Lambda · AWS EBS
+CI/CD: AWS CodeBuild · AWS CodeDeploy · AWS CodeCommit · AWS CodePipeline · GitHub Actions
+Networking & Delivery: AWS VPC · AWS Amplify · Application Load Balancing · Network Load Balancing
+Containerization & Virtualization: Docker · Vagrant · VirtualBox · AWS ECR
+Messaging & Integration: AWS SQS · AWS SES · AWS SNS · AWS EventBridge · AWS IoT · MQTT
+Observability & AI-Assisted Operations: AWS CloudWatch · Amazon Q
+Database Management: MySQL · PostgreSQL · Microsoft SQL Server · libSQL
+Networking & Security: TCP/IP · UDP · DNS · WAFs · ACLs · IAM · VPNs
+Mobile & Device Management: Android · MDMs · EMMs
+AI & Machine Learning: TensorFlow · TensorFlow Lite · ONNX · PyTorch · Hugging Face · Classification Models · Diffusion Models

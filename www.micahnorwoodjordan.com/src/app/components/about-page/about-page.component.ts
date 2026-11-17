@@ -77,17 +77,17 @@ export class AboutPageComponent implements OnInit {
   encounteredError: boolean = false;
 
   textObject1: TextDecryptionVisualEffectMapping = {
-    targetString: "I build software, design systems, and solve the kinds of engineering problems that don't always have straightforward answers. Whether it's developing backend infrastructure, architecting distributed services, working closer to the operating system, or bringing new ideas into production, I enjoy understanding how things work and figuring out how to make them work better.",
+    targetString: "With 8+ years of experience, I've worked across application development, backend infrastructure, distributed systems, and lower-level engineering, designing and maintaining production systems with an emphasis on performance, reliability, security, and scale.",
     encryptedString: "",
     decryptedString: ""
   };
   textObject2: TextDecryptionVisualEffectMapping = {
-    targetString: "With 8+ years of experience in software engineering, I've worked across the stack, from application development to cloud infrastructure and systems architecture. I've designed, built, and maintained production systems supporting large user bases, taken ownership of critical infrastructure, and worked through challenges involving performance, reliability, security, and scale.",
+    targetString: "I enjoy digging into difficult problems, understanding how systems work beneath the surface, and seeing ideas through from initial design to production. Whether building something from the ground up or improving existing infrastructure, I'm most interested in finding practical, well-engineered solutions.",
     encryptedString: "",
     decryptedString: ""
   };
   textObject3: TextDecryptionVisualEffectMapping = {
-    targetString: "I tend to gravitate toward the more challenging problems: the ones that require digging deeper, thinking through tradeoffs, and understanding the bigger picture. I enjoy building things from the ground up, improving what's already there, and seeing an idea all the way through to a working solution.",
+    targetString: "I build software, design systems, and solve complex engineering problems across the stack.",
     encryptedString: "",
     decryptedString: ""
   };
