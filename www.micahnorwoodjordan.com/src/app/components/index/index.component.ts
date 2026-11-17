@@ -4,6 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 
+import { Constants } from '../../constants/Constants';
+
 import { ContextService } from '../../services/context.service';
 import { AnimationService } from '../../services/animation.service';
 
@@ -26,9 +28,6 @@ import { TextDecryptionVisualEffectMapping } from '../../interfaces/TextDecrypti
 export class IndexComponent implements AfterViewInit {
   constructor(private contextService: ContextService, private animationService: AnimationService) {  }
 
-  // no actual decryption is taking place; this just refers to a visual effect
-  private readonly whoIsMicahDecryptionSpeedMilliseconds: number = 25;
-
   whoIsMicahTextObject: TextDecryptionVisualEffectMapping = {
     targetString: "Micah is a devout Christian with a childlike love for building software. His goal is to honor Jesus in all aspects of life, even in the lines of code that he writes.",
     encryptedString: "",
@@ -43,14 +42,14 @@ export class IndexComponent implements AfterViewInit {
 
   getUserIsOnMobile(): boolean { return this.contextService.userIsOnMobile; }
   getViewportWidth(): number { return this.contextService.viewportWidth; }
-  getMeSittingPNGURL() { return this.contextService.meSittingPNGURL; }
+  getProfessionalHeadshotURL() { return this.contextService.professionalHeadshotURL; }
 
   async ngAfterViewInit(): Promise<void> {
     for (const textObject of [this.whoIsMicahTextObject, this.micahNoteTextObject]) {
       await this.animationService.applyDecryptionEffectToMarkupText(textObject.targetString, async (encrypted, decrypted) => {
         textObject.decryptedString = decrypted;
         textObject.encryptedString = encrypted;
-      }, this.whoIsMicahDecryptionSpeedMilliseconds);
+      }, Constants.decryptionEffectSpeedMillisFaster);
     };
   }
 }
