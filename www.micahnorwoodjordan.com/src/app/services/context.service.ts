@@ -14,5 +14,5 @@ export class ContextService {
   viewportWidth: number = window.screen.width;
   viewportHeight: number = window.screen.height;
   userIsOnMobile: boolean = this.viewportWidth < this.MOBILE_VIEWPORT_WIDTH_MAX;
-  meSittingPNGURL: string = `${environment.staticSiteUrl}/me-sitting.png`;
+  professionalHeadshotURL: string = `${environment.staticSiteUrl}/headshot.jpg`;
 }

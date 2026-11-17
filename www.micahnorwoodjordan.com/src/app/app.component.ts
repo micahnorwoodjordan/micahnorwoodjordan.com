@@ -24,7 +24,7 @@ import { environment } from '../environments/production';
 })
 export class AppComponent {
   title = 'micahnorwoodjordan.com';
-  fontUrl =  `${environment.staticSiteUrl}/IosevkaNerdFont.ttc`;
+  fontUrl =  `${environment.staticSiteUrl}/TerminessNerdFontMono-Regular.ttf`;
 
   constructor(private renderer: Renderer2) { }
 
@@ -32,7 +32,7 @@ export class AppComponent {
     const style = this.renderer.createElement('style');
     style.innerHTML = `
       @font-face {
-        font-family: 'Iosevka Nerd Font Mono';
+        font-family: 'Terminess Nerd Font';
         src: url('${this.fontUrl}') format('truetype');
         font-weight: normal;
         font-style: normal;
