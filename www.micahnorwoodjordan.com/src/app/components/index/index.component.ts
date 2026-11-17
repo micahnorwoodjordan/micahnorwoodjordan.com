@@ -49,7 +49,7 @@ export class IndexComponent implements AfterViewInit {
       await this.animationService.applyDecryptionEffectToMarkupText(textObject.targetString, async (encrypted, decrypted) => {
         textObject.decryptedString = decrypted;
         textObject.encryptedString = encrypted;
-      }, Constants.decryptionEffectSpeedMillisFaster);
+      }, Constants.decryptionEffectSpeedMillisFastest);
     };
   }
 }
